@@ -1,0 +1,24 @@
+<h1 align="center">Login</h1>
+<div class="row mt-3">
+  <div class="offset-4 col-md-4">
+
+		<%= form_for(:session, url: login_path) do |f| %>
+			<div class="form-group font-weight-bold">
+				<%= f.label :email %>
+				<%= f.text_field :email, class: "form-control" %>
+			</div>
+
+			<div class="form-group font-weight-bold">
+				<%= f.label :password %>
+				<%= f.password_field :password, class: "form-control" %>
+			</div>
+
+			<div class="form-group font-weight-bold text-center">
+				<%= f.submit "Log in", class: "btn btn-primary form-control" %>
+			</div>
+
+			<div>New user? <%= link_to "Sign up now!", new_user_url %></div>
+
+		<%end%>
+	</div>
+</div>
