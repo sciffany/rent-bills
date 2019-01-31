@@ -10,10 +10,75 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_25_091344) do
+ActiveRecord::Schema.define(version: 2019_01_31_071124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contracts", force: :cascade do |t|
+    t.date "startDate"
+    t.date "endDate"
+    t.bigint "location_id"
+    t.integer "charge"
+    t.string "comment"
+    t.integer "schedule"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "tenant_id"
+    t.index ["location_id"], name: "index_contracts_on_location_id"
+    t.index ["tenant_id"], name: "index_contracts_on_tenant_id"
+  end
+
+  create_table "dues", force: :cascade do |t|
+    t.date "due_date"
+    t.bigint "contract_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contract_id"], name: "index_dues_on_contract_id"
+  end
+
+  create_table "duties", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id"
+    t.bigint "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_duties_on_location_id"
+    t.index ["user_id"], name: "index_duties_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.date "pay_date"
+    t.integer "amount"
+    t.bigint "tenant_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tenant_id"], name: "index_payments_on_tenant_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
+  create_table "tenants", force: :cascade do |t|
+    t.string "name"
+    t.integer "balance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -23,4 +88,11 @@ ActiveRecord::Schema.define(version: 2018_08_25_091344) do
     t.string "password_digest"
   end
 
+  add_foreign_key "contracts", "locations"
+  add_foreign_key "contracts", "tenants"
+  add_foreign_key "dues", "contracts"
+  add_foreign_key "duties", "locations"
+  add_foreign_key "duties", "users"
+  add_foreign_key "payments", "tenants"
+  add_foreign_key "payments", "users"
 end
