@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_071124) do
+ActiveRecord::Schema.define(version: 2019_01_31_074656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "contracts", force: :cascade do |t|
-    t.date "startDate"
-    t.date "endDate"
-    t.bigint "location_id"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "charge"
     t.string "comment"
     t.integer "schedule"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "tenant_id"
-    t.index ["location_id"], name: "index_contracts_on_location_id"
+    t.bigint "unit_id"
     t.index ["tenant_id"], name: "index_contracts_on_tenant_id"
+    t.index ["unit_id"], name: "index_contracts_on_unit_id"
   end
 
   create_table "dues", force: :cascade do |t|
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 2019_01_31_071124) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_units_on_location_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,11 +90,12 @@ ActiveRecord::Schema.define(version: 2019_01_31_071124) do
     t.string "password_digest"
   end
 
-  add_foreign_key "contracts", "locations"
   add_foreign_key "contracts", "tenants"
+  add_foreign_key "contracts", "units"
   add_foreign_key "dues", "contracts"
   add_foreign_key "duties", "locations"
   add_foreign_key "duties", "users"
   add_foreign_key "payments", "tenants"
   add_foreign_key "payments", "users"
+  add_foreign_key "units", "locations"
 end

@@ -1,4 +1,4 @@
 class Contract < ApplicationRecord
-  belongs_to :location
-  belongs_to 
+  belongs_to :unit
+  belongs_to :tenant
 end
