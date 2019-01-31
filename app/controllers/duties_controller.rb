@@ -2,6 +2,8 @@ class DutiesController < ApplicationController
 
     def new
         @duty = Duty.new
+        @location = Location.find(params[:location_id])
+        @current_user = current_user
     end
 
     def create

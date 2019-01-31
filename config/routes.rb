@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root 'pages#hello'
   get 'pages/hi'
   resources :users
-  resources :locations
-  resources :duties
+  resources :locations do
+    resources :duties
+  end
   get '/login', to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

@@ -1,0 +1,23 @@
+<h1 align="center">Create Duty for <%=@location.name%></h1>
+<div class="row mt-3">
+  <div class="offset-4 col-md-4">
+
+        <%= form_for :duty do |f| %>
+            
+			<div class="form-group font-weight-bold">
+				<%= f.label :start_date %>
+				<%= f.date_field :start_date, class: "form-control" %>
+			</div>
+
+			<div class="form-group font-weight-bold">
+				<%= f.label :end_date %>
+				<%= f.date_field :end_date, class: "form-control" %>
+			</div>
+
+			<div class="form-group font-weight-bold text-center">
+				<%= f.submit "Create Duty", class: "btn btn-primary form-control" %>
+			</div>
+
+		<%end%>
+	</div>
+</div>
