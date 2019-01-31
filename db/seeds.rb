@@ -12,4 +12,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(name: 'Tiffany Chong', password: '123456')
-Location.create(name: 'Dima')
+Location.create(name: 'Dima', password: 'dima123')
