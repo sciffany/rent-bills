@@ -15,10 +15,16 @@ class LocationsController < ApplicationController
     end
 
     def index
+        @locations = Location.all
     end
 
     def show
-        location = Location.find(params[:id])
+        @location = Location.find(params[:id])
+        #if user there exists a contract which bonds this user and this location
+        #then we want to let the user view all the tenants
+
+        
+
     end
         
     private
