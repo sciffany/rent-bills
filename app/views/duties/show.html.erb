@@ -1,8 +1,5 @@
-Hello
 
-<h1><%= @duty.location %></h1>
-<h1><%= @duty.user %></h1>
+<h2><%= @duty.user.name %>'s duty at <%= @duty.location.name %></h1>
 
-<h2><%= @duty.start_date %></h2>
-<h2><%= @duty.end_date %></h2>
-
+Start date: <%= @duty.start_date %>
+End date: <%= @duty.end_date %>

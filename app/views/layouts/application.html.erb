@@ -10,7 +10,18 @@
   </head>
 
   <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand " href="#">Rent Bills</a>
+      <a class="nav-link" href="#"><%=link_to current_user.name, user_url(current_user.id)%></a>
+
+      
+    </nav>
+
     <div class="container mt-5">
+
+    
+
      
       <% flash.each do |type, text| %>
         <div class="<%= flash_class(type.to_sym) %>">

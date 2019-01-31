@@ -1,1 +1,5 @@
-<%= @user.name %>
+<h1><%= @user.name %></h1>
+
+<% @duties.each do |d| %>
+    <%= link_to d.location.name, location_duty_path(d.id) %>
+<% end %>
