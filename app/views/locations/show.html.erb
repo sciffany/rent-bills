@@ -1,4 +1,8 @@
 <h1><%= @location.name %></h1>
 
-<%=link_to "Create duty", new_location_duty_path(@location.id), class: "btn btn-primary mt-3"%>
+Keeper:
 
+<% @duties.each do |d| %>
+    <%= link_to d.user.name, user_url(d.user_id) %>
+<% end %>
+<%=link_to "+", new_location_duty_path(@location.id), class: "btn btn-primary mt-1"%>
