@@ -8,11 +8,13 @@ class DutiesController < ApplicationController
 
     def create
         duty = Duty.new duty_params
+        duty.user_id = current_user
+        duty.location_id = params[:location_id]
         if duty.save
-            redirect_to location_url(duty.location_id)
+            redirect_to user_url(current_user)
         else
-            redirect_to new_duties_url
-            flash[:alert] = duties.errors.full_messages.join()
+            redirect_to new_location_duty_url
+            flash[:alert] = duty.errors.full_messages.join(", ")
         end
     end
 

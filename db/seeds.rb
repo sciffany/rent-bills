@@ -11,5 +11,5 @@
 #     { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: 'Tiffany Chong', password: '123456')
+User.create(name: 'Tiffany Chong', email: 'sciffany@gmail.com', password: '123456')
 Location.create(name: 'Dima', password: 'dima123')

@@ -2,7 +2,7 @@
 <div class="row mt-3">
   <div class="offset-4 col-md-4">
 
-        <%= form_for :duty do |f| %>
+        <%= form_for @duty, url: {action: "create"}  do |f| %>
             
 			<div class="form-group font-weight-bold">
 				<%= f.label :start_date %>
@@ -18,6 +18,6 @@
 				<%= f.submit "Create Duty", class: "btn btn-primary form-control" %>
 			</div>
 
-		<%end%>
+		<% end %>
 	</div>
 </div>
