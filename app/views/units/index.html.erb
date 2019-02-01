@@ -1,18 +1,23 @@
 <div>
 <h1><%= @location.name %></h1>
 </div>
+<hr/>
 
 <div class="container">
 <div class="row">
-    <div class="col-6">
+    <div class="col-4">
         <b> Keepers: </b>
         <% @location.duties.each do |d| %>
             <%= link_to d.user.name, user_url(d.user_id) %>
         <% end %>
-        <%=link_to "+", new_location_duty_path(@location.id), class: "btn btn-primary mt-1"%>
+        <%=link_to "+", new_location_duty_path(@location.id), class: "btn btn-primary"%>
     </div>
     <div class="col-6">
-        <%=link_to "Tenant List", location_tenants_path(@location.id), class: "btn btn-primary mt-1"%>
+        <b> Tenants: </b>
+        <% @location.tenants.each do |t| %>
+            <%= link_to t.name, tenant_url(t.id) %>,
+        <% end %>
+        <%=link_to "+", new_location_tenant_path(@location.id), class: "btn btn-primary"%>
     </div>
 </div>
 </div>
@@ -34,7 +39,7 @@
             <tr>
             <th scope="col"><%= u.name %>
             <th scope="col"><%= u.price %></th>
-            <th scope="col"><%=link_to "Add tenant", new_location_tenant_url, class: "btn btn-primary mt-1"%></th>
+            <th scope="col">None</th>
             <th scope="col">0</th>
             <th scope="col"><%=link_to "Check dues", users_url, class: "btn btn-primary mt-1" %></th>
             <th scope="col">Start and end date </th>

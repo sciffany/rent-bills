@@ -11,4 +11,5 @@
 
 class Tenant < ApplicationRecord
     belongs_to :location
+    has_many :contracts
 end

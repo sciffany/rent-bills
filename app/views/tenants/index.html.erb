@@ -1,0 +1,23 @@
+<h1><%= @location.name %></h1>
+<hr/>
+
+<div class="container">
+<div class = "row">
+
+    <div class="col-5">
+    <h5>Tenants</h5>
+
+    <% @tenants.each do |t| %>
+        <div>
+        <%= link_to t.name, tenant_url(t.id) %>
+        </div>
+    <% end %>
+    <%=link_to "Add tenant...", new_location_tenant_path(@location.id)%>
+    </div>
+
+    <div class="col-7">
+        <%= link_to "Manage Rent", location_units_path(@location.id), class:"btn btn-primary mt-1"%>
+    </div>
+
+</div>
+</div>

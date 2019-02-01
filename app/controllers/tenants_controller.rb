@@ -16,9 +16,13 @@ class TenantsController < ApplicationController
         end
     end
 
+    def index
+        @location = Location.find(params[:location_id])
+        @tenants = @location.tenants
+    end
+
     def show
         @tenant = Tenant.find(params[:id])
-        @contracts = Contract.where(id: @tenant.id)
     end
 
     private

@@ -1,16 +1,21 @@
 <h1><%= @tenant.name %></h1>
 
-<h3>Contracts</h3>
+<b> Location: </b> <%= link_to @tenant.location.name, location_url(@tenant.location_id) %>
 
-<% @contracts.each do |c| %>
+<hr/>
+<div class="mt-2"> <h5>Contracts</h5>
+
+    <% @tenant.contracts.each do |c| %>
+        <div>
+        <%= c.unit.name %>
+        Start Date: <%= c.start_date %>
+        End Date: <%= c.end_date %>
+        <%= link_to "View contract", contract_url(c.id) %>
+        </div>
+    <% end %>
+
     <div>
-    <%= c.unit.name %>
-    Start Date: <%= c.start_date %>
-    End Date: <%= c.end_date %>
-    <%= link_to "View contract", contract_url(c.id) %>
+    <%=link_to "+", new_tenant_contract_path(@tenant.id), class: "btn btn-primary mt-1"%>
     </div>
-<% end %>
 
-<div>
-<%=link_to "+", new_tenant_contract_path(@tenant.id), class: "btn btn-primary mt-1"%>
 </div>

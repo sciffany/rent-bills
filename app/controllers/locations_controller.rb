@@ -19,8 +19,9 @@ class LocationsController < ApplicationController
     end
 
     def show
-        @location = Location.find(params[:id])
-        @duties = Duty.where(location_id: @location.id)
+        redirect_to location_units_url(params[:id])
+        # @location = Location.find(params[:id])
+        # @duties = Duty.where(location_id: @location.id)
     end
         
     private
