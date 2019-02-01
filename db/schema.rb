@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_103734) do
+ActiveRecord::Schema.define(version: 2019_02_01_021128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2019_01_31_103734) do
     t.integer "balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_tenants_on_location_id"
   end
 
   create_table "units", force: :cascade do |t|
@@ -98,5 +100,6 @@ ActiveRecord::Schema.define(version: 2019_01_31_103734) do
   add_foreign_key "duties", "users"
   add_foreign_key "payments", "tenants"
   add_foreign_key "payments", "users"
+  add_foreign_key "tenants", "locations"
   add_foreign_key "units", "locations"
 end

@@ -1,0 +1,10 @@
+<h1><%= @tenant.name %></h1>
+
+Contracts:
+
+<% @contracts.each do |c| %>
+    Start Date: <%= c.start_date %>
+    End Date: <%= c.end_date %>
+<% end %>
+
+<%=link_to "+", new_tenant_contract_path(@tenant.id), class: "btn btn-primary mt-1"%>

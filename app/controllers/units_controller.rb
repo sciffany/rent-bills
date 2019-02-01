@@ -15,7 +15,7 @@ class UnitsController < ApplicationController
         if unit.save
             redirect_to location_units_path(unit.location_id)
         else
-            redirect_to new_location_duty_path
+            redirect_to new_location_unit_path
             flash[:alert] = unit.errors.full_messages.join(" ")
         end
     end

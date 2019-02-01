@@ -10,4 +10,5 @@
 #
 
 class Tenant < ApplicationRecord
+    belongs_to :location
 end

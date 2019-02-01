@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   resources :locations do
     resources :duties
     resources :units
+    resources :tenants, shallow:true do
+      resources :contracts
+    end
   end
-  resources :tenants
   get '/login', to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
