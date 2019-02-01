@@ -1,3 +1,4 @@
+<div>
 <table class="table">
     <thead>
         <tr>
@@ -6,6 +7,7 @@
             <th scope="col"> Tenant
             <th scope="col"> Balance
             <th scope="col"> Link 
+            <th scope="col"> Contract
         </tr>
     </thead>
     <tbody>
@@ -13,13 +15,17 @@
             <tr>
             <th scope="col"><%= u.name %>
             <th scope="col"><%= u.price %></th>
-            <th scope="col">Tenant name goes here (if none then add) </th>
+            <th scope="col"><%=link_to "Add tenant", new_tenant_url, class: "btn btn-primary mt-1"%></th>
             <th scope="col">0</th>
             <th scope="col"><%=link_to "Check dues", users_url, class: "btn btn-primary mt-1" %></th>
+            <th scope="col">Start and end date </th>
             </tr>
         <% end %>
         
     </tbody>
+</table>
+</div>
 
-
+<div>
 <%= link_to "+", new_location_unit_path , class:"btn btn-primary mt-1"%>
+</div>
