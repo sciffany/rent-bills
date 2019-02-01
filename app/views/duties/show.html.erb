@@ -1,5 +1,6 @@
 
 <h2><%= @duty.user.name %>'s duty at <%= @duty.location.name %></h1>
+<div> Start date: <%= @duty.start_date %></div>
+<div> End date: <%= @duty.end_date %></div>
+<div><%= link_to "Back", user_url(@duty.user.id) %></div>
 
-Start date: <%= @duty.start_date %>
-End date: <%= @duty.end_date %>

@@ -2,6 +2,7 @@ class UnitsController < ApplicationController
 
     def index
         @units = Unit.where(location: params[:location_id])
+        @location = Location.find(params[:location_id])
     end
 
     def new
