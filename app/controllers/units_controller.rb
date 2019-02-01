@@ -1,29 +1,31 @@
+# frozen_string_literal: true
+
 class UnitsController < ApplicationController
+  def index
+    @units = Unit.where(location: params[:location_id])
+    @location = Location.find(params[:location_id])
+  end
 
-    def index
-        @units = Unit.where(location: params[:location_id])
-        @location = Location.find(params[:location_id])
-    end
+  def new
+    @unit = Unit.new
+    @location = Location.find(params[:location_id])
+  end
 
-    def new
-        @unit = Unit.new
-        @location = Location.find(params[:location_id])
+  def create
+    unit = Unit.new unit_params
+    unit.location_id = params[:location_id]
+    if unit.save
+      redirect_to location_units_path(unit.location_id)
+    else
+      redirect_to new_location_unit_path
+      flash[:alert] = unit.errors.full_messages.join(' ')
     end
+  end
 
-    def create
-        unit = Unit.new unit_params
-        unit.location_id = params[:location_id]
-        if unit.save
-            redirect_to location_units_path(unit.location_id)
-        else
-            redirect_to new_location_unit_path
-            flash[:alert] = unit.errors.full_messages.join(" ")
-        end
-    end
+  private
 
-    private
-    def unit_params
-        params.require(:unit)
-              .permit(:name, :price, :location)
-    end
+  def unit_params
+    params.require(:unit)
+          .permit(:name, :price, :location)
+  end
 end

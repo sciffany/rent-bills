@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: tenants
@@ -10,6 +12,6 @@
 #
 
 class Tenant < ApplicationRecord
-    belongs_to :location
-    has_many :contracts
+  belongs_to :location
+  has_many :contracts
 end

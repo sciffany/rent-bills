@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RenameThings < ActiveRecord::Migration[5.2]
   def change
     rename_column :contracts, :endDate, :end_date

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: locations
@@ -10,7 +12,7 @@
 #
 
 class Location < ApplicationRecord
-    has_many :duties
-    has_many :tenants
-    has_many :units
+  has_many :duties
+  has_many :tenants
+  has_many :units
 end

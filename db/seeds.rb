@@ -13,6 +13,6 @@
 
 tiffany = User.create(name: 'Tiffany Chong', email: 'sciffany@gmail.com', password: '123456')
 dima = Location.create(name: 'Dima', password: 'dima123')
-Duty.create(user: tiffany, location: dima, start_date: DateTime.parse("31/01/2018"), end_date: DateTime.parse("31/01/2020") )
-Unit.create(name: 'A1', location: dima, price: 4000 )
+Duty.create(user: tiffany, location: dima, start_date: DateTime.parse('31/01/2018'), end_date: DateTime.parse('31/01/2020'))
+Unit.create(name: 'A1', location: dima, price: 4000)
 Tenant.create(name: 'Bob', location: dima)

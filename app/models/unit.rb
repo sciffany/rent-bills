@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: units
@@ -11,6 +13,6 @@
 #
 
 class Unit < ApplicationRecord
-    belongs_to :location
-    has_many :contracts
+  belongs_to :location
+  has_many :contracts
 end

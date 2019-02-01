@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'sessions/new'
   root 'pages#hello'
@@ -6,7 +8,7 @@ Rails.application.routes.draw do
   resources :locations do
     resources :duties
     resources :units
-    resources :tenants, shallow:true do
+    resources :tenants, shallow: true do
       resources :contracts, shallow: true
     end
   end

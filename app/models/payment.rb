@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: payments
@@ -14,5 +16,4 @@
 class Payment < ApplicationRecord
   belongs_to :tenant
   belongs_to :user
-  
 end

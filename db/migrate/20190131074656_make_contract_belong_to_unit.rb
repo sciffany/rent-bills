@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MakeContractBelongToUnit < ActiveRecord::Migration[5.2]
   def change
     add_reference :contracts, :unit, foreign_key: true
