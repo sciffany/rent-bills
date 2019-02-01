@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> Unit No
+            <th scope="col"> Price
+            <th scope="col"> Tenant
+            <th scope="col"> Balance
+            <th scope="col"> Link 
+        </tr>
+    </thead>
+    <tbody>
+        <% @units.each do |u| %>
+            <tr>
+            <th scope="col"><%= u.name %>
+            <th scope="col"><%= u.price %></th>
+            <th scope="col">Tenant name goes here (if none then add) </th>
+            <th scope="col">0</th>
+            <th scope="col"><%=link_to "Check dues", users_url, class: "btn btn-primary mt-1" %></th>
+            </tr>
+        <% end %>
+        
+    </tbody>
+
+
+<%= link_to "+", new_location_unit_path , class:"btn btn-primary mt-1"%>

@@ -21,9 +21,6 @@ class LocationsController < ApplicationController
     def show
         @location = Location.find(params[:id])
         @duties = Duty.where(location_id: @location.id)
-        #if user there exists a contract which bonds this user and this location
-        #then we want to let the user view all the tenants
-
     end
         
     private

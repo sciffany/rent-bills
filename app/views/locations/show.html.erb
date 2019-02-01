@@ -6,3 +6,6 @@ Keeper:
     <%= link_to d.user.name, user_url(d.user_id) %>
 <% end %>
 <%=link_to "+", new_location_duty_path(@location.id), class: "btn btn-primary mt-1"%>
+<div>
+    <%= link_to "Manage Rent", location_units_path(@location.id), class:"btn btn-primary mt-1"%>
+</div>

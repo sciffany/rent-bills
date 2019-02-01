@@ -11,5 +11,7 @@
 #     { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: 'Tiffany Chong', email: 'sciffany@gmail.com', password: '123456')
-Location.create(name: 'Dima', password: 'dima123')
+tiffany = User.create(name: 'Tiffany Chong', email: 'sciffany@gmail.com', password: '123456')
+dima = Location.create(name: 'Dima', password: 'dima123')
+Duty.create(user: tiffany, location: dima, start_date: DateTime.parse("31/01/2018"), end_date: DateTime.parse("31/01/2020") )
+Unit.create(name: 'A1', location: dima, price: 4000 )

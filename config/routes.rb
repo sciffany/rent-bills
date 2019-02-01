@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :locations do
     resources :duties
+    resources :units
   end
   get '/login', to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
