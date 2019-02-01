@@ -3,7 +3,7 @@ class ContractsController < ApplicationController
     def new
         @contract = Contract.new
         @tenant = Tenant.find(params[:tenant_id])
-        @units = Unit.where(location_id: @tenant.location_id)
+        @units = @contract.location.units
     end
 
     def create
