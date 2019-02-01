@@ -1,9 +1,11 @@
-<h1 align="center">Sign up as keeper for <%=@location.name%></h1>
+<h1 align="center">Keeper Signup</h1>
 <div class="row mt-3">
   <div class="offset-4 col-md-4">
 
         <%= form_for @duty, url: {action: "create"}  do |f| %>
-            
+			
+			<div class="font-weight-bold"> Location: <%= @location.name %></div>
+
 			<div class="form-group font-weight-bold">
 				<%= f.label :start_date %>
 				<%= f.date_field :start_date, class: "form-control" %>
@@ -17,6 +19,8 @@
 			<div class="form-group font-weight-bold text-center">
 				<%= f.submit "Create Duty", class: "btn btn-primary form-control" %>
 			</div>
+
+			<%= link_to "Back to #{@location.name}", location_url(@location.id) %>
 
 		<% end %>
 	</div>

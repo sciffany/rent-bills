@@ -1,6 +1,19 @@
 <h1><%= @user.name %></h1>
 
-<% @duties.each do |d| %>
-    <%= link_to d.location.name, location_url(d.location_id), class: "btn btn-primary mt-1" %>
-    <%= link_to "check duty details", location_duty_path(d.id), class: "btn btn-primary mt-1" %>
-<% end %>
+<h5>Keeper</h5>
+<hr/>
+
+<div class="container">
+    <div class="row">
+    <div class="col-5">
+        <h5>Places managed:</h5><hr/>
+        <% @duties.each do |d| %>
+            <%= link_to d.location.name, location_url(d.location_id), class: "btn btn-primary mt-1" %>
+            <%= link_to "check duty details", location_duty_path(d.id), class: "btn btn-primary mt-1 float-right" %>
+        <% end %>
+    </div>
+    <div class="col-5">
+        <h5>Duty Logs</h5><hr/>
+    </div>
+    </div>
+</div>
