@@ -1,0 +1,8 @@
+<h1>Contract</h1>
+
+<div> Name: <%= link_to @contract.tenant.name, tenant_path(@contract.tenant_id) %></div>
+<div>Location: <%= link_to @contract.unit.location.name, location_url(@contract.unit.location_id) %></div>
+<div>Unit: <%= link_to @contract.unit.name, location_url(@contract.unit.location_id) %></div>
+<div>Start date: <%= @contract.start_date %><div>
+<div>End date: <%= @contract.end_date %><div>
+<div>Charge: <%= @contract.charge %></h1><div>
