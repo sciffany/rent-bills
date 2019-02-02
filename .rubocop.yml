@@ -1,0 +1,19 @@
+Style/Documentation:
+  Exclude:
+    - 'app/**/*'
+    - 'db/**/*'
+    - 'rubopcop/*/*'
+    - 'config/**/*'
+Metrics/LineLength:
+  Exclude:
+    - 'config/**/*'
+    - 'Gemfile'
+
+AllCops:
+  Exclude:
+    - 'test/**/*'
+    - 'bin/**/*'
+
+Naming/FileName:
+  Exclude:
+    - 'spec/views/**/*'

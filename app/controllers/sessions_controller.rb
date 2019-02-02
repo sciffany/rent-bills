@@ -11,12 +11,15 @@ class SessionsController < ApplicationController
       log_in(user)
       redirect_to user
     elsif user
-      flash[:alert] = 'Incorrect password'
-      render 'new'
+      refresh_with_error('Incorrect password')
     else
-      flash[:alert] = 'Email not found in our database'
-      render 'new'
+      refresh_with_errore('Email not found in our database')
     end
+  end
+
+  def refresh_with_error(msg)
+    flash[:alert] = msg
+    render 'new'
   end
 
   def destroy; end

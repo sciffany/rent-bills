@@ -27,6 +27,9 @@ class ContractsController < ApplicationController
 
   def contract_params
     params.require(:contract)
-          .permit(:name, :start_date, :end_date, :schedule, :charge, :comment, :unit_id)
+          .permit(:name,
+                  :start_date, :end_date,
+                  :schedule, :charge,
+                  :comment, :unit_id)
   end
 end

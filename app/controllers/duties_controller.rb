@@ -14,9 +14,13 @@ class DutiesController < ApplicationController
     if duty.save
       redirect_to user_url(current_user)
     else
-      redirect_to new_location_duty_url
-      flash[:alert] = duty.errors.full_messages.join(', ')
+      redirect_with_error
     end
+  end
+
+  def redirect_with_error
+    redirect_to new_location_duty_url
+    flash[:alert] = duty.errors.full_messages.join(', ')
   end
 
   def index; end
