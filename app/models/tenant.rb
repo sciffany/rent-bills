@@ -14,4 +14,5 @@
 class Tenant < ApplicationRecord
   belongs_to :location
   has_many :contracts, dependent: :destroy
+  has_many :units, through: :contracts
 end

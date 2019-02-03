@@ -18,6 +18,8 @@ class User < ApplicationRecord
                     uniqueness: true
   has_secure_password
 
+  has_many :locations
+
   ROLES = %i[keeper owner]
 
   def role?(base_role)
