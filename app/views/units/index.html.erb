@@ -48,8 +48,10 @@
         
     </tbody>
 </table>
-<%= link_to "Add units", new_location_unit_path , class:"btn btn-primary mt-1"%>
 
+<% if can? :create, :unit %>
+    <%= link_to "Add units", new_location_unit_path , class:"btn btn-primary mt-1"%>
+<% end %>
 </div>
 
 <div>

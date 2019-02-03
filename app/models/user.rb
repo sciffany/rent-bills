@@ -17,4 +17,10 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: true
   has_secure_password
+
+  ROLES = %i[keeper owner]
+
+  def role?(base_role)
+    ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end
 end

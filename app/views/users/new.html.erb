@@ -1,11 +1,11 @@
-<h1 align="center">Registration for Keeper</h1>
+<h1 align="center">User Registration</h1>
 
 <div class="row mt-3">
   <div class="offset-4 col-md-4">
 
 		<%= form_for(@user) do |f| %>
 			<div class="form-group font-weight-bold">
-				<%= label_tag(:name, "Keeper's Name") %>
+				<%= label_tag(:name, "Name") %>
 				<%= f.text_field :name, class: "form-control" %>
 			</div>
 			<div class="form-group font-weight-bold">
@@ -21,6 +21,11 @@
 			<div class="form-group font-weight-bold">
 				<%= label_tag(:email, "Confirm password") %>
 				<%= f.password_field :password_confirmation, class: "form-control" %>
+			</div>
+
+			<div class="form-group font-weight-bold">
+				<%= f.label :role %>
+				<%= f.collection_select :role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize} %>
 			</div>
 
 			<div class="form-group font-weight-bold text-center">

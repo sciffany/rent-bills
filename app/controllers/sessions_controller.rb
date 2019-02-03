@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     elsif user
       refresh_with_error('Incorrect password')
     else
-      refresh_with_errore('Email not found in our database')
+      refresh_with_error('Email not found in our database')
     end
   end
 
@@ -21,8 +21,6 @@ class SessionsController < ApplicationController
     flash[:alert] = msg
     render 'new'
   end
-
-  def destroy; end
 
   private
 
