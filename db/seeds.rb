@@ -14,7 +14,7 @@
 tiffany = User.create(name: 'Tiffany Chong',
                       email: 'sciffany@gmail.com',
                       password: '123456',
-                      role: :keeper)
+                      role: ':keeper')
 dima = Location.create(name: 'Dima', password: 'dima123')
 Duty.create(user: tiffany,
             location: dima,
