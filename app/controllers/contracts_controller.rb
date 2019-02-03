@@ -15,7 +15,6 @@ class ContractsController < ApplicationController
     else
       redirect_to new_tenant_contract_path
       flash[:alert] = contract.errors.full_messages.join(' ')
-
     end
   end
 

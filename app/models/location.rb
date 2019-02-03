@@ -12,7 +12,7 @@
 #
 
 class Location < ApplicationRecord
-  has_many :duties
-  has_many :tenants
-  has_many :units
+  has_many :duties, dependent: destroy
+  has_many :tenants, dependent: :destroy
+  has_many :units, dependent: :destroy
 end
