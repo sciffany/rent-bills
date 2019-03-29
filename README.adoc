@@ -1,0 +1,14 @@
+# README
+
+## Program
+
+The program can be found at rent-bills@herokuapp.com
+
+## Ruby version
+
+2.5.0p0
+
+## Schema
+
+![alt text](https://github.com/sciffany/rent-bills/blob/master/erd.pdf)
+
