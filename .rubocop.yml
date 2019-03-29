@@ -13,6 +13,7 @@ AllCops:
   Exclude:
     - 'test/**/*'
     - 'bin/**/*'
+    - 'db/schema.rb'
 
 Naming/FileName:
   Exclude:

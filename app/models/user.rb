@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -20,7 +21,7 @@ class User < ApplicationRecord
 
   has_many :locations
 
-  ROLES = %i[keeper owner]
+  ROLES = %i[keeper owner].freeze
 
   def role?(base_role)
     ROLES.index(base_role.to_s) <= ROLES.index(role)
