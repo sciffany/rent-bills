@@ -10,5 +10,5 @@ The program can be found at rent-bills@herokuapp.com
 
 ## Schema
 
-![ERD](erd.pdf)
+![ERD](erd.png)
 
