@@ -3,16 +3,21 @@
 <b> Location: </b> <%= link_to @tenant.location.name, location_url(@tenant.location_id) %>
 
 <hr/>
-<div class="mt-2"> <h5>Contracts</h5>
+<div class="mt-2"> <h3>Contracts</h3>
 
-    <% @tenant.contracts.each do |c| %>
-        <div>
-        <%= c.unit.name %>
-        Start Date: <%= c.start_date %>
-        End Date: <%= c.end_date %>
-        <%= link_to "View contract", contract_url(c.id) %>
-        </div>
-    <% end %>
+    <div class="row">
+        <% @tenant.contracts.each do |c| %>
+            <div class="card m-3" style="width: 300px">
+                <div class="card-body">
+                    <div><b>Unit: </b><%= c.unit.name %></div>
+                    <div><b>Start Date:</b> <%= c.start_date.strftime("%b %d %Y") %></div>
+                    <div><b>End Date: </b><%= c.end_date.strftime("%b %d %Y") %></div>
+                    <div><%= link_to "Edit contract", edit_contract_url(c.id) %></div>
+                    <div><%= link_to "Delete contract", contract_url(c.id), method: :delete   %></div>
+                </div>
+            </div>
+        <% end %>
+    </div>
 
     <div>
     <%=link_to "+", new_tenant_contract_path(@tenant.id), class: "btn btn-primary mt-1"%>
