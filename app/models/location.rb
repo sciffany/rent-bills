@@ -13,6 +13,9 @@
 #
 
 class Location < ApplicationRecord
+
+  validates :name, presence: true,
+                  uniqueness: true
   has_many :duties
   has_many :tenants
   has_many :units

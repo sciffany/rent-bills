@@ -7,10 +7,11 @@ class LocationsController < ApplicationController
 
   def create
     location = Location.new location_params
+    location.user = current_user
     if location.save
-      redirect_to users_url
+      redirect_to locations_path
     else
-      redirect_to new_locations_url
+      redirect_to new_location_path
       flash[:alert] = location.errors.full_messages.join
     end
   end
