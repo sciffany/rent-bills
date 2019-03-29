@@ -2,7 +2,7 @@
 
 ## Program
 
-The program can be found at http://www.rent-bills.herokuapp.com
+The program can be found at http://rent-bills.herokuapp.com/
 
 ## Ruby version
 
