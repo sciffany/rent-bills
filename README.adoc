@@ -10,5 +10,5 @@ The program can be found at rent-bills@herokuapp.com
 
 ## Schema
 
-![alt text](https://github.com/sciffany/rent-bills/blob/master/erd.pdf)
+![ERD](https://github.com/sciffany/rent-bills/blob/master/erd.pdf)
 
