@@ -17,6 +17,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    log_out
+    redirect_to root_path
+  end
+
   def refresh_with_error(msg)
     flash[:alert] = msg
     render 'new'

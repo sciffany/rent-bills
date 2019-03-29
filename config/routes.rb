@@ -3,7 +3,6 @@
 Rails.application.routes.draw do
   get 'sessions/new'
   root 'pages#hello'
-  get 'pages/hi'
   resources :users
   resources :locations do
     resources :duties
