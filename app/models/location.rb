@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: locations
@@ -9,11 +8,12 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  password   :string
+#  user_id    :bigint(8)
 #
 
 class Location < ApplicationRecord
   has_many :duties
   has_many :tenants
   has_many :units
-  belongs_to :users
+  belongs_to :user
 end

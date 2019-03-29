@@ -14,8 +14,8 @@
 tiffany = User.create(name: 'Tiffany Chong',
                       email: 'sciffany@gmail.com',
                       password: '123456',
-                      role: ':keeper')
-dima = Location.create(name: 'Dima', password: 'dima123')
+                      role: ':owner')
+dima = Location.create(name: 'Dima', password: 'dima123', user_id: tiffany.id)
 Duty.create(user: tiffany,
             location: dima,
             start_date: DateTime.parse('31/01/2018'),

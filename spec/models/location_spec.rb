@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: locations
@@ -9,6 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  password   :string
+#  user_id    :bigint(8)
 #
 
 require 'rails_helper'

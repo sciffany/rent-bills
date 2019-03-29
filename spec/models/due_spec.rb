@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: dues
@@ -10,6 +9,7 @@
 #  amount      :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  automatic   :boolean
 #
 
 require 'rails_helper'
