@@ -8,6 +8,11 @@
 				<%= label_tag(:name, "Name") %>
 				<%= f.text_field :name, class: "form-control" %>
 			</div>
+
+			<div class="form-group font-weight-bold">
+				<%= label_tag(:password, "Password") %>
+				<%= f.text_field :password, class: "form-control" %>
+			</div>
 			
 			<div class="form-group font-weight-bold text-center">
 				<%= f.submit "Create location", class: "btn btn-primary form-control" %>
