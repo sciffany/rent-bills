@@ -1,11 +1,11 @@
-<h1 align="center">Sign up as keeper</h1>
+<h1>Manage a location</h1>
 <div class="row mt-3">
-  <div class="offset-4 col-md-4">
+  <div class="col-md-4">
 
         <%= form_for @duty, url: {action: "create"}  do |f| %>
 			<b> Keeper: </b> <%=current_user.name%><br />
 			<b> Location: </b> <%= @location.name %>
-
+			
 			<div class="form-group font-weight-bold">
 				<%= f.label :start_date %>
 				<%= f.date_field :start_date, class: "form-control" %>
