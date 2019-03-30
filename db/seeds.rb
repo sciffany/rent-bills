@@ -16,8 +16,8 @@ tiffany = User.create(name: 'Tiffany Chong',
                       password: '123456',
                       role: ':owner')
 dima = Location.create(name: 'Dima', password: 'dima123', user_id: tiffany.id)
-Duty.create(user: tiffany,
-            location: dima,
+Duty.create(keeper_id: tiffany.id,
+            location_id: dima.id,
             start_date: DateTime.parse('31/01/2018'),
             end_date: DateTime.parse('31/01/2020'))
 Unit.create(name: 'A1', location: dima, price: 4000)

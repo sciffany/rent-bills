@@ -1,9 +1,7 @@
-<h1>Welcome to rent bills!</h1>
-<%if current_user!=nil %>
-<%= current_user.name %>
+<h1>Welcome to rent bills<%= [", ", current_user.name].join if current_user!=nil  %>!</h1>
 
 
-<%else%>
+<%if current_user==nil%>
 <div>
 <%= link_to 'Sign in',  new_user_path,class: "btn btn-primary mt-3"%>
 <%= link_to 'Log in',  login_path,class: "btn btn-primary mt-3"%>

@@ -20,4 +20,6 @@ class Location < ApplicationRecord
   has_many :tenants
   has_many :units
   belongs_to :user
+
+  has_many :keepers, class_name: "User", through: :duties
 end

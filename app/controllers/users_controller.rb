@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   def create
     user = User.new user_params
     if user.save
-      redirect_to user_url(user.id)
+      log_in(user)
+      redirect_to root_path
     else
       redirect_to new_user_url
       flash[:alert] = user.errors.full_messages.join
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @duties = Duty.where(user_id: @user.id)
+    @duties = Duty.where(keeper_id: @user.id)
   end
 
   private

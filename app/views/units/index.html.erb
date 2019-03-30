@@ -8,16 +8,18 @@
     <div class="col-4">
         <b> Keepers: </b>
         <% @location.duties.each do |d| %>
-            <%= link_to d.user.name, user_url(d.user_id) %>
+            <%= link_to d.keeper.name, user_url(d.keeper) %>
         <% end %>
-        <%=link_to "+", new_location_duty_path(@location.id), class: "btn btn-primary"%>
+        <%=link_to "Add myself as keeper", new_location_duty_path(@location.id), class: "btn btn-primary"%>
     </div>
     <div class="col-6">
         <b> Tenants: </b>
         <% @location.tenants.each do |t| %>
             <%= link_to t.name, tenant_url(t.id) %>,
         <% end %>
+        <%if @location.keepers.include? current_user %>
         <%=link_to "+", new_location_tenant_path(@location.id), class: "btn btn-primary"%>
+        <% end %>
     </div>
 </div>
 </div>

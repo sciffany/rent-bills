@@ -4,6 +4,7 @@
     <%= link_to location.name, location_path(location.id), class: "btn btn-primary mt-3" %>
 <% end %>
 
-<%if current_user.role == :owner%>
+<%if current_user && current_user.role == :owner%>
 <%= link_to "+", new_location_path, class: "btn btn-primary mt-3" %>
-<%end%>
+Log in as owner to create locations.
+<% end %>

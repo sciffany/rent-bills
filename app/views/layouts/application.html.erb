@@ -16,11 +16,9 @@
       <% if current_user %>
       <a class="nav-link" href="#"><%=link_to current_user.name, user_url(current_user.id)%></a>
       <a class="nav-link" href="#"><%=link_to "Locations", locations_url%></a>
-
-      <a class="nav-link" href="#"><%=link_to "Logout", "/logout", method: :delete  %></a>
-      
+      <a class="nav-link" href="#"><%=link_to "Logout", "/logout", method: :delete  %></a>      
       <% end %>
-      
+
     </nav>
 
     <div class="container mt-5">
@@ -31,7 +29,6 @@
           <%= text %>
         </div>
       <% end %>
-
 
       <%= yield %>
     </div>
