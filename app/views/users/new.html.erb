@@ -25,7 +25,7 @@
 
 			<div class="form-group font-weight-bold">
 				<%= f.label :role %>
-				<%= f.collection_select :role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize} %>
+				<%= f.select :role, User.roles.keys.map { |w| [w.humanize, w] } %>
 			</div>
 
 			<div class="form-group font-weight-bold text-center">

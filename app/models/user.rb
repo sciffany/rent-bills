@@ -21,9 +21,10 @@ class User < ApplicationRecord
 
   has_many :locations
 
-  ROLES = %i[keeper owner].freeze
+  enum role: %i[keeper owner]
 
   def role?(base_role)
     ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
+
 end
