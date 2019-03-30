@@ -4,7 +4,7 @@
 
         <%= form_for @tenant, url: {action: "create"}  do |f| %>
 			
-			<div class="font-weight-bold"> Location: <%=@location.name%> </div>
+			<b> Location: </b> <%=@location.name%> <br />
 			<div class="form-group font-weight-bold">
 				<%= f.label :name %>
 				<%= f.text_field :name, class: "form-control" %>

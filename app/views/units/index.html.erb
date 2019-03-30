@@ -8,7 +8,7 @@
     <div class="col-4">
         <b> Keepers: </b>
         <% @location.duties.each do |d| %>
-            <%= link_to d.keeper.name, user_url(d.keeper) %>
+            <%= link_to d.keeper.name, user_url(d.keeper) %>, 
         <% end %>
         <%=link_to "Add myself as keeper", new_location_duty_path(@location.id), class: "btn btn-primary"%>
     </div>

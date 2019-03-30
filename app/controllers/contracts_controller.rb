@@ -27,14 +27,14 @@ class ContractsController < ApplicationController
   end
 
   def update
-    # contract = Contract.find(params[:id])
-    # if contract.update(contract_params)
-    #   redirect_to tenant_url(contract.tenant_id),
-    #       notice: 'Contract successfully updated'
-    # else
-    #   redirect_to new_tenant_contract_path(contract_id),
-    #       alert: 'Failed to update contract:' + answer.errors.full_messages.join(', ')
-    # end
+    contract = Contract.find(params[:id])
+    if contract.update(contract_params)
+      redirect_to tenant_url(contract.tenant_id),
+          notice: 'Contract successfully updated'
+    else
+      redirect_to new_tenant_contract_path(contract_id),
+          alert: 'Failed to update contract:' + answer.errors.full_messages.join(', ')
+    end
   end
 
   def destroy

@@ -5,11 +5,20 @@
 <div class="container">
     <div class="row">
     <div class="col-5">
-        <h5>Places managed:</h5><hr/>
-        <% @duties.each do |d| %>
-            <%= link_to d.location.name, location_url(d.location_id), class: "btn btn-primary mt-1" %>
-            <%= link_to "edit", location_duty_path(d.id), class: "float-right" %>
-        <% end %>
+        <h5>Places managed</h5>
+        <div class="card m-3" style="width: 300px">
+            <div class="card-body">
+                <% @duties.each do |d| %>
+                    <b> Location: </b>
+                    <%= link_to d.location.name, location_url(d.location_id) %><br />
+                    <b> Start date: </b>
+                    <%= d.start_date %><br />
+                    <b> End date: </b>
+                    <%= d.end_date %><br />
+                    <%= link_to "edit", edit_location_duty_url(d.id), class: "float-right" %>
+                <% end %>
+            </div>
+        </div>
     </div>
 
     <div class="col-1">
