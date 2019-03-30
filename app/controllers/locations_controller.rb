@@ -17,7 +17,11 @@ class LocationsController < ApplicationController
   end
 
   def index
-    @locations = Location.all
+    if params[:name]
+      @locations = Location.all.where(name: params[:name])
+    else 
+      @locations = Location.none
+    end
   end
 
   def show
