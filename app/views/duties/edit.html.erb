@@ -1,11 +1,11 @@
-<h1 align="center">Edit Duty</h1>
+<h1>Edit Duty</h1>
 <div class="row mt-3">
-  <div class="offset-4 col-md-4">
+  <div class="col-md-4">
 
         <%= form_for @duty, url: {action: "update"}  do |f| %>
 			
-			<b> Keeper: </b><%= @duty.keeper.name %><br />
-			<b> Location:</b> <%= @duty.location.name %>
+			<b> Keeper: </b><%= link_to @duty.keeper.name, user_url(@duty.keeper.id) %><br />
+			<b> Location: </b><%= link_to @duty.location.name, location_url(@duty.location.id) %>
 
 			<div class="form-group font-weight-bold">
 				<%= f.label :start_date %>
@@ -20,8 +20,6 @@
 			<div class="form-group font-weight-bold text-center">
 				<%= f.submit "Edit Duty", class: "btn btn-primary form-control" %>
 			</div>
-
-			<%= link_to "Back to #{@duty.location.name}", location_url(@duty.location.id) %>
 
 		<% end %>
 	</div>

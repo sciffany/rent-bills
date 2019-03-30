@@ -15,7 +15,7 @@
                         <%= d.start_date.strftime("%b %d %Y") %><br />
                         <b> End date: </b>
                         <%= d.end_date.strftime("%b %d %Y") %><br />
-                        <%= link_to "edit", edit_location_duty_url(d.id), class: "float-right" %>       
+                        <%= link_to "edit", edit_location_duty_path(id: d.id, location_id:d.location_id), class: "float-right" %>       
                     </div>
                 </div>
             <% end %>
