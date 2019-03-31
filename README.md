@@ -5,13 +5,15 @@
 The program can be found at http://rent-bills.herokuapp.com/
 Work in progress. 
 
+You can try out by logging in with email `owner@owner.com` and password `123`.
+
 ## Description of program
 
 Rent Bills is a web application to help homeowners monitor rent payments made by tenants.
 
 Homeowners can create a location to represent houses/apartment/condominiums they own. A location could have several units. They can assign a tenant to each unit, based on a contract. A contract lasts for a time period and indicates the monthly rent that tenants need to pay. Homeowners will be able to see the accumulated rent owed by a tenant.
 
-Homeowners can employ keepers to collect payments made by tenants. Keepers will then input how much money they collected when onto the database. Keepers gain access information
+Homeowners can employ keepers to collect payments made by tenants. Keepers will then input how much money they collected when onto the database. Keepers gain access information to a location using location passwords.
 
 ## Ruby version
 
@@ -35,7 +37,7 @@ Locations and Units
 
 1. Owners are able to create password-locked locations to represent houses they own.
 2. Owners and keepers are able to search for locations based on their names.
-3. Keepers and owners can sign themselves up as keepers for a house if they know the location password.
+3. Keepers can sign themselves up as keepers for a house if they know the location password.
 
 Tenants
 
