@@ -54,7 +54,7 @@
         </tbody>
     </table>
 
-    <% if current_user.owner? :create, :unit %>
+    <% if current_user.owner? %>
         <%= link_to "Add units", new_location_unit_path , class:"btn btn-primary mt-1"%>
     <% end %>
     </div>

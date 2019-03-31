@@ -9,7 +9,8 @@ class LocationsController < ApplicationController
     location = Location.new location_params
     location.user = current_user
     if location.save
-      redirect_to locations_path
+      Duty.create(keeper: current_user, location: location, start_date: Time.now, end_date: Time.now.next_year(10))
+      redirect_to location_url(location.id)
     else
       redirect_to new_location_path
       flash[:alert] = location.errors.full_messages.join
@@ -20,7 +21,7 @@ class LocationsController < ApplicationController
     if params[:name]
       @locations = Location.all.where(name: params[:name])
     else 
-      @locations = Location.none
+      @locations = Location.all
     end
   end
 
