@@ -2,7 +2,4 @@ language: ruby
 rvm:
  - 2.5.0
  - jruby
-install:
- - sudo gem update --system
-script: "rake"
 
