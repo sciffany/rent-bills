@@ -3,5 +3,6 @@ rvm:
  - 2.5.0
  - jruby
 install:
- - rvm @global do gem uninstall bundler -x && gem install bundler -v '~> 1.16.4' && bundle install
+ - sudo gem update --system
 script: "rake"
+
