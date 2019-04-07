@@ -3,7 +3,6 @@ services:
  - postgresql
 rvm:
  - 2.5.0
- - jruby
 before_script:
  - cp config/database.yml.travis config/database.yml
  - psql -c 'create database travis_ci_test;' -U postgres
