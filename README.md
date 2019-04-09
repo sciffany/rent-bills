@@ -1,4 +1,6 @@
-# README
+# Rent Bills
+
+ <img src="https://travis-ci.com/sciffany/rent-bills.svg?branch=master"></img>
 
 ## Program
 
