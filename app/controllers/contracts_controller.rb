@@ -30,10 +30,9 @@ class ContractsController < ApplicationController
     contract = Contract.find(params[:id])
     if contract.update(contract_params)
       redirect_to tenant_url(contract.tenant_id),
-          notice: 'Contract successfully updated'
+                  notice: 'Contract successfully updated'
     else
-      redirect_to new_tenant_contract_path(contract_id),
-          alert: 'Failed to update contract:' + answer.errors.full_messages.join(', ')
+      show_error(contract.id)
     end
   end
 
@@ -51,5 +50,11 @@ class ContractsController < ApplicationController
                   :start_date, :end_date,
                   :schedule, :charge,
                   :comment, :unit_id)
+  end
+
+  def show_error
+    redirect_to new_tenant_contract_path(contract_id),
+                alert: 'Failed to update contract:' +
+                       contract.errors.full_messages.join(', ')
   end
 end

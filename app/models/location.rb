@@ -13,13 +13,12 @@
 #
 
 class Location < ApplicationRecord
-
   validates :name, presence: true,
-                  uniqueness: true
+                   uniqueness: true
   has_many :duties
   has_many :tenants
   has_many :units
   belongs_to :user
 
-  has_many :keepers, class_name: "User", through: :duties
+  has_many :keepers, class_name: 'User', through: :duties
 end

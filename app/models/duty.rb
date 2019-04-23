@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: duties
@@ -13,6 +14,6 @@
 #
 
 class Duty < ApplicationRecord
-  belongs_to :keeper, class_name: "User"
+  belongs_to :keeper, class_name: 'User'
   belongs_to :location
 end

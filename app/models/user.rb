@@ -22,5 +22,4 @@ class User < ApplicationRecord
   has_many :locations
 
   enum role: %i[keeper owner]
-
 end

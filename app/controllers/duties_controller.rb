@@ -31,10 +31,9 @@ class DutiesController < ApplicationController
     duty = Duty.find(params[:id])
     if duty.update(duty_params)
       redirect_to user_url(duty.keeper_id),
-          notice: 'Contract successfully updated'
+                  notice: 'Contract successfully updated'
     else
-      redirect_to edit_location_duty_url(duty.id),
-          alert: 'Failed to update contract:' + answer.errors.full_messages.join(', ')
+      show_error(duty_id)
     end
   end
 
@@ -49,5 +48,11 @@ class DutiesController < ApplicationController
   def duty_params
     params.require(:duty)
           .permit(:start_date, :end_date, :location_id)
+  end
+
+  def show_error(duty_id)
+    redirect_to edit_location_duty_url(duty_id),
+                alert: 'Failed to update contract:' +
+                       answer.errors.full_messages.join(', ')
   end
 end

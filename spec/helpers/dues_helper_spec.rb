@@ -13,5 +13,4 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe DuesHelper, type: :helper do
-  
 end
