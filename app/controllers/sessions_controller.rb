@@ -3,7 +3,7 @@
 require 'application_helper.rb'
 
 class SessionsController < ApplicationController
-  def new; end
+  skip_before_action :authenticate_user
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
       refresh_with_error('Email not found in our database')
     end
   end
+
 
   def destroy
     log_out
