@@ -24,21 +24,25 @@
         <% else%>
             You currently do not own any locations.
         <%end%>
+
+        <div class="mb-5">
+            <%if current_user && current_user.owner?%>
+            <div class="mt-3"><%= link_to "Add new location", new_location_path %></div>
+            <%else%>
+            <div class="mt-3"><%= link_to "Search new location", locations_search_path %></div>
+            <% end %>
+        </div>
     </div>
     <div class="tab-pane fade <%= @tab == "pending_tab" ? "show active" : "" %> " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <%if current_user.keeper?%>
+            <div class="mt-3">Please wait for your requests to be verified.</div>
             <div class="row">
                 <% @uv_locations.each do |location| %>
                     <div class="card m-3 p-3" style="width: 20rem">
-                    <%= link_to location.name, location_path(location.id), class: "btn btn-secondary" %>
-                    </div>
-                <% end %>
-            </div>
-            <div class="mb-5">
-                <%if current_user && current_user.owner?%>
-                <div class="mt-3"><%= link_to "Add new location", new_location_path %></div>
-                <%else%>
-                <div class="mt-3"><%= link_to "Search new location", locations_search_path %></div>
+                    <%= link_to location.name, location_path(location.id), class: "btn btn-secondary disabled" %>
+                    <div class="mt-1"><b> Owned by:</b> <%=location.user.name%></div>
+                    <div class="mt-1"><b> Email:</b> <%=location.user.email%></div>
+                    </div> 
                 <% end %>
             </div>
         <% else %>
@@ -53,7 +57,6 @@
                     <div class="ml-3 mt-3">There are no pending housekeepers to be added.</div>
                 <%end%>
             </div>
-            
         <% end %>
   </div>
 </div>
