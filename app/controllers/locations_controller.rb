@@ -11,16 +11,20 @@ class LocationsController < ApplicationController
     if location.save
       create_duty(location)
     else
-      redirect_to new_location_path, location.errors.full_messages.join
+      redirect_to new_location_path, alert: location.errors.full_messages.join
     end
   end
 
-  def index
+  def search
     @locations = if params[:name]
                    Location.all.where(name: params[:name])
                  else
                    Location.all
                  end
+  end
+
+  def index
+    @locations = current_user.locations
   end
 
   def show
@@ -31,7 +35,9 @@ class LocationsController < ApplicationController
 
   def location_params
     params.require(:location)
-          .permit(:name)
+          .permit(:name,
+                  :password,
+                  :password_confirmation)
   end
 
   def create_duty(location)
