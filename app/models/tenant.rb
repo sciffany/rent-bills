@@ -17,4 +17,5 @@ class Tenant < ApplicationRecord
   has_many :contracts, dependent: :destroy
   has_many :units, through: :contracts
   validates :name, presence: :true
+  has_many :payments
 end

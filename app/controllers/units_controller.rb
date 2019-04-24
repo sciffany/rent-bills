@@ -11,6 +11,11 @@ class UnitsController < ApplicationController
     @tenants = @location.tenants
   end
 
+  def index_pay
+    @location = Payment.where(tenant.location.id = params[:location_id])
+    
+  end
+
   def new
     @unit = Unit.new
     @location = Location.find(params[:location_id])

@@ -1,0 +1,18 @@
+<tr>
+    <%= form_for(Payment.new, url: locations_url, method: :create) do |f|%>
+    <td scope="col">
+        <%= f.date_field :pay_date, class: "form-control" %>
+    </td>
+    <td scope="col"><%= p.tenant %>
+        <%= f.collection_select :tenant_id, tenants.all, :id, :name %>
+    </td>
+    <td scope="col">
+        <%= f.number_field :amount, class: "form-control" %>
+    </td>
+    <td scope="col">
+        <%=current_user.name%></td>
+    <td scope="col"><%= "p.remark"%></td>
+    <td scope="col"><%= p.verified%>
+        <%= f.submit "Create Payment", class: "btn btn-primary form-control" %>
+    <%end%>
+</tr>

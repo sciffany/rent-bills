@@ -1,0 +1,27 @@
+<div class="mt-2">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"> Date
+                <th scope="col"> Tenant
+                <th scope="col"> Payment
+                <th scope="col"> Collector
+                <th scope="col"> Remarks
+                <th scope="col"> Verified
+            </tr>
+        </thead>
+        <tbody>
+            <% payments.each do |p| %>
+                <tr>
+                <td scope="col"><%= p.pay_date %></td>
+                <td scope="col"><%= p.tenant %></td>
+                <td scope="col"><%= p.amount%>
+                <td scope="col"><%= p.user%>
+                <td scope="col"><%= p.remarks%>
+                <td scope="col"><%= p.verified%>        
+                 </tr>
+            <%end%>
+            <%=render partial: 'payments/new', locals: {p: Payment.new, tenants: tenants}%>
+        </tbody>
+    </table>
+</div>

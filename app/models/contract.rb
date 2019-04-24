@@ -24,7 +24,7 @@ class Contract < ApplicationRecord
   validates :end_date, presence: true
   validates :charge, presence: true
 
-  validates :end_after_start
+  validate :end_after_start
 
   def end_after_start
     if end_date && start_date && end_date<=start_date

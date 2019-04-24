@@ -17,4 +17,8 @@
 class Payment < ApplicationRecord
   belongs_to :tenant
   belongs_to :user
+
+  validates :amount, presence: true
+  validates :pay_date, presence: true
+  
 end
