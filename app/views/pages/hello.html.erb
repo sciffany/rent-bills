@@ -1,10 +1,12 @@
-<h1>Welcome to rent bills<%= [", ", current_user.name].join if current_user!=nil  %>!</h1>
+<div class="control-group" style="height:4rem"></div>
+<div class="row">
+    <div class="control-group" style="width:10rem"></div>
+    <div style="width:20rem">
+        <h1 class="mb-3">Manage Tenants with Ease</h1>
+        Helping homeowners keep track of rent payment and dues from tenants
+        <div>
+        <%= link_to 'Get started',  new_user_path,class: "btn btn-primary mt-3"%>
+        </div>
 
-
-<%if current_user==nil%>
-<div>
-<%= link_to 'Sign in',  new_user_path,class: "btn btn-primary mt-3"%>
-<%= link_to 'Log in',  login_path,class: "btn btn-primary mt-3"%>
+    </div>
 </div>
-
-<%end%>

@@ -45,7 +45,8 @@ class LocationsController < ApplicationController
     Duty.create(keeper: current_user,
                 location: location,
                 start_date: Time.now,
-                end_date: Time.now.next_year(10))
+                end_date: Time.now.next_year(10),
+                verified: true)
     redirect_to location_url(location.id)
   end
 end
