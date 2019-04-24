@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @duties = Duty.where(keeper_id: @user.id)
+    @user = current_user
+    @duties = @user.duties
   end
 
   private

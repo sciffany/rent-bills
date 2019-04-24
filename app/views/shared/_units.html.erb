@@ -2,33 +2,41 @@
 <%if !location.keepers.include? current_user %>
     <%=link_to "Add myself as keeper", new_location_duty_path(location.id), class: "btn btn-primary"%>
 <% else %>
+    <%if full%>
     <hr />
     <div class="container">
-    <div class="row">
-        <div class="col-4">
-            <b> Keepers: </b>
-            <% location.duties.each do |d| %>
-                <%= link_to d.user.name, user_url(d.user) %>, 
-            <% end %>
+    
+        <div class="row">
+            <div class="col-4">
+                <b> Keepers: </b>
+                <% location.duties.each do |d| %>
+                    <%= link_to d.user.name, user_url(d.user) %>, 
+                <% end %>
+                
+            </div>
+            <div class="col-6">
+                <b> Tenants: </b>
+                <% location.tenants.each do |t| %>
+                    <%= link_to t.name, tenant_url(t.id) %>,
+                <% end %>
+                
+                <%=link_to "+", new_location_tenant_path(location.id), class: "btn btn-primary"%>
             
+            </div>
         </div>
-        <div class="col-6">
-            <b> Tenants: </b>
-            <% location.tenants.each do |t| %>
-                <%= link_to t.name, tenant_url(t.id) %>,
-            <% end %>
-            
-            <%=link_to "+", new_location_tenant_path(location.id), class: "btn btn-primary"%>
-           
-        </div>
+    
     </div>
-    </div>
+    <%end%>
+    <%if full%>
+        <div class="m-3 mt-5">
+    <%else%>
+        <div class="m-3">
+    <%end%>
 
-    <div class="m-3 mt-5">
     <table class="table">
         <thead>
             <tr>
-                <th scope="col"> Unit No
+                <th scope="col"> Unit
                 <%if full%>
                     <th scope="col"> Price
                 <%end%>
