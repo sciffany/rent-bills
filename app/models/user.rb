@@ -24,4 +24,8 @@ class User < ApplicationRecord
   has_many :sites, class_name: 'Location', source: :location, through: :duties
 
   enum role: %i[keeper owner]
+
+  def v_locations(verified)
+    duties.where(verified: verified).map{|x| x.location}
+  end
 end

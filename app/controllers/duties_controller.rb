@@ -9,10 +9,10 @@ class DutiesController < ApplicationController
 
   def create
     duty = Duty.new duty_params
-    duty.keeper_id = current_user.id
+    duty.user_id = current_user.id
     duty.location_id = params[:location_id]
     if duty.save
-      redirect_to user_url(current_user)
+      redirect_to locations_url
     else
       redirect_with_error
     end
@@ -46,8 +46,7 @@ class DutiesController < ApplicationController
   private
 
   def duty_params
-    params.require(:duty)
-          .permit(:start_date, :end_date, :location_id)
+    params.permit(:location_id)
   end
 
   def show_error(duty_id)

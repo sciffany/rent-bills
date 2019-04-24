@@ -23,11 +23,15 @@
              My locations
           </button>
           <div class="dropdown-menu" aria-labelledby="navDropdown"> 
-            <% current_user.sites.each do |location| %>
+            <% current_user.v_locations(true).each do |location| %>
               <%= link_to location.name, location_url(location.id), class: "dropdown-item btn-primary"%>
             <%end %>
             <div class="dropdown-divider"></div>
-            <%= link_to "Add new location...", new_location_url, class: "dropdown-item "%>
+            <% if current_user.owner? %>
+              <%= link_to "Add new location...", new_location_url, class: "dropdown-item "%>
+            <% else %>
+              <%= link_to "Search new location...", locations_search_path, class: "dropdown-item "%>
+            <% end %>
           </div>
         </div>
         

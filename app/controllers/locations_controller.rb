@@ -24,7 +24,8 @@ class LocationsController < ApplicationController
   end
 
   def index
-    @locations = current_user.sites
+    @locations = current_user.v_locations(true)
+    @uv_locations = current_user.v_locations(false)
   end
 
   def show

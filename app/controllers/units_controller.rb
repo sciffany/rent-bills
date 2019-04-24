@@ -1,6 +1,10 @@
 # frozen_string_literal: true
+include UnitsHelper
 
 class UnitsController < ApplicationController
+
+  before_action :verify_duty
+
   def index
     @units = Unit.where(location: params[:location_id])
     @location = Location.find(params[:location_id])
