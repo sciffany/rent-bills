@@ -16,4 +16,5 @@ class Unit < ApplicationRecord
   belongs_to :location
   has_many :contracts, dependent: :destroy
   has_many :tenants, through: :contracts
+  validates :name, uniqueness: {scope: :location}
 end

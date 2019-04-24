@@ -9,7 +9,6 @@
                 <th scope="col"> Tenant
                 <th scope="col"> Balance
                 <%if full%>
-                    <th scope="col"> Link 
                     <th scope="col"> Contract
                 <%end%>
             </tr>
@@ -21,12 +20,22 @@
                 <%if full%>
                     <td scope="col"><%= u.price %></td>
                 <%end%>
-                <td scope="col">None</td>
                 
-                <td scope="col"><p class="text-success">0</p></td>
-                <%if full%>
-                    <td scope="col"><%=link_to "Check dues", users_url, class: "btn btn-primary mt-1" %></td>
-                    <td scope="col">Start and end date </td>
+                <%if u.tenants.empty? %>
+                    <td scope="col"><%=link_to "Add tenant",
+                        new_location_contract_url(location.id),
+                        class: "btn btn-primary" %></td>
+                        
+                    <td scope="col"></td>
+                    <%if full%>
+                        <td scope="col"></td>
+                    <%end%>
+                <%else%>
+                    <td scope="col">None</td>
+                    <td scope="col"><p class="text-success">0</p></td>
+                    <%if full%>
+                        <td scope="col">Start and end date </td>
+                    <%end%>
                 <%end%>
                 </tr>
             <% end %>
@@ -36,11 +45,14 @@
                     <%= link_to "Add units", new_location_unit_path(location.id) , class:"btn btn-primary mt-1"%>
                 <% end %>
                 </td>
-                </td scope="col">
-                </td scope="col">
-                </td scope="col">
-                </td scope="col">
-                </td scope="col">
+                <%if full%>
+                    <td scope="col"></td>
+                <%end%>
+                <td scope="col"></td>
+                <td scope="col"></td>
+                <%if full%>
+                <td scope="col"></td>
+                <%end%>
             </tr>
         </tbody>
     </table>
