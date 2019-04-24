@@ -49,4 +49,10 @@ class Duty < ApplicationRecord
   
   
   Duty.dedupe
+
+  def self.clear_dateless
+    dateless = all.where(start_date: nil)
+    dateless.each{|double| double.destroy}
+  end
+  Duty.clear_dateless
 end

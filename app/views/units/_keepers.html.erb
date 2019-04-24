@@ -4,6 +4,7 @@
         <%if d.user.keeper? && d.verified%>
             <div class="card mt-3 p-3">
                 <%= link_to d.user.name, user_url(d.user.id), class: "btn btn-primary", style: "width: 10em" %>
+                
                 <div class="mt-1"><b>Start date: </b><%= d.start_date.strftime("%B %d, %Y") %></div>
                 <div class="mt-1"><b>End date: </b><%= d.end_date.strftime("%B %d, %Y") %></div>
             </div>

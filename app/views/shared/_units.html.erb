@@ -23,7 +23,7 @@
                 
                 <%if u.tenants.empty? %>
                     <td scope="col"><%=link_to "Add tenant",
-                        new_location_contract_url(location.id),
+                        new_location_tenant_url(location.id),
                         class: "btn btn-primary" %></td>
                         
                     <td scope="col"></td>
@@ -31,7 +31,10 @@
                         <td scope="col"></td>
                     <%end%>
                 <%else%>
-                    <td scope="col">None</td>
+                    <td scope="col">
+                        <%tenant = u.tenants.first%>
+                        <%=link_to tenant.name, tenant_url(tenant.id) %>
+                    </td>
                     <td scope="col"><p class="text-success">0</p></td>
                     <%if full%>
                         <td scope="col">Start and end date </td>

@@ -1,8 +1,10 @@
-<h1 align="center">Create new contract for <%=@tenant.name%></h1>
+<h1>New contract</h1>
 <div class="row mt-3">
-  <div class="offset-4 col-md-4">
+  <div class="col-md-4">
 
         <%= form_for @contract, url: {action: "create"}  do |f| %>
+			<div><b>Location: </b><%=@tenant.location.name%></div>
+			<b>Tenant name: </b><%=@tenant.name%>
 			<div class="form-group font-weight-bold">
 				<%= f.label :unit %>
 				<%= f.collection_select :unit_id, @units.all, :id, :name %>

@@ -20,5 +20,7 @@ class Location < ApplicationRecord
   has_many :units
   belongs_to :user
 
+  has_many :contracts, through: :units
+
   has_many :keepers, class_name: 'User', source: :user, through: :duties
 end

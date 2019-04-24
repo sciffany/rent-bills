@@ -9,6 +9,7 @@ class ContractsController < ApplicationController
 
   def create
     contract = Contract.new contract_params
+    contract.charge = contract.unit.price
     contract.tenant_id = params[:tenant_id]
     if contract.save
       redirect_to tenant_url(contract.tenant_id)

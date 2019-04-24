@@ -19,4 +19,14 @@
 class Contract < ApplicationRecord
   belongs_to :unit
   belongs_to :tenant
+
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validates :charge, presence: true
+
+  def self.clear_dateless
+    dateless = all.where(charge: nil)
+    dateless.each{|double| double.destroy}
+  end
+  Contract.clear_dateless
 end
