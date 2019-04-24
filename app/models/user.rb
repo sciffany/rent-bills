@@ -22,7 +22,7 @@ class User < ApplicationRecord
   
   has_many :properties, class_name: 'Location'
   has_many :sites, class_name: 'Location', source: :location, through: :duties
-
+  has_many :watchedDuties, class_name: 'Duty', source: :duties, through: :properties
   enum role: %i[keeper owner]
 
   def v_locations(verified)

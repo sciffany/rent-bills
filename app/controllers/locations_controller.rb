@@ -24,8 +24,13 @@ class LocationsController < ApplicationController
   end
 
   def index
-    @locations = current_user.v_locations(true)
-    @uv_locations = current_user.v_locations(false)
+    @tab = params[:tab] if params[:tab]
+    if(@tab=="pending_tab")
+      @pending = current_user.watchedDuties.where(verified: false)
+    else
+      @locations = current_user.v_locations(true)
+      @uv_locations = current_user.v_locations(false)
+    end
   end
 
   def show
@@ -42,11 +47,11 @@ class LocationsController < ApplicationController
   end
 
   def create_duty(location)
-    Duty.create(keeper: current_user,
+    Duty.create(user: current_user,
                 location: location,
                 start_date: Time.now,
                 end_date: Time.now.next_year(10),
                 verified: true)
-    redirect_to location_url(location.id)
+    redirect_to locations_url
   end
 end

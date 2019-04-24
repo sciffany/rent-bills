@@ -4,7 +4,7 @@
 
         <%= form_for @duty, url: {action: "update"}  do |f| %>
 			
-			<b> Keeper: </b><%= link_to @duty.keeper.name, user_url(@duty.keeper.id) %><br />
+			<b> Keeper: </b><%= link_to @duty.user.name, user_url(@duty.user.id) %><br />
 			<b> Location: </b><%= link_to @duty.location.name, location_url(@duty.location.id) %>
 
 			<div class="form-group font-weight-bold">

@@ -18,7 +18,7 @@ class Location < ApplicationRecord
   has_many :duties
   has_many :tenants
   has_many :units
-  belongs_to :owner, class_name: 'User'
+  belongs_to :user
 
   has_many :keepers, class_name: 'User', source: :user, through: :duties
 end

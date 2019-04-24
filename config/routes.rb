@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get 'locations', to: 'locations#index'
   get 'locations/search', to: 'locations#search'
 
+  patch 'location/:location_id/duties/:id/verify',
+        to: 'duties#verify',
+        as: :verify_location_duty
+
   resources :users
   resources :locations do
     resources :duties

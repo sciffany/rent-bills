@@ -14,26 +14,37 @@ class DutiesController < ApplicationController
     if duty.save
       redirect_to locations_url
     else
-      redirect_with_error
+      redirect_back_or_to locations_url, alert: duty.errors.full_messages.join(', ')
     end
-  end
-
-  def redirect_with_error
-    redirect_to new_location_duty_url
-    flash[:alert] = duty.errors.full_messages.join(', ')
   end
 
   def edit
     @duty = Duty.find(params[:id])
   end
 
+  def destroy
+    duty = Duty.find(params[:id])
+    redirect_to locations_url if duty.destroy
+  end
+
   def update
     duty = Duty.find(params[:id])
     if duty.update(duty_params)
-      redirect_to user_url(duty.keeper_id),
+      redirect_to locations_url(tab: "pending-tab"),
+                  notice: 'Contract successfully verified'
+    else
+      show_error(duty)
+    end
+  end
+
+  def verify
+    duty = Duty.find(params[:id])
+    duty.verified = true
+    if duty.update(duty_params_verify)
+      redirect_to locations_url,
                   notice: 'Contract successfully updated'
     else
-      show_error(duty_id)
+      redirect_to locations_url(tab: "pending_tab"), alert: duty.errors.full_messages.join(', ')
     end
   end
 
@@ -45,13 +56,21 @@ class DutiesController < ApplicationController
 
   private
 
-  def duty_params
-    params.permit(:location_id)
+  def duty_params_verify
+    params.require(:duty)
+          .permit(:location_id,
+                  :end_date,
+                  :start_date,
+                  :verified)
   end
 
-  def show_error(duty_id)
-    redirect_to edit_location_duty_url(duty_id),
+  def duty_params
+    params.permit(:location_id, :user_id, :verified)
+  end
+
+  def show_error(duty)
+    redirect_to edit_location_duty_url(duty.id),
                 alert: 'Failed to update contract:' +
-                       answer.errors.full_messages.join(', ')
+                       duty.errors.full_messages.join(', ')
   end
 end

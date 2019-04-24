@@ -16,4 +16,19 @@
 class Duty < ApplicationRecord
   belongs_to :user
   belongs_to :location
+
+  validate :has_dates_if_temp
+  validate :end_after_start
+
+  def has_dates_if_temp
+    if (!end_date || !start_date) && verified && user.keeper?
+      errors.add(:start_date, "or end date is missing")
+    end
+  end
+
+  def end_after_start
+    if end_date && start_date && end_date<=start_date
+      errors.add(:end_date, "must be after start date")
+    end
+  end
 end
