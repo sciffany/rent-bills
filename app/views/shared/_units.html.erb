@@ -1,17 +1,12 @@
-
-<%if !location.keepers.include? current_user %>
-    <%=link_to "Add myself as keeper", new_location_duty_path(location.id), class: "btn btn-primary"%>
-<% else %>
-    <div class="m-3">
+    <div class="mt-1">
     <table class="table">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th scope="col"> Unit
                 <%if full%>
                     <th scope="col"> Price
                 <%end%>
                 <th scope="col"> Tenant
-                
                 <th scope="col"> Balance
                 <%if full%>
                     <th scope="col"> Link 
@@ -22,27 +17,30 @@
         <tbody>
             <% units.each do |u| %>
                 <tr>
-                <th scope="col"><%= u.name %>
+                <td scope="col"><%= u.name %>
                 <%if full%>
-                    <th scope="col"><%= u.price %></th>
+                    <td scope="col"><%= u.price %></td>
                 <%end%>
-                <th scope="col">None</th>
-                <th scope="col">0</th>
+                <td scope="col">None</td>
+                <td scope="col">0</td>
                 <%if full%>
-                    <th scope="col"><%=link_to "Check dues", users_url, class: "btn btn-primary mt-1" %></th>
-                    <th scope="col">Start and end date </th>
+                    <td scope="col"><%=link_to "Check dues", users_url, class: "btn btn-primary mt-1" %></td>
+                    <td scope="col">Start and end date </td>
                 <%end%>
                 </tr>
             <% end %>
-            
+            <tr>
+                <td scope="col">
+                    <% if current_user.owner? && full %>
+                        <%= link_to "Add units", new_location_unit_path(location.id) , class:"btn btn-primary mt-1"%>
+                    <% end %>
+                </td>
+                </td scope="col">
+                </td scope="col">
+                </td scope="col">
+                </td scope="col">
+                </td scope="col">
+            </tr>
         </tbody>
     </table>
-
-    <% if current_user.owner? && full %>
-        <%= link_to "Add units", new_location_unit_path(location.id) , class:"btn btn-primary mt-1"%>
-    <% end %>
-    </div>
-
-    <div>
-    </div>
-<% end %>
+</div>
