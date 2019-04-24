@@ -3,7 +3,8 @@
   <div class="col-md-4">
 
         <%= form_for @duty, url: {action: "create"}  do |f| %>
-			<b> Location: </b> <%= @location.name %>
+			<div><b> Location: </b> <%= @location.name %></div>
+			<div><b> Owner: </b> <%= @location.user.name %></div>
 
 			<div class="form-group font-weight-bold text-center">
 				<%= f.submit "Sign up", class: "btn btn-primary form-control" %>
