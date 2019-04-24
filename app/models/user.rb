@@ -18,8 +18,10 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: true
   has_secure_password
-
-  has_many :locations
+  has_many :duties
+  
+  has_many :properties, class_name: 'Location'
+  has_many :sites, class_name: 'Location', source: :location, through: :duties
 
   enum role: %i[keeper owner]
 end

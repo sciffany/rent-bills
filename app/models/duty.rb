@@ -14,6 +14,6 @@
 #
 
 class Duty < ApplicationRecord
-  belongs_to :keeper, class_name: 'User'
+  belongs_to :user
   belongs_to :location
 end

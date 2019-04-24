@@ -10,6 +10,7 @@ gem 'cancancan', '~> 2.0'
 gem 'jquery-rails'
 gem 'rails-erd', group: :development
 gem 'rubocop', '~> 0.63.1', require: false
+gem 'material_icons'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'bcrypt', '3.1.12'

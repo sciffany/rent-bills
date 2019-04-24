@@ -24,7 +24,7 @@ class LocationsController < ApplicationController
   end
 
   def index
-    @locations = current_user.locations
+    @locations = current_user.sites
   end
 
   def show

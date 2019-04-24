@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+<script type="text/javascript" src="javascripts/popper.min.js"></script>
   <head>
+  
     <title>RentBills</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -15,10 +17,24 @@
       <a class="navbar-brand" href="#">Rent Bills</a>
       <% if current_user %>
       <ul class="navbar-nav mr-auto">
-        <a class="nav-link" href="#"><%=link_to "Locations", locations_url%></a>
-        <a class="nav-link" href="#"><%=link_to "Profile", user_url(current_user.id)%></a>
+        <a class="nav-link"><%=link_to "Dashboard", locations_url, class: "btn btn-primary mr-3"%></a>
+        <div class="nav-item dropdown">
+          <button class="btn dropdown-toggle" href="#" id="navbarDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             My locations
+          </button>
+          <div class="dropdown-menu" aria-labelledby="navDropdown"> 
+            <% current_user.sites.each do |location| %>
+              <%= link_to location.name, location_url(location.id), class: "dropdown-item btn-primary"%>
+            <%end %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Add new location...", new_location_url, class: "dropdown-item "%>
+          </div>
+        </div>
+        
       </ul>
+
       <ul class="navbar-nav">
+        <a class="nav-link" href="#"><%=link_to "Profile", user_url(current_user.id)%></a>
         <a class="nav-link" href="#"><%=link_to "Logout", "/logout", method: :delete  %></a>   
       </ul>
       </div>   

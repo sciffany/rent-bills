@@ -8,7 +8,7 @@
         <div class="col-4">
             <b> Keepers: </b>
             <% location.duties.each do |d| %>
-                <%= link_to d.keeper.name, user_url(d.keeper) %>, 
+                <%= link_to d.user.name, user_url(d.user) %>, 
             <% end %>
             
         </div>
