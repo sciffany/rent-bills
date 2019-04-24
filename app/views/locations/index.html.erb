@@ -4,7 +4,7 @@
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link <%= @tab == nil ? "active" : "" %>" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Locations</a>
-    <a class="nav-item nav-link <%= @tab == "pending_tab" ? "active" : "" %> " id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Pending</a>
+    <a class="nav-item nav-link <%= @tab == "pending_tab" ? "active" : "" %> " id="nav-pending-tab" data-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="false">Pending</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
@@ -33,7 +33,7 @@
             <% end %>
         </div>
     </div>
-    <div class="tab-pane fade <%= @tab == "pending_tab" ? "show active" : "" %> " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <div class="tab-pane fade <%= @tab == "pending_tab" ? "show active" : "" %> " id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
         <%if current_user.keeper?%>
             <div class="mt-3">Please wait for your requests to be verified.</div>
             <div class="row">

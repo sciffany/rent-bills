@@ -1,0 +1,9 @@
+<div class="m-3">
+    These are the keepers of <%=location.name %>.
+    
+    <div class="card mt-3 p-3">
+        <% location.duties.each do |d| %>
+            <%= link_to d.user.name, user_url(d.user) %>
+        <% end %>
+    </div>
+</div>

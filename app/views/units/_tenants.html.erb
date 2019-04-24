@@ -1,0 +1,10 @@
+<div class="m-3">
+   These are the tenants of <%=location.name%>
+   <div class="card mt-3 p-3">
+        <% location.tenants.each do |t| %>
+            <%= link_to t.name, tenant_url(t.id) %>
+        <% end %>
+    </div>
+    <div class="mt-3"><%=link_to "Add tenants", new_location_tenant_path(location.id), class: "btn btn-primary"%>
+    </div>
+</div>
