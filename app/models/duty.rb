@@ -18,7 +18,6 @@ class Duty < ApplicationRecord
   belongs_to :location
   validates :location, uniqueness: { scope: :user }
 
-
   validate :has_dates_if_temp
   validate :end_after_start
 
