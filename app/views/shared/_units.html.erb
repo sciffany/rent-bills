@@ -17,11 +17,10 @@
             <% units.each do |u| %>
                 <tr>
                 <td scope="col"><%= u.name %></td>
-                <%if full%>
-                    <td scope="col"><%= u.price %></td>
-                <%end%>
-                
-                <%if u.tenants.empty? %>
+                <%if u.contracts.empty? %>
+                    <%if full%>
+                        <td scope="col"><%= u.price %></td>
+                    <%end%>
                     <td scope="col"><%=link_to "Add tenant",
                         new_location_tenant_url(location.id),
                         class: "btn btn-primary" %></td>
@@ -31,13 +30,19 @@
                         <td scope="col"></td>
                     <%end%>
                 <%else%>
+                    <%c=u.contracts.first%>
+                    <%if full%>
+                        <td scope="col"><%= c.charge %></td>
+                    <%end%>
                     <td scope="col">
-                        <%tenant = u.tenants.first%>
-                        <%=link_to tenant.name, tenant_url(tenant.id) %>
+                        <%tenant = c.tenant.name%>
+                        <%=link_to c.tenant.name, tenant_url(c.tenant.id) %>
                     </td>
                     <td scope="col"><p class="text-success">0</p></td>
                     <%if full%>
-                        <td scope="col">Start and end date </td>
+                        <td scope="col"><%=c.start_date.strftime("%b %d %Y")%> to
+                        <%=c.end_date.strftime("%b %d %Y")%>
+                        </td>
                     <%end%>
                 <%end%>
                 </tr>

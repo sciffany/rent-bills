@@ -12,7 +12,7 @@ class ContractsController < ApplicationController
     contract.charge = contract.unit.price
     contract.tenant_id = params[:tenant_id]
     if contract.save
-      redirect_to tenant_url(contract.tenant_id)
+      redirect_to location_url(contract.unit.location_id)
     else
       redirect_to new_tenant_contract_path
       flash[:alert] = contract.errors.full_messages.join(' ')

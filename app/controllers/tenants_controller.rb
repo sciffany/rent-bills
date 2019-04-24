@@ -10,7 +10,7 @@ class TenantsController < ApplicationController
     tenant = Tenant.new tenant_params
     tenant.location_id = params[:location_id]
     if tenant.save
-      redirect_to tenant_path(tenant.id)
+      redirect_to new_tenant_contract_path(tenant.id)
     else
       redirect_to new_location_tenant_path
       flash[:alert] = tenant.errors.full_messages.join(' ')

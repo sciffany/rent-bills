@@ -1,7 +1,10 @@
-<h1 align="center">Edit contract for <%=@contract.tenant.name%></h1>
+<h1>Edit Contract</h1>
 <div class="row mt-3">
-  <div class="offset-4 col-md-4">
+  <div class="col-md-4">
   		<%= form_for @contract, url: {action: "update"}  do |f| %>
+
+		  	<b>Name: </b><%=@contract.tenant.name%>
+			<div><b>Location: </b><%=@contract.unit.location.name%></div>
 			<div class="form-group font-weight-bold">
 				<%= f.label :unit %>
 				<%= f.collection_select :unit_id, @contract.tenant.location.units.all, :id, :name %>
@@ -20,12 +23,12 @@
             </div>
 
 			<div class="form-group font-weight-bold text-center">
-				<%= f.submit "Create Contract", class: "btn btn-primary form-control" %>
+				<%= f.submit "Update Contract", class: "btn btn-primary form-control" %>
 			</div>
 
 		<% end %>
 	</div>
 </div>
-<div align="center">
+<div>
 <%= link_to "Back", tenant_url(@contract.tenant_id) %>
 </div>
