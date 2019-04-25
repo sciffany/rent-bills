@@ -1,11 +1,14 @@
 <div class="m-3">
-    These are the tenants of <%=location.name%>
-    <% if !location.contracts.empty? %>
-        <% location.contracts.each do |c| %>
-            <div class="card mt-3 p-3">
-                <%= link_to c.tenant.name, tenant_url(c.tenant.id) %>
-                <div class="mt-1"><b>Start date: </b><%= c.start_date.strftime("%B %d, %Y") %></div>
-                <div class="mt-1"><b>End date: </b><%= c.end_date.strftime("%B %d, %Y") %></div>
+    These are the tenants of <%=location.name%>.
+    <% if !location.tenants.empty? %>
+        <% location.tenants.each do |tenant| %>
+            <div class="card mb-1 mt-3 p-3" >
+                
+                <div><b>Name: </b><%= link_to tenant.name, tenant_path(tenant.id) %></div>
+                <div><b>Information: </b>No information to display </div>
+                <div><b>Active contracts: </b>0 </div>
+                <div><b>Balance: </b>0 </div>
+                
             </div>
         <% end %>
     <%end%>

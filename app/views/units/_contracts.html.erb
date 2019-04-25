@@ -1,0 +1,10 @@
+<div class="m-3">
+    These are the contracts of <%=unit.name%>.
+    <% if !unit.contracts.empty? %>
+        <% unit.contracts.each do |c| %>
+            <%= render partial: 'contracts/show', locals: {contract: c} %>
+        <% end %>
+    <%end%>
+    <div class="mt-3"><%=link_to "Add tenants", new_location_tenant_path(unit.location.id), class: "btn btn-primary"%>
+    </div>
+</div>

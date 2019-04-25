@@ -7,21 +7,12 @@
 
     <div class="row">
         <% @tenant.contracts.each do |c| %>
-            <div class="card m-3" style="width: 300px">
-                <div class="card-body">
-                    <div><b>Unit: </b><%= c.unit.name %></div>
-                    <div><b>Start Date:</b> <%= c.start_date.strftime("%b %d %Y") %></div>
-                    <div><b>End Date: </b><%= c.end_date.strftime("%b %d %Y") %></div>
-                    <div><b>Charge: </b><%= c.charge %></div>
-                    <div><%= link_to "Edit contract", edit_contract_url(c.id) %></div>
-                    <div><%= link_to "Delete contract", contract_url(c.id), method: :delete   %></div>
-                </div>
-            </div>
+            <%= render partial: 'contracts/show', locals: {contract: c} %>
         <% end %>
     </div>
 
     <div>
-    <%=link_to "Add new contract", new_tenant_contract_path(@tenant.id)%>
+    <%=link_to "Add new contract", new_location_contract_path(@tenant.location.id, tenant_id: @tenant.id)%>
     </div>
 
 </div>

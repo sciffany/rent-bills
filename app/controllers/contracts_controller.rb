@@ -3,18 +3,24 @@
 class ContractsController < ApplicationController
   def new
     @contract = Contract.new
-    @tenant = Tenant.find(params[:tenant_id])
-    @units = @tenant.location.units
+    @location = Location.find(params[:location_id])
+    if params[:tenant_id]
+      @tenant = Tenant.find(params[:tenant_id])
+      @units = @location.units
+    end
+    if params[:unit_id]
+      @unit = Unit.find(params[:unit_id])
+      @tenants = @location.tenants
+    end
   end
 
   def create
     contract = Contract.new contract_params
     contract.charge = contract.unit.price
-    contract.tenant_id = params[:tenant_id]
     if contract.save
       redirect_to location_url(contract.unit.location_id)
     else
-      redirect_to new_tenant_contract_path
+      redirect_back(fallback_location: location_url(id: params[:location_id]))
       flash[:alert] = contract.errors.full_messages.join(' ')
     end
   end
@@ -33,7 +39,8 @@ class ContractsController < ApplicationController
       redirect_to tenant_url(contract.tenant_id),
                   notice: 'Contract successfully updated'
     else
-      show_error(contract.id)
+      redirect_back(fallback_location: location_url(id: params[:location_id]))
+      flash[:alert] = contract.errors.full_messages.join(' ')
     end
   end
 
@@ -47,7 +54,7 @@ class ContractsController < ApplicationController
 
   def contract_params
     params.require(:contract)
-          .permit(:name,
+          .permit(:name, :tenant_id,
                   :start_date, :end_date,
                   :schedule, :charge,
                   :comment, :unit_id)

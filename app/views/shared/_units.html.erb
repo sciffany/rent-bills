@@ -16,13 +16,14 @@
         <tbody>
             <% units.each do |u| %>
                 <tr>
-                <td scope="col"><%= u.name %></td>
+                <td scope="col"><%= link_to u.name, location_unit_url(location_id: location.id,
+                                                                      id: u.id) %></td>
                 <%if u.contracts.empty? %>
                     <%if full%>
                         <td scope="col"><%= u.price %></td>
                     <%end%>
-                    <td scope="col"><%=link_to "Add tenant",
-                        new_location_tenant_url(location.id),
+                    <td scope="col"><%=link_to "Add contract",
+                        new_location_contract_url(location.id, unit_id: u.id), 
                         class: "btn btn-primary" %></td>
                         
                     <td scope="col"></td>

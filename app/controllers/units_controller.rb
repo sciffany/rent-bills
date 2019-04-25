@@ -30,11 +30,15 @@ class UnitsController < ApplicationController
     end
   end
 
+  def show
+    @unit = Unit.find(params[:id])
+    @contracts = @unit.contracts
+  end
+
   private
 
   def unit_params
     params.require(:unit)
           .permit(:name, :price, :location)
-    params.permit(:tab)
   end
 end

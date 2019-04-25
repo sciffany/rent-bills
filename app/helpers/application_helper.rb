@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+
   def flash_class(level)
     case level
     when :notice then 'alert alert-success alert-dismissible'
@@ -23,4 +24,5 @@ module ApplicationHelper
   def redirect_back_or_to(link, alert: nil, notice: nil)
     redirect_to(request.referer || link, notice: notice, alert: alert)
   end
+  
 end

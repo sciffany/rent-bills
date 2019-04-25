@@ -3,13 +3,25 @@
   <div class="col-md-4">
 
         <%= form_for @contract, url: {action: "create"}  do |f| %>
-			<div><b>Location: </b><%=@tenant.location.name%></div>
-			<b>Tenant name: </b><%=@tenant.name%>
+			<div><b>Location: </b><%=@location.name%></div>
+			
+			<%if @tenant%><%= f.hidden_field :tenant_id, value: @tenant.id %>
+				<b>Tenant :</b><%=link_to @tenant.name, tenant_url(location_id: @location.id, id: @tenant.id)%>
+			<%else%>
+			<div class="form-group font-weight-bold">
+				<%= f.label :tenant %>
+				<%= f.collection_select :tenant_id, @tenants.all, :id, :name %>
+            </div>
+			<%end%>
+
+			<%if @unit%><%= f.hidden_field :unit_id, value: @unit.id %>
+				<b>Unit: </b><%=link_to @unit.name, location_unit_url(location_id: @location.id, id: @unit.id)%>
+			<%else%>
 			<div class="form-group font-weight-bold">
 				<%= f.label :unit %>
 				<%= f.collection_select :unit_id, @units.all, :id, :name %>
             </div>
-			
+			<%end%>
 			<div class="form-group font-weight-bold">
 				<%= f.label :start_date %>
 				<%= f.date_field :start_date, class: "form-control" %>
