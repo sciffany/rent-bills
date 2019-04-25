@@ -1,0 +1,14 @@
+
+<%if full%>
+    <td scope="col"><%= c.charge %></td>
+<%end%>
+<td scope="col">
+    <%tenant = c.tenant.name%>
+    <%=link_to c.tenant.name, tenant_url(c.tenant.id) %>
+</td>
+<td scope="col"><p class="text-success">0</p></td>
+<%if full%>
+    <td scope="col"><%=c.start_date.strftime("%b %d %Y")%> to
+    <%=c.end_date.strftime("%b %d %Y")%>
+    </td>
+<%end%>

@@ -16,9 +16,10 @@
         <tbody>
             <% units.each do |u| %>
                 <tr>
-                <td scope="col"><%= link_to u.name, location_unit_url(location_id: location.id,
-                                                                      id: u.id) %></td>
                 <%if u.contracts.empty? %>
+                    <td scope="col"><%= link_to u.name, location_unit_url(location_id: location.id,
+                                                                      id: u.id) %></td>
+                
                     <%if full%>
                         <td scope="col"><%= u.price %></td>
                     <%end%>
@@ -31,19 +32,28 @@
                         <td scope="col"></td>
                     <%end%>
                 <%else%>
-                    <%c=u.contracts.first%>
-                    <%if full%>
-                        <td scope="col"><%= c.charge %></td>
+                    <% u.contracts.each_with_index do |c, i| %>
+                    <tr>
+                    <%if i==0%>
+                        <td scope="col"><%= link_to u.name, location_unit_url(location_id: location.id,
+                                                                      id: u.id) %></td>   
+                    <%else%>
+                        <td scope="col"></td>
                     <%end%>
-                    <td scope="col">
-                        <%tenant = c.tenant.name%>
-                        <%=link_to c.tenant.name, tenant_url(c.tenant.id) %>
-                    </td>
-                    <td scope="col"><p class="text-success">0</p></td>
-                    <%if full%>
-                        <td scope="col"><%=c.start_date.strftime("%b %d %Y")%> to
-                        <%=c.end_date.strftime("%b %d %Y")%>
+                        <%if full%>
+                            <td scope="col"><%= c.charge %></td>
+                        <%end%>
+                        <td scope="col">
+                            <%tenant = c.tenant.name%>
+                            <%=link_to c.tenant.name , tenant_url(c.tenant.id) %>
                         </td>
+                        <td scope="col"><p class="text-success">0</p></td>
+                        <%if full%>
+                            <td scope="col"><%=c.start_date.strftime("%b %d %Y")%> to
+                            <%=c.end_date.strftime("%b %d %Y")%>
+                            </td>
+                        <%end%>
+                    </tr>
                     <%end%>
                 <%end%>
                 </tr>
