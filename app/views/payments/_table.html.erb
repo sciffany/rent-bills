@@ -14,16 +14,26 @@
             <% payments.each do |p| %>
                 <tr>
                 <td scope="col"><%= p.pay_date.strftime("%B %d %Y") %></td>
-                <td scope="col"><%= p.tenant.name %></td>
+                <td scope="col"><%= link_to p.tenant.name, tenant_url(p.tenant.id) %></td>
                 <td scope="col"><%= p.amount%>
                 <td scope="col"><%= p.user.name%>
-                <td scope="col"><%= "p.remarks"%>
+                <td scope="col"><%= p.remark%>
                 <td scope="col"><%= p.verified%>        
                  </tr>
             <%end%>
+            <tr>
+                <th scope="col">Total</th>
+                <td scope="col"></td>
+                <th scope="col"><%=@sum%></th>
+                <td scope="col"></td>
+                <td scope="col"></td>
+                <td scope="col"></td>        
+            </tr>
             <%=render partial: 'payments/new', locals: {p: Payment.new,
                                                         tenants: tenants,
                                                         location: @location}%>
+
+            
         </tbody>
     </table>
 </div>

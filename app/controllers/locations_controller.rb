@@ -34,7 +34,8 @@ class LocationsController < ApplicationController
   end
 
   def show
-    redirect_to location_units_url(params[:id])
+    params.permit(:tab, :id)
+    redirect_to location_units_url(params[:id], tab: params[:tab])
   end
 
   private

@@ -6,14 +6,12 @@ class UnitsController < ApplicationController
   before_action :verify_duty
 
   def index
+    @tab = params[:tab] if params[:tab]
     @location = Location.find(params[:location_id])
-    @units = @location.units
     @tenants = @location.tenants
-  end
-
-  def index_pay
-    @location = Payment.where(tenant.location.id = params[:location_id])
-    
+    @units = @location.units
+    @payments = @location.payments.order(id: :asc)
+    @sum = @payments.sum(:amount)
   end
 
   def new
@@ -37,5 +35,6 @@ class UnitsController < ApplicationController
   def unit_params
     params.require(:unit)
           .permit(:name, :price, :location)
+    params.permit(:tab)
   end
 end

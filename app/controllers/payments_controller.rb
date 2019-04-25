@@ -2,8 +2,6 @@
 
 class PaymentsController < ApplicationController
   def index
-    @location = location.find(id: params[:location_id])
-    @payments = location.payments
   end
 
   def new
@@ -16,9 +14,9 @@ class PaymentsController < ApplicationController
     payment.user = current_user
     payment.verified = false
     if payment.save
-      redirect_to location_url(payment.tenant.location_id)
+      redirect_to location_url(payment.tenant.location_id, tab: "balance_tab")
     else
-      redirect_to location_url(payment.tenant.location_id)
+      redirect_to location_url(payment.tenant.location_id, tab: "balance_tab")
       flash[:alert] = payment.errors.full_messages.join(' ')
     end
   end
@@ -27,7 +25,7 @@ class PaymentsController < ApplicationController
 
   def payment_params
     params.require(:payment)
-          .permit(:pay_date, :tenant, :amount)
+          .permit(:pay_date, :tenant, :amount, :remark)
   end
 
   def show
