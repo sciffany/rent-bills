@@ -57,7 +57,7 @@ class ContractsController < ApplicationController
           .permit(:name, :tenant_id,
                   :start_date, :end_date,
                   :schedule, :charge,
-                  :comment, :unit_id)
+                  :comment, :unit_id, :status)
   end
 
   def show_error

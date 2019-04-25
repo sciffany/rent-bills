@@ -24,6 +24,7 @@ class LocationsController < ApplicationController
   end
 
   def index
+    Contract.contract_status if params[:refresh]
     @tab = params[:tab] if params[:tab]
     if(@tab=="pending_tab")
       @pending = current_user.watchedDuties.where(verified: false)

@@ -32,7 +32,7 @@
                         <td scope="col"></td>
                     <%end%>
                 <%else%>
-                    <% u.contracts.each_with_index do |c, i| %>
+                    <% u.contracts.where(status: :active).each_with_index do |c, i| %>
                     <tr>
                     <%if i==0%>
                         <td scope="col"><%= link_to u.name, location_unit_url(location_id: location.id,

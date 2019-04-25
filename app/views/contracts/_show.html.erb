@@ -6,6 +6,7 @@
     <div><b>Start date: </b><%= contract.start_date.strftime("%B %d %Y") %></div>
     <div><b>End date: </b><%= contract.end_date.strftime("%B %d %Y") %></div>
     <div><b>Charge:</b> <%= contract.charge %></h1></div>
+    <div><b>Status:</b> <%= render partial: 'contracts/status', locals: {contract: contract} %></div>
 
     <div><%= link_to "Edit contract", edit_location_contract_url(location_id: contract.tenant.id, id: contract.id) %></div>
     <div><%= link_to "Delete contract", location_contract_url(location_id: contract.id, id: contract.id), method: :delete   %></div>

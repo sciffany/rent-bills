@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :payments
     resources :duties
     resources :units
-    resources :tenants, shallow: :true
+    resources :tenants, shallow: true
     resources :contracts
   end
   get '/login', to: 'sessions#new'

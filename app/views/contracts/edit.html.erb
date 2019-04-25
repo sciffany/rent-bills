@@ -22,6 +22,11 @@
                 <%= f.text_field :charge, class: "form-control" %>
             </div>
 
+			<div class="form-group font-weight-bold">
+				<%= f.label :status %>
+				<%= f.select :status, Contract.statuses.keys.map { |w| [w.humanize, w] } %>
+			</div>
+
 			<div class="form-group font-weight-bold text-center">
 				<%= f.submit "Update Contract", class: "btn btn-primary form-control" %>
 			</div>

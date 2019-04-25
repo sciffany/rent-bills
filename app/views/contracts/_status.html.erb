@@ -1,0 +1,9 @@
+<% if (contract.status)  %>
+    <% if contract.upcoming? %>
+        <div class="text-warning"><%= (contract.status.humanize) %></div>
+    <% elsif contract.active? %>
+        <div class="text-success"><%= (contract.status.humanize) %></div>
+    <%else%>
+        <div class="text-danger"><%= (contract.status.humanize) %></div>
+    <%end%>
+<%end%>

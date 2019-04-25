@@ -23,6 +23,9 @@ class Contract < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :charge, presence: true
+  validates :status, presence: true
+  
+  enum status: %i[upcoming active expired]
 
   validate :end_after_start
 
@@ -31,10 +34,22 @@ class Contract < ApplicationRecord
       errors.add(:end_date, "must be after start date")
     end
   end
-
-  def self.clear_dateless
-    dateless = all.where(charge: nil)
-    dateless.each{|double| double.destroy}
+  
+  def self.contract_status
+      all.each do |c|
+        if c.start_date > Time.now
+          c.update(status: :upcoming)
+        elsif c.end_date < Time.now
+          c.update(status: :expired)
+        else
+          c.update(status: :active)
+        end
+      end
   end
-  Contract.clear_dateless
+
+  # def self.clear_dateless
+  #   dateless = all.where(charge: nil)
+  #   dateless.each{|double| double.destroy}
+  # end
+  # Contract.clear_dateless
 end
