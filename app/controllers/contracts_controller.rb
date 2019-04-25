@@ -18,6 +18,7 @@ class ContractsController < ApplicationController
     contract = Contract.new contract_params
     contract.charge = contract.unit.price
     if contract.save
+      contract.update_status
       redirect_to location_url(contract.unit.location_id)
     else
       redirect_back(fallback_location: location_url(id: params[:location_id]))
@@ -46,8 +47,9 @@ class ContractsController < ApplicationController
 
   def destroy
     contract = Contract.find(params[:id])
-    tenant_id = contract.tenant_id
-    redirect_to tenant_url(tenant_id) if contract.destroy
+    if contract.destroy
+      redirect_back_or_to locations_url, notice: "Contract successfully deleted"
+    end
   end
 
   private

@@ -17,5 +17,5 @@ class Unit < ApplicationRecord
   has_many :contracts, dependent: :destroy
   has_many :tenants, through: :contracts
   validates :name, presence: true, uniqueness: {scope: :location}
-  validates :charge, presence: true
+  validates :price, presence: true
 end

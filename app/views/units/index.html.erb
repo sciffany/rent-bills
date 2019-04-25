@@ -12,6 +12,7 @@
     <a class="nav-item nav-link" id="nav-keepers-tab" data-toggle="tab" href="#nav-keepers" role="tab" aria-controls="nav-keepers" aria-selected="false">Keepers</a>
     <a class="nav-item nav-link <%=@tab=="balance_tab"?"active": ""%>" id="nav-balance-tab" data-toggle="tab" href="#nav-balance" role="tab" aria-controls="nav-balance" aria-selected="false">Total Balance</a>
     <a class="nav-item nav-link" id="nav-tenants-tab" data-toggle="tab" href="#nav-tenants" role="tab" aria-controls="nav-tenants" aria-selected="false">Tenants</a>
+    <a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Expired</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
@@ -19,7 +20,8 @@
     <div class="mt-2">
     <%= render partial: 'shared/units', locals: {location: @location,
                                              units: @units,
-                                             full: true} %>
+                                             full: true,
+                                             status: :active} %>
     </div>
   </div>
   <div class="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
@@ -33,6 +35,14 @@
   </div>
   <div class="tab-pane fade" id="nav-tenants" role="tabpanel" aria-labelledby="nav-tenants-tab">
     <%= render partial: 'tenants', locals: {location: @location, tenants: @tenants} %>
+  </div>
+  <div class="tab-pane fade" id="nav-exp" role="tabpanel" aria-labelledby="nav-exp-tab">
+    <div class="mt-2">
+    <%= render partial: 'shared/units', locals: {location: @location,
+                                             units: @units,
+                                             full: true,
+                                             status: :expired} %>
+    </div>
   </div>
   
   </div>

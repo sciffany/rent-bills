@@ -18,7 +18,8 @@
                     <%= link_to location.name, location_path(location.id), class: "btn btn-primary" %>
                     <%= render partial: 'shared/units', locals: {location: location,
                                                                 units: location.units,
-                                                                full: false} %>
+                                                                full: false,
+                                                                status: :active} %>
                     </div>
                 <% end %>
             </div>

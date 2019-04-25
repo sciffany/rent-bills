@@ -15,8 +15,9 @@
         </thead>
         <tbody>
             <% units.each do |u| %>
+                
+                <%if u.contracts.where(status: status).empty? %>
                 <tr>
-                <%if u.contracts.empty? %>
                     <td scope="col"><%= link_to u.name, location_unit_url(location_id: location.id,
                                                                       id: u.id) %></td>
                 
@@ -31,8 +32,9 @@
                     <%if full%>
                         <td scope="col"></td>
                     <%end%>
+                </tr>
                 <%else%>
-                    <% u.contracts.where(status: :active).each_with_index do |c, i| %>
+                    <% u.contracts.where(status: status).each_with_index do |c, i| %>
                     <tr>
                     <%if i==0%>
                         <td scope="col"><%= link_to u.name, location_unit_url(location_id: location.id,
