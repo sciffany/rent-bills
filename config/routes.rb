@@ -13,13 +13,13 @@ Rails.application.routes.draw do
 
   resources :users
   resources :locations do
+    resources :payments
     resources :duties
     resources :units
     resources :tenants, shallow: true do
       resources :contracts, shallow: true
     end
   end
-  resources :payments
   get '/login', to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

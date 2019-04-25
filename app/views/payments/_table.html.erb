@@ -13,15 +13,17 @@
         <tbody>
             <% payments.each do |p| %>
                 <tr>
-                <td scope="col"><%= p.pay_date %></td>
-                <td scope="col"><%= p.tenant %></td>
+                <td scope="col"><%= p.pay_date.strftime("%B %d %Y") %></td>
+                <td scope="col"><%= p.tenant.name %></td>
                 <td scope="col"><%= p.amount%>
-                <td scope="col"><%= p.user%>
-                <td scope="col"><%= p.remarks%>
+                <td scope="col"><%= p.user.name%>
+                <td scope="col"><%= "p.remarks"%>
                 <td scope="col"><%= p.verified%>        
                  </tr>
             <%end%>
-            <%=render partial: 'payments/new', locals: {p: Payment.new, tenants: tenants}%>
+            <%=render partial: 'payments/new', locals: {p: Payment.new,
+                                                        tenants: tenants,
+                                                        location: @location}%>
         </tbody>
     </table>
 </div>
