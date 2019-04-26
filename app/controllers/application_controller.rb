@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   before_action :authenticate_user
-
+  
   def authenticate_user
     redirect_to sessions_new_url if current_user.nil?
   end
@@ -13,4 +13,5 @@ class ApplicationController < ActionController::Base
   def authenticate_non_user
     redirect_to locations_url unless current_user.nil?
   end
-end
+
+  end

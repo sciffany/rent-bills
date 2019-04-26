@@ -18,6 +18,7 @@
 <div class="tab-content" id="nav-tabContent">
   <div class="tab-pane fade <%=@tab?"": "show active"%>" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
     <div class="mt-2">
+    <div class="m-3">Here is an overview of how each unit is doing.</div>
     <%= render partial: 'shared/units', locals: {location: @location,
                                              units: @units,
                                              full: true,
@@ -38,6 +39,8 @@
   </div>
   <div class="tab-pane fade" id="nav-exp" role="tabpanel" aria-labelledby="nav-exp-tab">
     <div class="mt-2">
+    <div class="m-3">Here is an overview of how expired contracts.</div>
+    
     <%= render partial: 'shared/units', locals: {location: @location,
                                              units: @units,
                                              full: true,

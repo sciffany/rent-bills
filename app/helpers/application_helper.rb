@@ -24,5 +24,17 @@ module ApplicationHelper
   def redirect_back_or_to(link, alert: nil, notice: nil)
     redirect_to(request.referer || link, notice: notice, alert: alert)
   end
+
+  def user_duties
+    Duty.eager_load(:location, location: :units).where(user_id:current_user.id)
+  end
+
+  def v_locations
+    user_duties.where(verified: true).map{|x| x.location}
+  end
+
+  def uv_locations
+    user_duties.where(verified: false).map{|x| x.location}
+  end
   
 end

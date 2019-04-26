@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -21,7 +21,7 @@
              My locations
           </button>
           <div class="dropdown-menu" aria-labelledby="navDropdown"> 
-            <% current_user.v_locations(true).each do |location| %>
+            <% v_locations.each do |location| %>
               <%= link_to location.name, location_url(location.id), class: "dropdown-item btn-primary"%>
             <%end %>
             <div class="dropdown-divider"></div>

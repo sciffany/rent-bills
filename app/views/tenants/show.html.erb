@@ -2,17 +2,28 @@
 
 <b> Location: </b> <%= link_to @tenant.location.name, location_url(@tenant.location_id) %>
 
-<hr/>
-<div class="mt-2"> <h3>Contracts</h3>
 
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-contracts-tab" data-toggle="tab" href="#nav-contracts" role="tab" aria-controls="nav-contracts" aria-selected="true">Contracts</a>
+    <%# <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a> %>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-contracts" role="tabpanel" aria-labelledby="nav-contracts-tab">
+    
     <div class="row">
         <% @tenant.contracts.each do |c| %>
             <%= render partial: 'contracts/show', locals: {contract: c} %>
         <% end %>
     </div>
 
-    <div>
-    <%=link_to "Add new contract", new_location_contract_path(@tenant.location.id, tenant_id: @tenant.id)%>
-    </div>
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+</div>
 
+<div>
+    <%=link_to "Add new contract", new_location_contract_path(@tenant.location.id, tenant_id: @tenant.id)%>
 </div>

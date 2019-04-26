@@ -1,4 +1,4 @@
-<div class="card mb-1 mt-3 p-3" style="width: 400px">
+<div class="card m-3 p-3" style="width: 400px">
                 
     <div><b>Name: </b><%= link_to contract.tenant.name, tenant_path(contract.tenant_id) %></div>
     <div><b>Location: </b><%= link_to contract.unit.location.name, location_url(contract.unit.location_id) %></div>
@@ -8,7 +8,8 @@
     <div><b>Charge:</b> <%= contract.charge %></h1></div>
     <div><b>Status:</b> <%= render partial: 'contracts/status', locals: {contract: contract} %></div>
 
+    <div><%= link_to "Add dues", new_location_due_url(location_id: contract.unit.location.id, id: contract.id) %></div>
     <div><%= link_to "Edit contract", edit_location_contract_url(location_id: contract.tenant.id, id: contract.id) %></div>
-    <div><%= link_to "Delete contract", location_contract_url(location_id: contract.id, id: contract.id), method: :delete   %></div>
-
+    <div class="text-danger"><%= link_to "Delete contract", location_contract_url(location_id: contract.id, id: contract.id), method: :delete   %></div>
+    
 </div>

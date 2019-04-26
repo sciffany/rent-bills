@@ -29,8 +29,8 @@ class LocationsController < ApplicationController
     if(@tab=="pending_tab")
       @pending = current_user.watchedDuties.where(verified: false)
     else
-      @locations = current_user.v_locations(true)
-      @uv_locations = current_user.v_locations(false)
+      @locations = v_locations
+      @uv_locations = uv_locations
     end
   end
 

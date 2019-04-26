@@ -1,0 +1,34 @@
+<h1>Due Scheduler</h1>
+Here we will set recurring dues.
+<div class="row">
+<%=render partial: 'contracts/show', locals: {contract: @contract} %>
+
+<%= form_tag(location_dues_url) do %>
+        <div class="mb-4 font-weight-bold">Please specify the date of the month to to repeat charges:</div>
+        <div class="form-group font-weight-bold">
+                <div><%= label_tag :monthly_date %></div>
+                <div><%= number_field_tag :monthly_date, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group font-weight-bold">
+                <div><%= label_tag :start_date %></div>
+                <div><%= date_field_tag :start_date, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group font-weight-bold">
+                <div><%= label_tag :end_date %></div>
+                <div><%= date_field_tag :end_date, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group font-weight-bold">
+                <div><%= label_tag :charge %></div>
+                <div><%= number_field_tag :charge, class: "form-control" %></div>
+        </div>
+
+        
+        
+
+        <div><%= submit_tag 'Schedule', class: "btn btn-primary" %></div>
+<% end %>
+
+</div>

@@ -15,7 +15,6 @@
         </thead>
         <tbody>
             <% units.each do |u| %>
-                
                 <%if u.contracts.where(status: status).empty? %>
                 <tr>
                     <td scope="col"><%= link_to u.name, location_unit_url(location_id: location.id,
@@ -62,7 +61,7 @@
             <% end %>
             <tr>
                 <td scope="col">
-                <% if current_user.owner? && full %>
+                <% if full && current_user.owner?  %>
                     <%= link_to "Add units", new_location_unit_path(location.id) , class:"btn btn-primary mt-1"%>
                 <% end %>
                 </td>

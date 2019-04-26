@@ -1,6 +1,7 @@
-<h1><%=@unit.name%> - <%=@unit.location.name%></h1>
-
+<h1><%=@unit.name%></h1>
+<b> Location: </b> <%= link_to @unit.location.name, location_url(@unit.location_id) %>
 <h5 class="mt-3 mb-3">Room Manager</h5>
+
 
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">

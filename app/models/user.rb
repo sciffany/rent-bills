@@ -25,7 +25,4 @@ class User < ApplicationRecord
   has_many :watchedDuties, class_name: 'Duty', source: :duties, through: :properties
   enum role: %i[keeper owner]
 
-  def v_locations(verified)
-    duties.where(verified: verified).map{|x| x.location}
-  end
 end
