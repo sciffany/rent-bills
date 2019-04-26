@@ -19,6 +19,7 @@
 class Contract < ApplicationRecord
   belongs_to :unit
   belongs_to :tenant
+  has_many :dues, dependent: :destroy
 
   validates :start_date, presence: true
   validates :end_date, presence: true

@@ -6,10 +6,17 @@ Rails.application.routes.draw do
 
   get 'locations', to: 'locations#index'
   get 'locations/search', to: 'locations#search'
+  get 'locations/:location_id/due/:id/default',
+        to: 'dues#default',
+        as: :default_location_due
 
   patch 'location/:location_id/duties/:id/verify',
         to: 'duties#verify',
         as: :verify_location_duty
+
+  post 'locations/:location_id/due/sched',
+        to: 'dues#sched',
+        as: :sched_location_due
 
   resources :users
   resources :locations do

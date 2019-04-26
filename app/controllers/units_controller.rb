@@ -24,6 +24,14 @@ class UnitsController < ApplicationController
     @location = Location.find(params[:location_id])
   end
 
+  def destroy
+    unit = Unit.find(params[:id])
+    location_id = unit.location_id
+    if unit.destroy
+      redirect_to location_url(location_id), notice: "Unit successfully deleted"
+    end
+  end
+
   def create
     unit = Unit.new unit_params
     unit.location_id = params[:location_id]

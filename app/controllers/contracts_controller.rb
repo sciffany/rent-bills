@@ -19,7 +19,7 @@ class ContractsController < ApplicationController
     contract.charge = contract.unit.price
     if contract.save
       contract.update_status
-      redirect_to new_contract_due_url(contract.id)
+      redirect_to default_location_due_url(location_id: contract.unit.location_id, id: contract.id)
     else
       redirect_back(fallback_location: location_url(id: params[:location_id]))
       flash[:alert] = contract.errors.full_messages.join(' ')
