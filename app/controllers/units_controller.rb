@@ -8,10 +8,15 @@ class UnitsController < ApplicationController
   def index
     @tab = params[:tab] if params[:tab]
     @location = Location.find(params[:location_id])
+    @active_contracts_count = Contract.where(status: :active).group("contracts.unit_id").count
     @tenants = @location.tenants
     @units = @location.units
     @payments = @location.payments.order(id: :asc)
     @sum = @payments.sum(:amount)
+  end
+
+  def status_contracts_count(status)
+
   end
 
   def new

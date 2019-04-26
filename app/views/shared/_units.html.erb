@@ -1,4 +1,4 @@
-    <div class="mt-1">
+    <div class="mt-1"> 
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             <% units.each do |u| %>
-                <%if u.contracts.where(status: status).empty? %>
+                <%if @active_contracts_count && @active_contracts_count[u.id] == nil %>
                 <tr>
                     <td scope="col"><%= link_to u.name, location_unit_url(location_id: location.id,
                                                                       id: u.id) %></td>
