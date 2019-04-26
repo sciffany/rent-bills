@@ -15,13 +15,13 @@ class Location < ApplicationRecord
   validates :name, presence: true,
                    uniqueness: true
   has_secure_password
-  has_many :duties
-  has_many :tenants
-  has_many :units
+  has_many :duties, dependent: :destroy
+  has_many :tenants, dependent: :destroy
+  has_many :units, dependent: :destroy
   belongs_to :user
 
-  has_many :payments, through: :tenants
-  has_many :contracts, through: :units
+  has_many :payments, through: :tenants, dependent: :destroy
+  has_many :contracts, through: :units, dependent: :destroy
 
   has_many :keepers, class_name: 'User', source: :user, through: :duties
 end

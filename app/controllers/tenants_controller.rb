@@ -17,6 +17,15 @@ class TenantsController < ApplicationController
     end
   end
 
+
+  def destroy
+    tenant = Tenant.find(params[:id])
+    location_id = tenant.location_id
+    if tenant.destroy
+      redirect_to location_url(location_id), notice: "Tenant successfully deleted"
+    end
+  end
+
   def index
     @location = Location.find(params[:location_id])
     @tenants = @location.tenants

@@ -39,6 +39,13 @@ class LocationsController < ApplicationController
     redirect_to location_units_url(params[:id], tab: params[:tab])
   end
 
+  def destroy
+    location = Location.find(params[:id])
+    if location.destroy
+      redirect_to locations_url, notice: "Location successfully deleted"
+    end
+  end
+
   private
 
   def location_params

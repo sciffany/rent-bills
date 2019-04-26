@@ -27,3 +27,6 @@
 <div>
     <%=link_to "Add new contract", new_location_contract_path(@tenant.location.id, tenant_id: @tenant.id)%>
 </div>
+
+
+<div class="text-danger"><%= link_to "Delete tenant", tenant_url(id: @tenant.id), method: :delete   %></div>
