@@ -48,7 +48,7 @@ class ContractsController < ApplicationController
   def destroy
     contract = Contract.find(params[:id])
     if contract.destroy
-      redirect_back_or_to locations_url, notice: "Contract successfully deleted"
+      redirect_back_or_to locations_url, notice: 'Contract successfully deleted'
     end
   end
 

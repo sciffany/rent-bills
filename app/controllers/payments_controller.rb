@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
 class PaymentsController < ApplicationController
-  def index
-  end
+  def index; end
 
-  def new
-
-  end
+  def new; end
 
   def create
     payment = Payment.new payment_params
@@ -14,9 +11,9 @@ class PaymentsController < ApplicationController
     payment.user = current_user
     payment.verified = false
     if payment.save
-      redirect_to location_url(payment.tenant.location_id, tab: "balance_tab")
+      redirect_to location_url(payment.tenant.location_id, tab: 'balance_tab')
     else
-      redirect_to location_url(payment.tenant.location_id, tab: "balance_tab")
+      redirect_to location_url(payment.tenant.location_id, tab: 'balance_tab')
       flash[:alert] = payment.errors.full_messages.join(' ')
     end
   end
@@ -28,7 +25,5 @@ class PaymentsController < ApplicationController
           .permit(:pay_date, :tenant, :amount, :remark)
   end
 
-  def show
-
-  end
+  def show; end
 end

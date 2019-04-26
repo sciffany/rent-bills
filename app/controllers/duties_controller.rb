@@ -30,7 +30,7 @@ class DutiesController < ApplicationController
   def update
     duty = Duty.find(params[:id])
     if duty.update(duty_params)
-      redirect_to locations_url(tab: "pending-tab"),
+      redirect_to locations_url(tab: 'pending-tab'),
                   notice: 'Contract successfully verified'
     else
       show_error(duty)
@@ -44,7 +44,7 @@ class DutiesController < ApplicationController
       redirect_to locations_url,
                   notice: 'Contract successfully updated'
     else
-      redirect_to locations_url(tab: "pending_tab"), alert: duty.errors.full_messages.join(', ')
+      redirect_to locations_url(tab: 'pending_tab'), alert: duty.errors.full_messages.join(', ')
     end
   end
 

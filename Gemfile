@@ -5,13 +5,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
-gem 'rb-readline'
 gem 'bootstrap'
 gem 'cancancan', '~> 2.0'
 gem 'jquery-rails'
-gem 'rails-erd', group: :development
-gem 'rubocop', '~> 0.63.1', require: false
 gem 'material_icons'
+gem 'rails-erd', group: :development
+gem 'rb-readline'
+gem 'rubocop', '~> 0.63.1', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'bcrypt', '3.1.12'

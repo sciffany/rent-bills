@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  
   def flash_class(level)
     case level
     when :notice then 'alert alert-success alert-dismissible'
@@ -29,15 +28,14 @@ module ApplicationHelper
     Duty.eager_load(:location, location: [:units,
                                           :tenants,
                                           :payments,
-                                          {units: :contracts}]).where(user_id: current_user.id)
+                                          { units: :contracts }]).where(user_id: current_user.id)
   end
 
   def v_locations
-    user_duties.where(verified: true).map{|x| x.location}
+    user_duties.where(verified: true).map(&:location)
   end
 
   def uv_locations
-    user_duties.where(verified: false).map{|x| x.location}
+    user_duties.where(verified: false).map(&:location)
   end
-  
 end

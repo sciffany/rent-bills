@@ -5,7 +5,7 @@ class DuesController < ApplicationController
     @contract = Contract.find(params[:id])
     @due = Due.new
   end
-  
+
   # similar to new
   def default
     @contract = Contract.find(params[:id])
@@ -18,7 +18,7 @@ class DuesController < ApplicationController
     md = params[:monthly_date].to_i
     sd = Date.parse(params[:start_date])
     cid = params[:contract_id].to_i
-    sched = if sd.day < md 
+    sched = if sd.day < md
               sd.change(day: md)
             else
               sd.change(day: md) + 1.month
@@ -36,12 +36,11 @@ class DuesController < ApplicationController
       newdue = due.dup
       newdue.update(due_date: sched)
       newdue.save
-      schedule_duties_helper(sched+1.month, eda, due)
+      schedule_duties_helper(sched + 1.month, eda, due)
     end
   end
 
   def due_params
     params.require(:due).permit(:amount, :start_date)
   end
-
 end

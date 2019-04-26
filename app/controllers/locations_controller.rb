@@ -26,7 +26,7 @@ class LocationsController < ApplicationController
   def index
     Contract.contract_status if params[:refresh]
     @tab = params[:tab] if params[:tab]
-    if(@tab=="pending_tab")
+    if @tab == 'pending_tab'
       @pending = current_user.watchedDuties.where(verified: false)
     else
       @locations = v_locations
@@ -42,7 +42,7 @@ class LocationsController < ApplicationController
   def destroy
     location = Location.find(params[:id])
     if location.destroy
-      redirect_to locations_url, notice: "Location successfully deleted"
+      redirect_to locations_url, notice: 'Location successfully deleted'
     end
   end
 

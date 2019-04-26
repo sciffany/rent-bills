@@ -20,5 +20,4 @@ class Payment < ApplicationRecord
 
   validates :amount, presence: true
   validates :pay_date, presence: true
-  
 end

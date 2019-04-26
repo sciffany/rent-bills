@@ -23,36 +23,34 @@ class Duty < ApplicationRecord
 
   def has_dates_if_temp
     if (!end_date || !start_date) && verified && user.keeper?
-      errors.add(:start_date, "or end date is missing")
+      errors.add(:start_date, 'or end date is missing')
     end
   end
 
   def end_after_start
-    if end_date && start_date && end_date<=start_date
-      errors.add(:end_date, "must be after start date")
+    if end_date && start_date && end_date <= start_date
+      errors.add(:end_date, 'must be after start date')
     end
   end
-
 
   # https://stackoverflow.com/questions/14124212/remove-duplicate-records-based-on-multiple-columns?answertab=votes#tab-top
   def self.dedupe
     # find all models and group them on keys which should be common
-    grouped = all.group_by{|duty| [duty.user,duty.location] }
+    grouped = all.group_by { |duty| [duty.user, duty.location] }
     grouped.values.each do |duplicates|
       # the first one we want to keep right?
       first_one = duplicates.shift # or pop for last one
       # if there are any more left, they are duplicates
       # so delete all of them
-      duplicates.each{|double| double.destroy} # duplicates can now be destroyed
+      duplicates.each(&:destroy) # duplicates can now be destroyed
     end
   end
-  
-  
+
   Duty.dedupe
 
   def self.clear_dateless
     dateless = all.where(start_date: nil)
-    dateless.each{|double| double.destroy}
+    dateless.each(&:destroy)
   end
   Duty.clear_dateless
 end

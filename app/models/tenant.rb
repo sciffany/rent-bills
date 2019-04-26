@@ -16,6 +16,6 @@ class Tenant < ApplicationRecord
   belongs_to :location
   has_many :contracts, dependent: :destroy
   has_many :units, through: :contracts
-  validates :name, presence: true, uniqueness: {scope: :location}
+  validates :name, presence: true, uniqueness: { scope: :location }
   has_many :payments, dependent: :destroy
 end

@@ -1,5 +1,5 @@
 <tr>
-    <%= form_for(p, url: location_payments_url(location_id: location), method: 'POST') do |f|%>
+    <%= form_for(p, url: location_payments_url(location_id: location.id), method: 'POST') do |f|%>
     <td scope="col">
         <%= f.date_field :pay_date, class: "form-control" %>
     </td>

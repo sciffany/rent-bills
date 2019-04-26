@@ -1,22 +1,18 @@
 # frozen_string_literal: true
+
 include UnitsHelper
 
 class UnitsController < ApplicationController
-
   before_action :verify_duty
 
   def index
     @tab = params[:tab] if params[:tab]
     @location = Location.find(params[:location_id])
-    @active_contracts_count = Contract.where(status: :active).group("contracts.unit_id").count
+    @active_contracts_count = Contract.where(status: :active).group('contracts.unit_id').count
     @tenants = @location.tenants
     @units = @location.units
     @payments = @location.payments.order(id: :asc)
     @sum = @payments.sum(:amount)
-  end
-
-  def status_contracts_count(status)
-
   end
 
   def new
@@ -28,7 +24,7 @@ class UnitsController < ApplicationController
     unit = Unit.find(params[:id])
     location_id = unit.location_id
     if unit.destroy
-      redirect_to location_url(location_id), notice: "Unit successfully deleted"
+      redirect_to location_url(location_id), notice: 'Unit successfully deleted'
     end
   end
 
