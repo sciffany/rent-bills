@@ -23,6 +23,7 @@ class Location < ApplicationRecord
 
   has_many :payments, through: :tenants, dependent: :destroy
   has_many :contracts, through: :units, dependent: :destroy
+  has_many :dues, through: :contracts, dependent: :destroy
 
   has_many :keepers, class_name: 'User', source: :user, through: :duties
 end

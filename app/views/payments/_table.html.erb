@@ -1,17 +1,24 @@
+
+
 <div class="mt-2">
+
+<div class="m-3">The following is a table to show you all the payments within this location.</div>
     <table class="table">
         <thead class="thead-dark">
             <tr>
                 <th scope="col"> Date
                 <th scope="col"> Tenant
-                <th scope="col"> Payment
-                <th scope="col"> Collector
+                <th scope="col"> Payment/Due
+                <th scope="col"> Collector/Setter
                 <th scope="col"> Remarks
                 <th scope="col"> Verified
             </tr>
         </thead>
         <tbody>
-            <% payments.each do |p| %>
+
+            <% superlist = (payments.to_a + dues.to_a).sort_by{|x| x[:due_date] || x[:pay_date]} %>
+            <% superlist.each do |p| %>
+                <%if p[:pay_date] %>
                 <tr>
                 <td scope="col"><%= p.pay_date.strftime("%B %d %Y") %></td>
                 <td scope="col"><%= link_to p.tenant.name, tenant_url(p.tenant.id) %></td>
@@ -20,6 +27,17 @@
                 <td scope="col"><%= p.remark%>
                 <td scope="col"><%= p.verified%>        
                  </tr>
+                <%else%>
+
+                <td scope="col"><%= p.due_date.strftime("%B %d %Y") %></td>
+                <td scope="col"><%= link_to p.contract.tenant.name, tenant_url(p.contract.tenant.id) %></td>
+                <td scope="col"><%= -p.amount%>
+                <td scope="col"><%= "None"%>
+                <td scope="col"><%= "None"%>
+                <td scope="col"><%= true%>   
+
+                <%end%>
+
             <%end%>
             <tr>
                 <th scope="col">Total</th>

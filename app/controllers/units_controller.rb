@@ -13,6 +13,7 @@ class UnitsController < ApplicationController
     @units = @location.units
     @payments = @location.payments.order(id: :asc)
     @sum = @payments.sum(:amount)
+    @dues = @location.dues
   end
 
   def new
