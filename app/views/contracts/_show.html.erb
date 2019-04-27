@@ -7,6 +7,7 @@
     <div><b>End date: </b><%= contract.end_date.strftime("%B %d %Y") %></div>
     <div><b>Charge:</b> <%= contract.charge %></h1></div>
     <div><b>Status:</b> <%= render partial: 'contracts/status', locals: {contract: contract} %></div>
+    <b>Dues:</b>
     <div>
         <%contract.dues.each do |d|%>
             <div class="btn btn-primary">P<%=d.amount %> (<%=d.due_date.strftime("%b %d")%>)</div>

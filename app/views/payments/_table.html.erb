@@ -25,7 +25,16 @@
                 <td scope="col"><%= p.amount%>
                 <td scope="col"><%= p.user.name%>
                 <td scope="col"><%= p.remark%>
-                <td scope="col"><%= p.verified%>        
+                <td scope="col"><% if p.verified %>✔
+                                <%else%>
+                                    <%if p.tenant.location.user == current_user%>
+                                        <%p.update(verified: true)%>
+                                        <%=link_to "A", location_url(id:p.tenant.location_id, tab: "balance_tab"), class: "btn btn-success" %>
+                                    <%end%>
+                                    <%if p.user == current_user%>
+                                        <%=link_to "X", location_payment_url(location_id: p.tenant.location_id, id: p.id), method: :delete, class: "btn btn-danger"%>
+                                    <%end%>
+                                <%end%>
                  </tr>
                 <%else%>
 
@@ -33,7 +42,7 @@
                 <td scope="col"><%= link_to p.contract.tenant.name, tenant_url(p.contract.tenant.id) %></td>
                 <td scope="col"><%= -p.amount%>
                 <td scope="col"><%= "None"%>
-                <td scope="col"><%= "None"%>
+                <td scope="col"><%= link_to p.contract.tenant.name + "Contract", tenant_url(id: p.contract.tenant.id)%>
                 <td scope="col"><%= true%>   
 
                 <%end%>

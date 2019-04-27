@@ -12,8 +12,8 @@ class UnitsController < ApplicationController
     @tenants = @location.tenants
     @units = @location.units
     @payments = @location.payments.order(id: :asc)
-    @sum = @payments.sum(:amount)
     @dues = @location.dues
+    @sum = @payments.sum(:amount) - @dues.sum(:amount)
   end
 
   def new

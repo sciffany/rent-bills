@@ -42,7 +42,7 @@ class DutiesController < ApplicationController
     duty.verified = true
     if duty.update(duty_params_verify)
       redirect_to locations_url,
-                  notice: 'Contract successfully updated'
+                  notice: 'Keeper successfully verified'
     else
       redirect_to locations_url(tab: 'pending_tab'), alert: duty.errors.full_messages.join(', ')
     end

@@ -33,24 +33,5 @@ class Duty < ApplicationRecord
     end
   end
 
-  # https://stackoverflow.com/questions/14124212/remove-duplicate-records-based-on-multiple-columns?answertab=votes#tab-top
-  def self.dedupe
-    # find all models and group them on keys which should be common
-    grouped = all.group_by { |duty| [duty.user, duty.location] }
-    grouped.values.each do |duplicates|
-      # the first one we want to keep right?
-      first_one = duplicates.shift # or pop for last one
-      # if there are any more left, they are duplicates
-      # so delete all of them
-      duplicates.each(&:destroy) # duplicates can now be destroyed
-    end
-  end
-
-  Duty.dedupe
-
-  def self.clear_dateless
-    dateless = all.where(start_date: nil)
-    dateless.each(&:destroy)
-  end
-  Duty.clear_dateless
+  
 end

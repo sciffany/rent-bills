@@ -26,12 +26,9 @@ class LocationsController < ApplicationController
   def index
     Contract.contract_status if params[:refresh]
     @tab = params[:tab] if params[:tab]
-    if @tab == 'pending_tab'
-      @pending = current_user.watchedDuties.where(verified: false)
-    else
-      @locations = v_locations
-      @uv_locations = uv_locations
-    end
+    @pending = current_user.watchedDuties.where(verified: false)
+    @locations = v_locations
+    @uv_locations = uv_locations
   end
 
   def show

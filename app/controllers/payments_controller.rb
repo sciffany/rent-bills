@@ -12,10 +12,26 @@ class PaymentsController < ApplicationController
     payment.verified = false
     if payment.save
       redirect_to location_url(payment.tenant.location_id, tab: 'balance_tab')
+      flash[:notice] = "Payment entry successfully created."
     else
       redirect_to location_url(payment.tenant.location_id, tab: 'balance_tab')
       flash[:alert] = payment.errors.full_messages.join(' ')
     end
+  end
+
+  def destroy
+    payment = Payment.find(params[:id])
+    location_id = payment.tenant.location_id
+    if payment.destroy
+      redirect_to location_url(id: location_id, tab: "balance_tab")
+      flash[:notice] = "Payment entry successfully deleted."
+    end
+  end
+
+  def show
+  end
+
+  def update
   end
 
   private
