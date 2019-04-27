@@ -9,7 +9,7 @@ class PaymentsController < ApplicationController
     payment = Payment.new payment_params
     payment.tenant = Tenant.find(params[:payment][:tenant_id])
     payment.user = current_user
-    payment.verified = false
+    payment.status = :unverified
     if payment.save
       redirect_to location_url(payment.tenant.location_id, tab: 'balance_tab')
       flash[:notice] = "Payment entry successfully created."
@@ -32,6 +32,16 @@ class PaymentsController < ApplicationController
   end
 
   def update
+    payment = Payment.find(params[:id])
+    if params[:s] == 'd' 
+      payment.status = :declined;
+    else
+      payment.status = :accepted;
+    end
+    if payment.save
+      redirect_to location_url(id: payment.tenant.location_id, tab: "balance_tab")
+      flash[:notice] = "Payment verified."
+    end
   end
 
   private

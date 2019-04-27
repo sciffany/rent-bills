@@ -13,7 +13,9 @@ class UnitsController < ApplicationController
     @units = @location.units
     @payments = @location.payments.order(id: :asc)
     @dues = @location.dues
-    @sum = @payments.sum(:amount) - @dues.sum(:amount)
+    @sum = @payments.where(status: :accepted).sum(:amount) +
+           @payments.where(status: :unverified).sum(:amount)
+            - @dues.sum(:amount)
   end
 
   def new
