@@ -10,7 +10,7 @@
 			<%else%>
 			<div class="form-group font-weight-bold">
 				<%= f.label :tenant %>
-				<%= f.collection_select :tenant_id, @tenants.all, :id, :name %>
+				<%= f.collection_select :tenant_id, @tenants.all, :id, :name %> <%=link_to "Add tenant", new_location_tenant_path(@location.id)%>
             </div>
 			<%end%>
 
