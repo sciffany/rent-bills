@@ -2,7 +2,7 @@
 <div class="m-3 row">
     <% if !unit.contracts.empty? %>
         <% unit.contracts.each do |c| %>
-            <%= render partial: 'contracts/show', locals: {contract: c} %>
+            <%= render partial: 'contracts/show', locals: {contract: c, deletion: false} %>
         <% end %>
     <%end%>
     </div>

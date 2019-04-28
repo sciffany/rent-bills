@@ -1,14 +1,17 @@
 <h1>Due Scheduler</h1>
 Here we will set recurring dues.
 <div class="row">
-<%=render partial: 'contracts/show', locals: {contract: @contract} %>
+<%=render partial: 'contracts/show', locals: {contract: @contract, deletion: true} %>
 
 <%= form_for Due.new, url: sched_location_due_url(location_id: @contract.unit.location_id) do |f| %>
         <div class="mb-@ font-weight-bold">Monthly dues will be set for the following:</div>
         
-        <div class="form-group font-weight-bold">
+        <div class="form-group font-weight-bold mt-3">
                 <%= f.label :start_date %>
                 <%= date_field_tag :start_date, class: "form-control" %>
+        </div>
+
+        <div class="form-group font-weight-bold">
                 <%= f.label :end_date %>
                 <%= date_field_tag :end_date, class: "form-control" %>
         </div>  
@@ -22,6 +25,13 @@ Here we will set recurring dues.
                 <div><%= f.label :amount %></div>
                 <div><%= f.number_field :amount, class: "form-control" %></div>
         </div>
+
+        <div class="form-group font-weight-bold">
+                <div><%= f.label :remark %></div>
+                <div><%= f.text_field :remark, class: "form-control" %></div>
+        </div>
+
+        
 
         <div><%= f.submit 'Schedule', class: "btn btn-primary" %></div>
 <% end %>

@@ -34,9 +34,14 @@
                 <th scope="col"><%=@sum%></th>
                 <td scope="col"></td>
                 <td scope="col"></td>
+                <td scope="col"></td> 
                 <td scope="col"></td>        
             </tr>
-        
+            <%if @location%>
+             <%=render partial: 'payments/new', locals: {p: Payment.new,
+                                                        tenants: tenants,
+                                                        location: @location}%>
+            <%end%>
             
         </tbody>
     </table>

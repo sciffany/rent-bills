@@ -27,7 +27,7 @@ class DuesController < ApplicationController
     due = Due.find(params[:id])
     location_id = due.contract.unit.location_id
     if due.destroy
-      redirect_to location_url(id: location_id, tab: "balance_tab")
+      redirect_back_or_to locations_url
       flash[:notice] = "Due entry successfully deleted."
     end
   end
@@ -37,7 +37,7 @@ class DuesController < ApplicationController
 
   def schedule_duties_helper(sched, eda, due)
     if sched > eda
-      redirect_to locations_url
+      redirect_to location_tenant_url(due.contract.tenant.id)
     else
       newdue = due.dup
       newdue.update(due_date: sched)

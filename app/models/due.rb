@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: dues
@@ -11,6 +10,8 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  automatic   :boolean
+#  remark      :string
+#  user_id     :bigint(8)
 #
 
 class Due < ApplicationRecord

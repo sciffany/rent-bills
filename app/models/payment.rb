@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: payments
@@ -11,7 +10,8 @@
 #  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  verified   :boolean
+#  remark     :string           default("")
+#  status     :integer
 #
 
 class Payment < ApplicationRecord

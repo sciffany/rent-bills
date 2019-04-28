@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: contracts
@@ -14,6 +13,7 @@
 #  updated_at :datetime         not null
 #  tenant_id  :bigint(8)
 #  unit_id    :bigint(8)
+#  status     :integer
 #
 
 require 'rails_helper'

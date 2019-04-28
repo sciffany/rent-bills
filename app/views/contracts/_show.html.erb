@@ -10,11 +10,15 @@
     <b>Dues:</b>
     <div>
         <%contract.dues.each do |d|%>
-            <div class="btn btn-primary">P<%=d.amount %> (<%=d.due_date.strftime("%b %d")%>)</div>
+            <div class="btn btn-primary">P<%=d.amount %> (<%=d.due_date.strftime("%b %d")%>) - <%=d.remark %> </div>
+
+            <%if deletion && d.contract.unit.location.user == current_user%>
+                <%=link_to "X", location_due_url(location_id: d.contract.unit.location_id, id: d.id), method: :delete, class: "btn btn-danger"%>
+            <%end%>
         <%end%>
     </div>
 
-    <div><%= link_to "Add dues", default_location_due_url(location_id: contract.unit.location.id, id: contract.id) %></div>
+    <div><%= link_to "Edit dues", default_location_due_url(location_id: contract.unit.location.id, id: contract.id) %></div>
     <div><%= link_to "Edit contract", edit_location_contract_url(location_id: contract.tenant.id, id: contract.id) %></div>
     <div class="text-danger"><%= link_to "Delete contract", location_contract_url(location_id: contract.unit.location_id, id: contract.id), method: :delete   %></div>
     
