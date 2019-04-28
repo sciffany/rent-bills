@@ -54,6 +54,7 @@ Users are able to view their own profile through link at navigation bar above.
 
 ## Non-functional features
 1. SQL queries mostly optimised
+2. Authorisation (only owners and keepers are able to view location information)
 
 ## Future Development
 1. Further optimisation of SQL queries.
