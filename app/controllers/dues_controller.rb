@@ -37,7 +37,7 @@ class DuesController < ApplicationController
 
   def schedule_duties_helper(sched, eda, due)
     if sched > eda
-      redirect_to location_tenant_url(due.contract.tenant.id)
+      redirect_to tenant_url(due.contract.tenant.id)
     else
       newdue = due.dup
       newdue.update(due_date: sched)
@@ -47,6 +47,6 @@ class DuesController < ApplicationController
   end
 
   def due_params
-    params.require(:due).permit(:amount, :start_date)
+    params.require(:due).permit(:amount, :start_date, :remark)
   end
 end
