@@ -1,16 +1,17 @@
-<h1>Default Due Scheduler</h1>
+<h1>Due Scheduler</h1>
 Here we will set recurring dues.
 <div class="row">
 <%=render partial: 'contracts/show', locals: {contract: @contract} %>
 
 <%= form_for Due.new, url: sched_location_due_url(location_id: @contract.unit.location_id) do |f| %>
         <div class="mb-@ font-weight-bold">Monthly dues will be set for the following:</div>
-        <div><b>Start Date:</b> <%=@contract.start_date.strftime("%B %d %Y")%></div>
-        <div><b>End Date:</b> <%=@contract.end_date.strftime("%B %d %Y")%></div>
-        <div><b>Duration:</b> Approx. <%=(@contract.end_date-@contract.start_date).to_i / 30 %> months</div>
         
-        <%= hidden_field_tag :start_date,  @contract.start_date %>
-        <%= hidden_field_tag :end_date, @contract.end_date %>        
+        <div class="form-group font-weight-bold">
+                <%= f.label :start_date %>
+                <%= date_field_tag :start_date, class: "form-control" %>
+                <%= f.label :end_date %>
+                <%= date_field_tag :end_date, class: "form-control" %>
+        </div>  
         <%= hidden_field_tag :contract_id, @contract.id %>
 
         <div class="form-group font-weight-bold">

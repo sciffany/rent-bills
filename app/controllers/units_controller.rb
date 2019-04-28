@@ -12,10 +12,10 @@ class UnitsController < ApplicationController
     @tenants = @location.tenants
     @units = @location.units
     @payments = @location.payments.order(id: :asc)
-    @dues = @location.dues
+    @dues = @location.dues.where("due_date<?", Time.now+1.month)
     @sum = @payments.where(status: :accepted).sum(:amount) +
-           @payments.where(status: :unverified).sum(:amount)
-            - @dues.sum(:amount)
+           @payments.where(status: :unverified).sum(:amount) -
+            @dues.sum(:amount)
   end
 
   def new

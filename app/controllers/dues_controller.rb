@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class DuesController < ApplicationController
-  def new
-    @contract = Contract.find(params[:id])
-    @due = Due.new
-  end
 
   # similar to new
   def default
@@ -26,6 +22,16 @@ class DuesController < ApplicationController
     eda = Date.parse(params[:end_date])
     schedule_duties_helper(sched, eda, due)
   end
+
+  def destroy
+    due = Due.find(params[:id])
+    location_id = due.contract.unit.location_id
+    if due.destroy
+      redirect_to location_url(id: location_id, tab: "balance_tab")
+      flash[:notice] = "Due entry successfully deleted."
+    end
+  end
+
 
   private
 

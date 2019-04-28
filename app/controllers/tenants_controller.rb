@@ -10,7 +10,7 @@ class TenantsController < ApplicationController
     tenant = Tenant.new tenant_params
     tenant.location_id = params[:location_id]
     if tenant.save
-      redirect_to new_tenant_contract_path(tenant.id)
+      redirect_to tenant_url(tenant.id)
     else
       redirect_to new_location_tenant_path
       flash[:alert] = tenant.errors.full_messages.join(' ')
@@ -32,6 +32,11 @@ class TenantsController < ApplicationController
 
   def show
     @tenant = Tenant.find(params[:id])
+    @payments = @tenant.payments.order(id: :asc)
+    @dues = @tenant.dues.where("due_date<?", Time.now+1.month)
+    @sum = @payments.where(status: :accepted).sum(:amount) +
+           @payments.where(status: :unverified).sum(:amount) -
+            @dues.sum(:amount)
   end
 
   private

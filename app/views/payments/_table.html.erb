@@ -8,7 +8,8 @@
             <tr>
                 <th scope="col"> Date
                 <th scope="col"> Tenant
-                <th scope="col"> Payment/Due
+                <th scope="col"> Payment
+                <th scope="col"> Due
                 <th scope="col"> Collector/Setter
                 <th scope="col"> Remarks
                 <th scope="col"> Verified
@@ -18,36 +19,14 @@
 
             <% superlist = (payments.to_a + dues.to_a).sort_by{|x| x[:due_date] || x[:pay_date]} %>
             <% superlist.each do |p| %>
-                <%if p[:pay_date] %>
                 <tr>
-                <td scope="col"><%= p.pay_date.strftime("%B %d %Y") %></td>
-                <td scope="col"><%= link_to p.tenant.name, tenant_url(p.tenant.id) %></td>
-                <td scope="col"><%= p.amount%>
-                <td scope="col"><%= p.user.name%>
-                <td scope="col"><%= p.remark%>
-                <td scope="col"><% if p.accepted? %>✔
-                                <%elsif p.declined? %>Declined
-                                <%else%>
-                                    <%if p.tenant.location.user == current_user%>
-                                        <%=link_to "A", location_payment_url(location_id: p.tenant.location_id, id: p.id), method: :patch, class: "btn btn-success"%>
-                                        <%=link_to "D", location_payment_url(location_id: p.tenant.location_id, id: p.id, s: "d"), method: :patch, class: "btn btn-danger"%>
-                                    <%end%>
-                                    <%if p.user == current_user%>
-                                        <%=link_to "X", location_payment_url(location_id: p.tenant.location_id, id: p.id), method: :delete, class: "btn btn-danger"%>
-                                    <%end%>
-                                <%end%>
-                 </tr>
+                <%future = false%>
+                <%if p[:pay_date] %>
+                        <%=render partial: 'payments/row', locals: {p: p}%>
                 <%else%>
-
-                <td scope="col"><%= p.due_date.strftime("%B %d %Y") %></td>
-                <td scope="col"><%= link_to p.contract.tenant.name, tenant_url(p.contract.tenant.id) %></td>
-                <td scope="col"><%= -p.amount%>
-                <td scope="col"><%= "None"%>
-                <td scope="col"><%= link_to p.contract.tenant.name + " Contract", tenant_url(id: p.contract.tenant.id)%>
-                <td scope="col"><%= true%>   
-
-                <%end%>
-
+                        <%=render partial: 'dues/row', locals: {p: p}%>
+                </tr>
+                <%end%>   
             <%end%>
             <tr>
                 <th scope="col">Total</th>
@@ -57,10 +36,7 @@
                 <td scope="col"></td>
                 <td scope="col"></td>        
             </tr>
-            <%=render partial: 'payments/new', locals: {p: Payment.new,
-                                                        tenants: tenants,
-                                                        location: @location}%>
-
+        
             
         </tbody>
     </table>
