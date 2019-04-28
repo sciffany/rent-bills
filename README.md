@@ -5,9 +5,6 @@
 ## Program
 
 The program can be found at http://rent-bills.herokuapp.com/
-Work in progress. 
-
-You can try out by logging in with email `owner@owner.com` and password `123`.
 
 ## Description of program
 
