@@ -32,7 +32,7 @@ User Management
 2. Two types of users are supported: owners and keepers.
 
 Locations and Units
-1 Owners and keepers are able to create locations.
+1. Owners and keepers are able to create locations.
 2. Keepers can sign themselves up as keepers for a house by sending requests to owners.
 3. Owners can accept or reject keepers' request to tend a house.
 4. Once keepers have access, they can view the location.
