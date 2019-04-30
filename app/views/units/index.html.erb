@@ -32,6 +32,7 @@
     <%= render partial: 'keepers', locals: {location: @location, units: @units} %>
   </div>
   <div class="tab-pane fade <%=@tab=="balance_tab"? "show active": ""%>" id="nav-balance" role="tabpanel" aria-labelledby="nav-balance-tab">
+    <div class="m-3">The following is a table to show you all the payments and dues for this location.</div>
     <%= render partial: 'payments/table', locals: {payments: @payments, tenants: @tenants, dues: @dues} %>
   </div>
   <div class="tab-pane fade" id="nav-tenants" role="tabpanel" aria-labelledby="nav-tenants-tab">
@@ -44,11 +45,13 @@
                                              units: @units,
                                              full: true,
                                              status: :expired} %>
+
+                                             
     </div>
   </div>
   
   </div>
 
-  <div class="text-danger"><%= link_to "Delete location", location_url(id: @location.id), method: :delete   %></div>
-
-                                             
+  <%=render partial: "shared/confirm", locals: { typeString: "location",
+                                                 objectName: @location.name,
+                                                 url: location_url(id: @location.id) }%>

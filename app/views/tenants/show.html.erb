@@ -16,16 +16,19 @@
 <div class="tab-content" id="nav-tabContent">
 
   <div class="tab-pane fade show active" id="nav-balance" role="tabpanel" aria-labelledby="nav-profile-balance">
+    <div class="m-3">The following is a table to show you all the payments and dues for this tenant.</div>
+
     <%= render partial: 'payments/table', locals: {payments: @payments, tenants: @tenant, dues: @dues} %>
   </div>
 
   <div class="tab-pane fade" id="nav-contracts" role="tabpanel" aria-labelledby="nav-contracts-tab">
     <div class="row">
+        The following are contracts for this tenant.
         <% @tenant.contracts.each do |c| %>
             <%= render partial: 'contracts/show', locals: {contract: c, deletion: false} %>
         <% end %>
     </div>
-    <div>
+    <div class="m-3">
         <%=link_to "Add new contract", new_location_contract_path(@tenant.location.id, tenant_id: @tenant.id)%>
     </div>
   </div>
@@ -34,4 +37,6 @@
 </div>
 
 
-<div class="text-danger"><%= link_to "Delete tenant", tenant_url(id: @tenant.id), method: :delete   %></div>
+  <%=render partial: "shared/confirm", locals: { typeString: "tenant",
+                                                 objectName: @tenant.name,
+                                                 url: tenant_url(id: @tenant.id) }%>

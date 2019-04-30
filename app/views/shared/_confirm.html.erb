@@ -1,0 +1,25 @@
+
+<div data-toggle="modal" data-target="#confirm-delete"></div>
+
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete">
+Delete <%=typeString%></button>
+
+<div class="modal fade" id="confirmDelete" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <h5 class="modal-title m-2"><%=typeString.humanize%> Deletion</h5>
+      </div>
+      
+      <div class="modal-body">Are you sure you want to delete <%=typeString%>, <%=objectName%>?</div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>  
+        <div><%= link_to "Delete", url, method: :delete, class: "btn btn-danger" %></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

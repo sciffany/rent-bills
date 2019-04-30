@@ -8,5 +8,7 @@
     </div>
 </div>
 <div class="m-3 ml-6"><%=link_to "Add contracts", new_location_contract_path(unit.location.id, unit_id: unit.id), class: "btn btn-primary"%>
-    
-<div class="text-danger"><%= link_to "Delete unit", location_unit_url(location_id: unit.location_id, id: unit.id), method: :delete   %></div>
+
+<%=render partial: "shared/confirm", locals: { typeString: "unit",
+                                               objectName: @unit.name,
+                                               url: location_unit_url(location_id: unit.location_id, id: unit.id) }%>
