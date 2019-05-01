@@ -7,10 +7,17 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user
 
   def authenticate_user
-    redirect_to sessions_new_url if current_user.nil?
+    set_current_user
+    if @current_user.nil?
+      redirect_to sessions_new_url
+    else
+      set_user_duties
+    end
   end
 
   def authenticate_non_user
-    redirect_to locations_url unless current_user.nil?
+    set_current_user
+    redirect_to locations_url unless @current_user.nil?
   end
+
   end

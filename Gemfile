@@ -13,6 +13,7 @@ gem 'material_icons'
 gem 'rails-erd', group: :development
 gem 'rb-readline'
 gem 'rubocop', '~> 0.63.1', require: false
+gem 'factory_bot_rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'bcrypt', '3.1.12'

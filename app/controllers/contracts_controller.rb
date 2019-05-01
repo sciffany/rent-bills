@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 class ContractsController < ApplicationController
+  
   def new
     @contract = Contract.new
-    @location = Location.find(params[:location_id])
+    @location = find_location
     if params[:tenant_id]
-      @tenant = Tenant.find(params[:tenant_id])
+      @tenant = @location.tenants.find(params[:tenant_id])
       @units = @location.units
     end
     if params[:unit_id]
-      @unit = Unit.find(params[:unit_id])
+      @unit = @location.units.find(params[:unit_id])
       @tenants = @location.tenants
     end
   end
@@ -27,15 +28,15 @@ class ContractsController < ApplicationController
   end
 
   def edit
-    @contract = Contract.find(params[:id])
+    @contract = find_location.contracts.find(params[:id])
   end
 
   def show
-    @contract = Contract.find(params[:id])
+    @contract = find_location.contracts.find(params[:id])
   end
 
   def update
-    contract = Contract.find(params[:id])
+    contract = find_location.contracts.find(params[:id])
     if contract.update(contract_params)
       redirect_to tenant_url(contract.tenant_id),
                   notice: 'Contract successfully updated'

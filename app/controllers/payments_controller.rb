@@ -8,7 +8,7 @@ class PaymentsController < ApplicationController
   def create
     payment = Payment.new payment_params
     payment.tenant = Tenant.find(params[:payment][:tenant_id])
-    payment.user = current_user
+    payment.user = @current_user
     payment.status = :unverified
     if payment.save
       redirect_to location_url(payment.tenant.location_id, tab: 'balance_tab')

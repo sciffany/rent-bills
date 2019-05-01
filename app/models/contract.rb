@@ -57,10 +57,4 @@ class Contract < ApplicationRecord
       end
     end
   end
-
-  # def self.clear_dateless
-  #   dateless = all.where(charge: nil)
-  #   dateless.each{|double| double.destroy}
-  # end
-  # Contract.clear_dateless
 end

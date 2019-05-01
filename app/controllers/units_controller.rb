@@ -4,6 +4,7 @@ class UnitsController < ApplicationController
   before_action :verify_duty
 
   def index
+    puts "Here"
     @tab = params[:tab] if params[:tab]
     @location = Location.find(params[:location_id])
     @active_contracts_count = Contract.where(status: :active).group('contracts.unit_id').count
@@ -14,6 +15,8 @@ class UnitsController < ApplicationController
     @sum = @payments.where(status: :accepted).sum(:amount) +
            @payments.where(status: :unverified).sum(:amount) -
            @dues.sum(:amount)
+
+    puts "There"
   end
 
   def new

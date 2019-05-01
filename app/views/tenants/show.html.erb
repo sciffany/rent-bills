@@ -37,7 +37,7 @@
     <%=render partial: "shared/confirm", locals: { typeString: "tenant",
                                                objectName: @tenant.name,
                                                url: tenant_url(id: @tenant.id),
-                                              isOwner: @tenant.location.user == current_user }%>
+                                              isOwner: @tenant.location.user == @current_user }%>
 
   </div>
 </div>

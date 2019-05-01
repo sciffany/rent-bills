@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class LocationsController < ApplicationController
+  
   def new
     @location = Location.new
   end
 
   def create
     location = Location.new location_params
-    location.user = current_user
+    location.user = @current_user
     if location.save
       create_duty(location)
     else
@@ -26,9 +27,9 @@ class LocationsController < ApplicationController
   def index
     Contract.contract_status if params[:refresh]
     @tab = params[:tab] if params[:tab]
-    @pending = current_user.watchedDuties.where(verified: false)
-    @locations = v_locations
+    @locations = @v_locations
     @uv_locations = uv_locations
+    @pending = @current_user.watchedDuties.where(verified: false)
   end
 
   def show
@@ -53,7 +54,7 @@ class LocationsController < ApplicationController
   end
 
   def create_duty(location)
-    Duty.create(user: current_user,
+    Duty.create(user: @current_user,
                 location: location,
                 start_date: Time.now,
                 end_date: Time.now.next_year(10),

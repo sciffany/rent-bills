@@ -61,7 +61,7 @@
             <% end %>
             <tr>
                 <td scope="col">
-                <% if full && current_user.owner?  %>
+                <% if full && @current_user.owner?  %>
                     <%= link_to "Add units", new_location_unit_path(location.id) , class:"btn btn-primary mt-1"%>
                 <% end %>
                 </td>

@@ -7,11 +7,11 @@
     <td scope="col"><% if p.accepted? %>✔
                     <%elsif p.declined? %>Declined
                     <%else%>
-                        <%if p.tenant.location.user == current_user%>
+                        <%if p.tenant.location.user == @current_user%>
                             <%=link_to "A", location_payment_url(location_id: p.tenant.location_id, id: p.id), method: :patch, class: "btn btn-success"%>
                             <%=link_to "D", location_payment_url(location_id: p.tenant.location_id, id: p.id, s: "d"), method: :patch, class: "btn btn-danger"%>
                         <%end%>
-                        <%if p.user == current_user%>
+                        <%if p.user == @current_user%>
                             <%=link_to "X", location_payment_url(location_id: p.tenant.location_id, id: p.id), method: :delete, class: "btn btn-danger"%>
                         <%end%>
                     <%end%>
