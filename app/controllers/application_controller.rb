@@ -19,5 +19,4 @@ class ApplicationController < ActionController::Base
     set_current_user
     redirect_to locations_url unless @current_user.nil?
   end
-
   end

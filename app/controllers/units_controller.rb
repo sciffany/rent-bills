@@ -4,14 +4,14 @@ class UnitsController < ApplicationController
   before_action :verify_duty
 
   def index
-    puts "Here"
+    puts 'Here'
     @tab = params[:tab] if params[:tab]
     @location = Location.includes(:duties, :user).find(params[:location_id])
     @duties = @location.duties
     @location_owner = @location.user
-    puts "contract"
+    puts 'contract'
     @active_contracts_count = @location.contracts.where(status: :active).group('contracts.unit_id').count
-    puts "contract2"
+    puts 'contract2'
     @tenants = @location.tenants
     @units = @location.units
     @payments = @location.payments.order(id: :asc)
@@ -20,7 +20,7 @@ class UnitsController < ApplicationController
            @payments.where(status: :unverified).sum(:amount) -
            @dues.sum(:amount)
 
-    puts "There"
+    puts 'There'
   end
 
   def new

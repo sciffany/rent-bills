@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ContractsController < ApplicationController
-  
   def new
     @contract = Contract.new
     @location = find_location

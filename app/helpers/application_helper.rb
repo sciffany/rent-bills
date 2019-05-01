@@ -7,7 +7,7 @@ module ApplicationHelper
     when :alert then 'alert alert-danger alert-dismissible'
     end
   end
-  
+
   def set_current_user
     @current_user = User.find(session[:user_id]) if session[:user_id]
   end
@@ -26,11 +26,11 @@ module ApplicationHelper
 
   def set_user_duties
     @user_duties = Duty.eager_load(:location,
-                                    location: [:units,
+                                   location: [:units,
                                               :tenants,
                                               :payments,
                                               { units: :contracts }])
-                        .where(user_id: @current_user.id)
+                       .where(user_id: @current_user.id)
     @v_locations = @user_duties.where(verified: true).map(&:location)
   end
 
@@ -51,5 +51,4 @@ module ApplicationHelper
       redirect_back_or_to locations_search_url, alert: 'You are not a verified keeper for that location.'
     end
   end
-  
 end
