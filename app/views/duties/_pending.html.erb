@@ -1,5 +1,4 @@
 <div class="card m-3 p-3" style="width: 20rem">
-	
 	<div><b>Location: </b><%=location.name%></div>
 	<div><b>User: </b><%=user.name%></div>
 	<div><b>Email: </b><%=user.email%></div>
@@ -19,7 +18,7 @@
 			<div><%= link_to "Decline", location_duty_url(id: duty.id,
 														location_id: duty.location.id),
 														method: :delete,
-						class: "btn btn-danger"%></div>
+										class: "btn btn-danger"%></div>
 			
 			</div>
 		</div>

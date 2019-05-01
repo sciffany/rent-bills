@@ -22,10 +22,9 @@ class Tenant < ApplicationRecord
 
   def balance
     p = payments.order(id: :asc)
-    d = dues.where("due_date<?", Time.now+1.month)
+    d = dues.where('due_date<?', Time.now + 1.month)
     p.where(status: :accepted).sum(:amount) +
-    p.where(status: :unverified).sum(:amount) -
-          d.sum(:amount)
-
+      p.where(status: :unverified).sum(:amount) -
+      d.sum(:amount)
   end
 end

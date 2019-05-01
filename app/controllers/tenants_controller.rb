@@ -33,10 +33,10 @@ class TenantsController < ApplicationController
   def show
     @tenant = Tenant.find(params[:id])
     @payments = @tenant.payments.order(id: :asc)
-    @dues = @tenant.dues.where("due_date<?", Time.now+1.month)
+    @dues = @tenant.dues.where('due_date<?', Time.now + 1.month)
     @sum = @payments.where(status: :accepted).sum(:amount) +
            @payments.where(status: :unverified).sum(:amount) -
-            @dues.sum(:amount)
+           @dues.sum(:amount)
   end
 
   private

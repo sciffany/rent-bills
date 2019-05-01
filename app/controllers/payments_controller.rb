@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
     payment.status = :unverified
     if payment.save
       redirect_to location_url(payment.tenant.location_id, tab: 'balance_tab')
-      flash[:notice] = "Payment entry successfully created."
+      flash[:notice] = 'Payment entry successfully created.'
     else
       redirect_to location_url(payment.tenant.location_id, tab: 'balance_tab')
       flash[:alert] = payment.errors.full_messages.join(' ')
@@ -23,24 +23,23 @@ class PaymentsController < ApplicationController
     payment = Payment.find(params[:id])
     location_id = payment.tenant.location_id
     if payment.destroy
-      redirect_to location_url(id: location_id, tab: "balance_tab")
-      flash[:notice] = "Payment entry successfully deleted."
+      redirect_to location_url(id: location_id, tab: 'balance_tab')
+      flash[:notice] = 'Payment entry successfully deleted.'
     end
   end
 
-  def show
-  end
+  def show; end
 
   def update
     payment = Payment.find(params[:id])
-    if params[:s] == 'd' 
-      payment.status = :declined;
-    else
-      payment.status = :accepted;
-    end
+    payment.status = if params[:s] == 'd'
+                       :declined
+                     else
+                       :accepted
+                     end
     if payment.save
-      redirect_to location_url(id: payment.tenant.location_id, tab: "balance_tab")
-      flash[:notice] = "Payment verified."
+      redirect_to location_url(id: payment.tenant.location_id, tab: 'balance_tab')
+      flash[:notice] = 'Payment verified.'
     end
   end
 

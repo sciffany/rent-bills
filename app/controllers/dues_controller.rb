@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class DuesController < ApplicationController
-
   # similar to new
   def default
     @contract = Contract.find(params[:id])
@@ -28,10 +27,9 @@ class DuesController < ApplicationController
     location_id = due.contract.unit.location_id
     if due.destroy
       redirect_back_or_to locations_url
-      flash[:notice] = "Due entry successfully deleted."
+      flash[:notice] = 'Due entry successfully deleted.'
     end
   end
-
 
   private
 

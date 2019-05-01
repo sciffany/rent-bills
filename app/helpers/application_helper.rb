@@ -38,4 +38,10 @@ module ApplicationHelper
   def uv_locations
     user_duties.where(verified: false).map(&:location)
   end
+
+  def verify_duty
+    unless v_locations.map { |x| x.id.to_i }.include? params[:location_id].to_i
+      redirect_back_or_to locations_search_url, alert: 'You are not a verified keeper for that location.'
+    end
+  end
 end

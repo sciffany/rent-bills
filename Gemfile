@@ -7,12 +7,12 @@ ruby '2.5.0'
 
 gem 'bootstrap'
 gem 'cancancan', '~> 2.0'
+gem 'coveralls', require: false
 gem 'jquery-rails'
 gem 'material_icons'
 gem 'rails-erd', group: :development
 gem 'rb-readline'
 gem 'rubocop', '~> 0.63.1', require: false
-gem 'coveralls', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'bcrypt', '3.1.12'
@@ -73,10 +73,10 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'shoulda-matchers'
-  gem 'rails-controller-testing'
   gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'rails-controller-testing'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
