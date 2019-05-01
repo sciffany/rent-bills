@@ -1,6 +1,7 @@
 # Rent Bills
 
  <img src="https://travis-ci.com/sciffany/rent-bills.svg?branch=master"></img>
+ [![Coverage Status](https://coveralls.io/repos/github/sciffany/rent-bills/badge.svg?branch=master)](https://coveralls.io/github/sciffany/rent-bills?branch=master)
 
 ## Program
 
