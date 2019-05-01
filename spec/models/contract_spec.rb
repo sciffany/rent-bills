@@ -27,7 +27,5 @@ RSpec.describe Contract, type: :model do
   it { should validate_presence_of(:end_date) }
   it { should validate_presence_of(:charge) }
 
-  it 'rejects start year not right after end year' do
-    expect(build(:contract, start_date: 0o4 / 0o1 / 2000, end_date: 0o4 / 0o1 / 1999, amount: 1000)).to_not be_valid
-  end
+  
 end
