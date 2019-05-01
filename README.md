@@ -1,6 +1,7 @@
 # Rent Bills
 
  <img src="https://travis-ci.com/sciffany/rent-bills.svg?branch=master"></img>
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0f52408411f94109914636191e8b581e)](https://app.codacy.com/app/sciffany/rent-bills?utm_source=github.com&utm_medium=referral&utm_content=sciffany/rent-bills&utm_campaign=Badge_Grade_Dashboard)
  [![Coverage Status](https://coveralls.io/repos/github/sciffany/rent-bills/badge.svg?branch=master)](https://coveralls.io/github/sciffany/rent-bills?branch=master)
 
 ## Program
