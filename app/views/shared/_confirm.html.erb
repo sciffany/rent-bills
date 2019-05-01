@@ -1,3 +1,6 @@
+<%if isOwner%>
+<hr />
+<b>Danger zone:</b>
 
 <div data-toggle="modal" data-target="#confirm-delete"></div>
 
@@ -17,9 +20,10 @@ Delete <%=typeString%></button>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>  
         <div><%= link_to "Delete", url, method: :delete, class: "btn btn-danger" %></div>
-        </div>
       </div>
 
     </div>
   </div>
 </div>
+
+<%end%>

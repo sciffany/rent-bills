@@ -9,8 +9,7 @@
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-balance-tab" data-toggle="tab" href="#nav-balance" role="tab" aria-controls="nav-balance" aria-selected="false">Balance</a>
     <a class="nav-item nav-link" id="nav-contracts-tab" data-toggle="tab" href="#nav-contracts" role="tab" aria-controls="nav-contracts" aria-selected="true">Contracts</a>
-    
-    <%# <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a> %>
+    <a class="nav-item nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="false">Info</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
@@ -22,8 +21,8 @@
   </div>
 
   <div class="tab-pane fade" id="nav-contracts" role="tabpanel" aria-labelledby="nav-contracts-tab">
+    <div class="m-3">The following are contracts for this tenant.</div>
     <div class="row">
-        The following are contracts for this tenant.
         <% @tenant.contracts.each do |c| %>
             <%= render partial: 'contracts/show', locals: {contract: c, deletion: false} %>
         <% end %>
@@ -33,10 +32,12 @@
     </div>
   </div>
     
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+  <div class="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+    <div class="m-3">No information to display.</div>
+    <%=render partial: "shared/confirm", locals: { typeString: "tenant",
+                                               objectName: @tenant.name,
+                                               url: tenant_url(id: @tenant.id),
+                                              isOwner: @tenant.location.user == current_user }%>
+
+  </div>
 </div>
-
-
-  <%=render partial: "shared/confirm", locals: { typeString: "tenant",
-                                                 objectName: @tenant.name,
-                                                 url: tenant_url(id: @tenant.id) }%>

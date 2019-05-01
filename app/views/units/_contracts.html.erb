@@ -11,4 +11,5 @@
 
 <%=render partial: "shared/confirm", locals: { typeString: "unit",
                                                objectName: @unit.name,
-                                               url: location_unit_url(location_id: unit.location_id, id: unit.id) }%>
+                                               url: location_unit_url(location_id: unit.location_id, id: unit.id),
+                                               isOwner: @unit.location.user == current_user }%>

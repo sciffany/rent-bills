@@ -48,17 +48,18 @@
                 <% end %>
             </div>
         <% else %>
-            <div class="row">
-                <%if @pending && !@pending.empty?%>
+            <%if @pending && !@pending.empty?%>
+                <div class="m-3">Here are pending requests to housekeep your location.</div>
+                    <div class="row">
                     <% @pending.each do |d| %>
                         <%= render partial: 'duties/pending', locals: { duty: d,
                                                                         location: d.location,
                                                                         user: d.user} %>
-                    <%end %>
-                <%else%>
-                    <div class="ml-3 mt-3">There are no pending housekeepers to be added.</div>
-                <%end%>
-            </div>
+                    <%end %></div>
+            <%else%>
+                <div class="ml-3 mt-3">There are no pending housekeepers to be added.</div>
+            <%end%>
+        
         <% end %>
   </div>
 </div>
