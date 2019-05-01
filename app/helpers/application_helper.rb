@@ -25,10 +25,12 @@ module ApplicationHelper
   end
 
   def set_user_duties
-    @user_duties = Duty.eager_load(:location, location: [:units,
-                                          :tenants,
-                                          :payments,
-                                          { units: :contracts }]).where(user_id: @current_user.id)
+    @user_duties = Duty.eager_load(:location,
+                                    location: [:units,
+                                              :tenants,
+                                              :payments,
+                                              { units: :contracts }])
+                        .where(user_id: @current_user.id)
     @v_locations = @user_duties.where(verified: true).map(&:location)
   end
 

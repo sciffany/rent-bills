@@ -6,8 +6,12 @@ class UnitsController < ApplicationController
   def index
     puts "Here"
     @tab = params[:tab] if params[:tab]
-    @location = Location.find(params[:location_id])
-    @active_contracts_count = Contract.where(status: :active).group('contracts.unit_id').count
+    @location = Location.includes(:duties, :user).find(params[:location_id])
+    @duties = @location.duties
+    @location_owner = @location.user
+    puts "contract"
+    @active_contracts_count = @location.contracts.where(status: :active).group('contracts.unit_id').count
+    puts "contract2"
     @tenants = @location.tenants
     @units = @location.units
     @payments = @location.payments.order(id: :asc)

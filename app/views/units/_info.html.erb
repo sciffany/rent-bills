@@ -1,7 +1,6 @@
 <div class="m-3">
-    <div><b>Owner: </b><%=location.user.name%></div>
+    <div><b>Owner: </b><%=@location_owner.name%></div>
     <div class="mt-1"><b>Description: </b>No description has been provided.</div>
-    
     <%=render partial: "shared/confirm", locals: { typeString: "location",
                                                     objectName: location.name,
                                                     url: location_url(id: location.id),
