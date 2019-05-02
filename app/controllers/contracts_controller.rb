@@ -20,8 +20,7 @@ class ContractsController < ApplicationController
       contract.update_status
       redirect_to default_location_due_url(location_id: contract.unit.location_id, id: contract.id)
     else
-      redirect_back(fallback_location: location_url(id: params[:location_id]))
-      flash[:alert] = contract.errors.full_messages.join(' ')
+      error_and_redirect contract, location_url(id: params[:location_id]), true
     end
   end
 

@@ -4,23 +4,17 @@ class UnitsController < ApplicationController
   before_action :verify_duty
 
   def index
-    puts 'Here'
     @tab = params[:tab] if params[:tab]
     @location = Location.includes(:duties, :user).find(params[:location_id])
     @duties = @location.duties
     @location_owner = @location.user
-    puts 'contract'
-    @active_contracts_count = @location.contracts.where(status: :active).group('contracts.unit_id').count
-    puts 'contract2'
+    @active_contracts_count = @location.contracts.where(status: :active)
+                                                 .group('contracts.unit_id').count
     @tenants = @location.tenants
     @units = @location.units
     @payments = @location.payments.order(id: :asc)
     @dues = @location.dues.where('due_date<?', Time.now + 1.month)
-    @sum = @payments.where(status: :accepted).sum(:amount) +
-           @payments.where(status: :unverified).sum(:amount) -
-           @dues.sum(:amount)
-
-    puts 'There'
+    @sum = pay_due_sum @payments, @dues
   end
 
   def new
@@ -31,9 +25,8 @@ class UnitsController < ApplicationController
   def destroy
     unit = Unit.find(params[:id])
     location_id = unit.location_id
-    if unit.destroy
-      redirect_to location_url(location_id), notice: 'Unit successfully deleted'
-    end
+    destroy_and_redirect unit, "Unit", location_url(location_id),
+                         false
   end
 
   def create

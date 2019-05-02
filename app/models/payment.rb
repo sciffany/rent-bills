@@ -21,6 +21,6 @@ class Payment < ApplicationRecord
 
   validates :amount, presence: true
   validates :pay_date, presence: true
-
+  
   enum status: %i[accepted declined unverified]
 end

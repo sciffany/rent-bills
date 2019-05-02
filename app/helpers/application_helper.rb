@@ -66,8 +66,15 @@ module ApplicationHelper
     end
   end
 
-  def error_and_redirect_back (object, link)
-    redirect_back_or_to link, alert: object.errors.full_messages.join(', ')
+  def error_and_redirect (object, link, back)
+    link = request.referer || link if back
+    redirect_to link, alert: object.errors.full_messages.join(', ')
+  end
+
+  def pay_due_sum (payments, dues)
+    payments.where(status: :accepted).sum(:amount) +
+    payments.where(status: :unverified).sum(:amount) -
+    dues.sum(:amount)
   end
 
 end

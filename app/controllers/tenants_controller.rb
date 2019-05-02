@@ -20,9 +20,7 @@ class TenantsController < ApplicationController
   def destroy
     tenant = Tenant.find(params[:id])
     location_id = tenant.location_id
-    if tenant.destroy
-      redirect_to location_url(location_id), notice: 'Tenant successfully deleted'
-    end
+    destroy_and_redirect tenant, "Tenant", location_url(location_id), false
   end
 
   def index
@@ -34,9 +32,7 @@ class TenantsController < ApplicationController
     @tenant = Tenant.find(params[:id])
     @payments = @tenant.payments.order(id: :asc)
     @dues = @tenant.dues.where('due_date<?', Time.now + 1.month)
-    @sum = @payments.where(status: :accepted).sum(:amount) +
-           @payments.where(status: :unverified).sum(:amount) -
-           @dues.sum(:amount)
+    @sum = pay_due_sum @payments, @dues
   end
 
   private

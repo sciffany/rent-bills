@@ -7,25 +7,22 @@ class PaymentsController < ApplicationController
 
   def create
     payment = Payment.new payment_params
-    payment.tenant = Tenant.find(params[:payment][:tenant_id])
     payment.user = @current_user
     payment.status = :unverified
     if payment.save
-      redirect_to location_url(payment.tenant.location_id, tab: 'balance_tab')
-      flash[:notice] = 'Payment entry successfully created.'
+      redirect_to balance_tab_link,
+        notice: 'Payment entry successfully created.'
     else
-      redirect_to location_url(payment.tenant.location_id, tab: 'balance_tab')
-      flash[:alert] = payment.errors.full_messages.join(' ')
+      error_and_redirect payment, balance_tab_link, false
     end
   end
 
   def destroy
     payment = Payment.find(params[:id])
     location_id = payment.tenant.location_id
-    return if !payment.destroy
-    redirect_to location_url(id: location_id, tab: 'balance_tab'),
-    notice: 'Payment entry successfully deleted.'
-    
+    destroy_and_redirect payment, "Payment", 
+                         location_url(id: location_id, tab: 'balance_tab'),
+                         false
   end
 
   def show; end
@@ -45,8 +42,12 @@ class PaymentsController < ApplicationController
 
   private
 
+  def balance_tab_link
+    location_url(params[:location_id], tab: 'balance_tab')
+  end
+
   def payment_params
     params.require(:payment)
-          .permit(:pay_date, :tenant, :amount, :remark)
+          .permit(:pay_date, :tenant_id, :amount, :remark)
   end
 end
