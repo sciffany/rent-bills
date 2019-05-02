@@ -22,10 +22,10 @@ class PaymentsController < ApplicationController
   def destroy
     payment = Payment.find(params[:id])
     location_id = payment.tenant.location_id
-    if payment.destroy
-      redirect_to location_url(id: location_id, tab: 'balance_tab')
-      flash[:notice] = 'Payment entry successfully deleted.'
-    end
+    return if !payment.destroy
+    redirect_to location_url(id: location_id, tab: 'balance_tab'),
+    notice: 'Payment entry successfully deleted.'
+    
   end
 
   def show; end
@@ -49,6 +49,4 @@ class PaymentsController < ApplicationController
     params.require(:payment)
           .permit(:pay_date, :tenant, :amount, :remark)
   end
-
-  def show; end
 end

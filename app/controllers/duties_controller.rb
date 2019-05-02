@@ -13,7 +13,7 @@ class DutiesController < ApplicationController
     if duty.save
       redirect_to locations_url
     else
-      redirect_back_or_to locations_url, alert: duty.errors.full_messages.join(', ')
+      error_and_redirect_back duty, locations_url
     end
   end
 
@@ -43,7 +43,8 @@ class DutiesController < ApplicationController
       redirect_to locations_url,
                   notice: 'Keeper successfully verified'
     else
-      redirect_to locations_url(tab: 'pending_tab'), alert: duty.errors.full_messages.join(', ')
+      redirect_to locations_url(tab: 'pending_tab'),
+                  alert: duty.errors.full_messages.join(', ')
     end
   end
 

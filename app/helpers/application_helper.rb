@@ -57,12 +57,17 @@ module ApplicationHelper
     end
   end
 
-  def destroy_and_redirect_back (object, object_name, link)
+  def destroy_and_redirect (object, object_name, link, back)
+    link = request.referer || link if back
     if object.destroy
-      redirect_back_or_to link, notice: "#{object_name} successfully deleted"
+      redirect_to link, notice: "#{object_name} successfully deleted"
     else
-      redirect_back_or_to link, alert: "#{object_name} cannot be deleted"
+      redirect_to link, alert: "#{object_name} cannot be deleted"
     end
+  end
+
+  def error_and_redirect_back (object, link)
+    redirect_back_or_to link, alert: object.errors.full_messages.join(', ')
   end
 
 end

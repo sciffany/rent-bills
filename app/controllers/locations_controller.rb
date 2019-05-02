@@ -38,11 +38,8 @@ class LocationsController < ApplicationController
 
   def destroy
     location = Location.find(params[:id])
-    if location.destroy
-      redirect_to locations_url, notice: "Location successfully deleted"
-    else
-      redirect_to locations_url, alert: "Location cannot be deleted"
-    end
+    destroy_and_redirect location, "Location",
+                         locations_url, false
   end
 
   private

@@ -14,7 +14,7 @@ class DuesController < ApplicationController
     sd = Date.parse(params[:start_date])
     eda = Date.parse(params[:end_date])
     if (md && md > 28 or md < 1)
-      redirect_back_or_to locations_url, alert: "Monthly date must be 1-28"
+      redirect_back locations_url, alert: "Monthly date must be 1-28"
     elsif
       (sched = if sd.day < md
                 sd.change(day: md)
@@ -27,7 +27,7 @@ class DuesController < ApplicationController
 
   def destroy
     due = Due.find(params[:id])
-    destroy_and_redirect_back due, "Due", locations_url
+    destroy_and_redirect due, "Due", locations_url, true
   end
 
   private
