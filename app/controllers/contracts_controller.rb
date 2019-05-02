@@ -46,7 +46,7 @@ class ContractsController < ApplicationController
   def destroy
     contract = find_location.contracts.find(params[:id])
     location = contract.unit.location
-    destroy_and_redirect contract, "Contract",
+    destroy_and_redirect contract, 'Contract',
                          location_url(location.id), true
   end
 

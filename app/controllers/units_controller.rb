@@ -9,7 +9,7 @@ class UnitsController < ApplicationController
     @duties = @location.duties
     @location_owner = @location.user
     @active_contracts_count = @location.contracts.where(status: :active)
-                                                 .group('contracts.unit_id').count
+                                       .group('contracts.unit_id').count
     @tenants = @location.tenants
     @units = @location.units
     @payments = @location.payments.order(id: :asc)
@@ -25,7 +25,7 @@ class UnitsController < ApplicationController
   def destroy
     unit = Unit.find(params[:id])
     location_id = unit.location_id
-    destroy_and_redirect unit, "Unit", location_url(location_id),
+    destroy_and_redirect unit, 'Unit', location_url(location_id),
                          false
   end
 

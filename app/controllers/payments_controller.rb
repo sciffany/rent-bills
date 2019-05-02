@@ -11,7 +11,7 @@ class PaymentsController < ApplicationController
     payment.status = :unverified
     if payment.save
       redirect_to balance_tab_link,
-        notice: 'Payment entry successfully created.'
+                  notice: 'Payment entry successfully created.'
     else
       error_and_redirect payment, balance_tab_link, false
     end
@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
   def destroy
     payment = Payment.find(params[:id])
     location_id = payment.tenant.location_id
-    destroy_and_redirect payment, "Payment", 
+    destroy_and_redirect payment, 'Payment',
                          location_url(id: location_id, tab: 'balance_tab'),
                          false
   end

@@ -17,4 +17,9 @@
 require 'rails_helper'
 
 RSpec.describe Duty, type: :model do
+  it { should belong_to(:user) }
+  it { should belong_to(:location) }
+  it { should validate_presence_of(:location) }
+  it { should validate_uniqueness_of(:location)
+              .scoped_to(:user) }
 end

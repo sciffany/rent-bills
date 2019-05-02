@@ -39,11 +39,11 @@ module ApplicationHelper
   end
 
   def find_location
-    puts "start"
+    puts 'start'
     @user_duties.each do |d|
       puts d.location.name
     end
-    puts "stop"
+    puts 'stop'
     @user_duties.find_by(location_id: params[:location_id]).location
   end
 
@@ -57,7 +57,7 @@ module ApplicationHelper
     end
   end
 
-  def destroy_and_redirect (object, object_name, link, back)
+  def destroy_and_redirect(object, object_name, link, back)
     link = request.referer || link if back
     if object.destroy
       redirect_to link, notice: "#{object_name} successfully deleted"
@@ -66,15 +66,14 @@ module ApplicationHelper
     end
   end
 
-  def error_and_redirect (object, link, back)
+  def error_and_redirect(object, link, back)
     link = request.referer || link if back
     redirect_to link, alert: object.errors.full_messages.join(', ')
   end
 
-  def pay_due_sum (payments, dues)
+  def pay_due_sum(payments, dues)
     payments.where(status: :accepted).sum(:amount) +
-    payments.where(status: :unverified).sum(:amount) -
-    dues.sum(:amount)
+      payments.where(status: :unverified).sum(:amount) -
+      dues.sum(:amount)
   end
-
 end

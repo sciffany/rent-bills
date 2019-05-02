@@ -20,7 +20,7 @@ class TenantsController < ApplicationController
   def destroy
     tenant = Tenant.find(params[:id])
     location_id = tenant.location_id
-    destroy_and_redirect tenant, "Tenant", location_url(location_id), false
+    destroy_and_redirect tenant, 'Tenant', location_url(location_id), false
   end
 
   def index
