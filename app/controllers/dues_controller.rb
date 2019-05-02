@@ -24,11 +24,7 @@ class DuesController < ApplicationController
 
   def destroy
     due = Due.find(params[:id])
-    location_id = due.contract.unit.location_id
-    if due.destroy
-      redirect_back_or_to locations_url
-      flash[:notice] = 'Due entry successfully deleted.'
-    end
+    destroy_and_redirect_back due, "Due", locations_url
   end
 
   private

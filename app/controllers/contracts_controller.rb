@@ -7,15 +7,14 @@ class ContractsController < ApplicationController
     if params[:tenant_id]
       @tenant = @location.tenants.find(params[:tenant_id])
       @units = @location.units
-    end
-    if params[:unit_id]
+    else
       @unit = @location.units.find(params[:unit_id])
       @tenants = @location.tenants
     end
   end
 
   def create
-    contract = Contract.new contract_params
+    contract = find_location.contracts.new contract_params
     contract.charge = contract.unit.price
     if contract.save
       contract.update_status
@@ -46,10 +45,9 @@ class ContractsController < ApplicationController
   end
 
   def destroy
-    contract = Contract.find(params[:id])
-    if contract.destroy
-      redirect_back_or_to locations_url, notice: 'Contract successfully deleted'
-    end
+    contract = find_location.contracts.find(params[:id])
+    location = contract.unit.location
+    destroy_and_redirect_back contract, "Contract", location_url(location.id)
   end
 
   private

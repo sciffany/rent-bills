@@ -8,7 +8,6 @@ ruby '2.5.0'
 gem 'bootstrap'
 gem 'cancancan', '~> 2.0'
 gem 'coveralls', require: false
-gem 'factory_bot_rails'
 gem 'jquery-rails'
 gem 'material_icons'
 gem 'rails-erd', group: :development

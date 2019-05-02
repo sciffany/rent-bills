@@ -39,6 +39,11 @@ module ApplicationHelper
   end
 
   def find_location
+    puts "start"
+    @user_duties.each do |d|
+      puts d.location.name
+    end
+    puts "stop"
     @user_duties.find_by(location_id: params[:location_id]).location
   end
 
@@ -49,6 +54,22 @@ module ApplicationHelper
   def verify_duty
     unless v_locations.map { |x| x.id.to_i }.include? params[:location_id].to_i
       redirect_back_or_to locations_search_url, alert: 'You are not a verified keeper for that location.'
+    end
+  end
+
+  def destroy_and_redirect_back(object, object_name, link)
+    if object.destroy
+      redirect_back_or_to link, notice: "#{object_name} successfully deleted"
+    else
+      redirect_back_or_to link, alert: "#{object_name} cannot be deleted"
+    end
+  end
+
+  def destroy_and_redirect(object, object_name, link)
+    if object.destroy
+      redirect_to link, notice: "#{object_name} successfully deleted"
+    else
+      redirect_to link, alert: "#{object_name} cannot be deleted"
     end
   end
 end
