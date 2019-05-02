@@ -12,14 +12,17 @@ class DuesController < ApplicationController
     due.contract_id = params[:contract_id]
     md = params[:monthly_date].to_i
     sd = Date.parse(params[:start_date])
-    cid = params[:contract_id].to_i
-    sched = if sd.day < md
-              sd.change(day: md)
-            else
-              sd.change(day: md) + 1.month
-            end
     eda = Date.parse(params[:end_date])
-    schedule_duties_helper(sched, eda, due)
+    if (md && md > 28 or md < 1)
+      redirect_back_or_to locations_url, alert: "Monthly date must be 1-28"
+    elsif
+      (sched = if sd.day < md
+                sd.change(day: md)
+              else
+                sd.change(day: md) + 1.month
+              end)
+      schedule_duties_helper(sched, eda, due)
+    end
   end
 
   def destroy
@@ -31,7 +34,7 @@ class DuesController < ApplicationController
 
   def schedule_duties_helper(sched, eda, due)
     if sched > eda
-      redirect_to tenant_url(due.contract.tenant.id)
+      redirect_to tenant_url(due.contract.tenant.id), notice: "Dues set successfully."
     else
       newdue = due.dup
       newdue.update(due_date: sched)

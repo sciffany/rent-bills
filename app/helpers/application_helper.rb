@@ -57,7 +57,7 @@ module ApplicationHelper
     end
   end
 
-  def destroy_and_redirect_back(object, object_name, link)
+  def destroy_and_redirect_back (object, object_name, link)
     if object.destroy
       redirect_back_or_to link, notice: "#{object_name} successfully deleted"
     else
@@ -65,11 +65,4 @@ module ApplicationHelper
     end
   end
 
-  def destroy_and_redirect(object, object_name, link)
-    if object.destroy
-      redirect_to link, notice: "#{object_name} successfully deleted"
-    else
-      redirect_to link, alert: "#{object_name} cannot be deleted"
-    end
-  end
 end
