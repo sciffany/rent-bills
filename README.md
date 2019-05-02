@@ -6,7 +6,7 @@
 
 ## Program
 
-The working website can be found in the Rent Bills website (http://rent-bills.herokuapp.com/)
+The working website can be found in the Rent Bills website <http://rent-bills.herokuapp.com/>
 
 ## Description of program
 
@@ -55,10 +55,10 @@ Users are able to view their own profile through link at navigation bar above.
 
 ## Non-functional features
 
- 1. SQL queries mostly optimised.
- 2. Authorisation (only owners and keepers are able to view location information)
+1. SQL queries mostly optimised.
+2. Authorisation (only owners and keepers are able to view location information)
 
 ## Future Development
 
- 1. Further optimisation of SQL queries.
- 2. RSpec tests to be written.
+1. Further optimisation of SQL queries.
+2. RSpec tests to be written.
