@@ -59,7 +59,34 @@ Users are able to view their own profile through link at navigation bar above.
 1. SQL queries mostly optimised.
 2. Authorisation (only owners and keepers are able to view location information)
 
+## Demo Screenshots
+
+1. Main Dashboard
+
+<img src="/screenshots/screenshot1.png" width="400px"></img>
+
+2. Tenant information
+
+<img src="/screenshots/screenshot2.png" width="400px"></img>
+
+3. Location information
+
+<img src="/screenshots/screenshot3.png" width="400px"></img>
+
+4. Contract Creator
+
+<img src="/screenshots/screenshot5.png" width="200px"></img>
+
+
+5. Due Scheduler
+
+<img src="/screenshots/screenshot4.png" width="400px"></img>
+
+
+
 ## Future Development
 
 1. Further optimisation of SQL queries.
 2. RSpec tests to be written.
+
+
