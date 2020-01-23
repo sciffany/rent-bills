@@ -7,6 +7,7 @@
 ## Program
 
 The working website can be found in the Rent Bills website <http://rent-bills.herokuapp.com/>
+May take a while to load due to sleeping dynos. Sample user: `owner@owner.com` Password: `123`
 
 ## Description of program
 
