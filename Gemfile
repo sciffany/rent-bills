@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.0'
 
 gem 'bootstrap'
-gem 'cancancan', '~> 2.0'
+gem 'cancancan', '~> 3.1'
 gem 'coveralls', require: false
 gem 'jquery-rails'
 gem 'material_icons'
