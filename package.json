@@ -2,7 +2,7 @@
   "name": "rent-bills",
   "private": true,
   "dependencies": {
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "popper.js": "^1.15.0"
   }
 }
