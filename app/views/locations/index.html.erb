@@ -3,9 +3,9 @@
 <%=link_to "Contract Status Check", locations_url(refresh: true), class: "btn btn-success mb-2"%>
 
 <nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link <%= @tab == nil ? "active" : "" %>" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Locations</a>
-    <a class="nav-item nav-link <%= @tab == "pending_tab" ? "active" : "" %> " id="nav-pending-tab" data-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="false">Pending</a>
+  <div class="nav nav-tabs" id="nav-tab" data-bs-toggle="tab" role="tablist">
+    <a class="nav-item nav-link <%= @tab == nil ? "active" : "" %>" id="nav-home-tab" data-bs-toggle="tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Locations</a>
+    <a class="nav-item nav-link <%= @tab == "pending_tab" ? "active" : "" %> " id="nav-pending-tab" data-bs-toggle="tab" data-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="false">Pending</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
