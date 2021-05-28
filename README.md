@@ -1,8 +1,8 @@
 # Rent Bills
 
- <img src="https://travis-ci.com/sciffany/rent-bills.svg?branch=master"></img>
+<img src="https://travis-ci.com/sciffany/rent-bills.svg?branch=master"></img>
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0f52408411f94109914636191e8b581e)](https://app.codacy.com/app/sciffany/rent-bills?utm_source=github.com&utm_medium=referral&utm_content=sciffany/rent-bills&utm_campaign=Badge_Grade_Dashboard)
- [![Coverage Status](https://coveralls.io/repos/github/sciffany/rent-bills/badge.svg?branch=master)](https://coveralls.io/github/sciffany/rent-bills?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/sciffany/rent-bills/badge.svg?branch=master)](https://coveralls.io/github/sciffany/rent-bills?branch=master)
 
 ## Program
 
@@ -19,14 +19,13 @@ Homeowners can employ keepers to collect payments made by tenants. Keepers will 
 
 ## Ruby version
 
-2.5.0
+2.7.3
 
 ## Schema
 
 The following schema is used by the program.
 
 ![ERD](erd.png)
-
 
 ## Demo Screenshots
 
@@ -46,34 +45,36 @@ The following schema is used by the program.
 
 <img src="/screenshots/screenshot5.png" width="200px"></img>
 
-
 5. Due Scheduler
 
 <img src="/screenshots/screenshot4.png" width="400px"></img>
 
-
-
 ## Features
 
 User Management
+
 1. Users can sign up, log in and log out based on unique emails.
 2. Two types of users are supported: owners and keepers.
 
 Locations and Units
+
 1. Owners and keepers are able to create locations.
 2. Keepers can sign themselves up as keepers for a house by sending requests to owners.
 3. Owners can accept or reject keepers' request to tend a house.
 4. Once keepers have access, they can view the location.
 
 Tenants
+
 1. Owners can add tenants to locations.
 2. Owners can create a contract based on how long the tenant stays in a unit and how much the monthly rent is.
 
 Keepers
+
 1. Keepers are able to see an overview of tenants and occupied units in the house.
 2. They can see contracts of tenants.
 
 Navigation
+
 1. Owners and keepers have an overivew of locations they manage.
 2. Owners have shortcuts to locations they own in the nav bar.
 
@@ -85,10 +86,7 @@ Users are able to view their own profile through link at navigation bar above.
 1. SQL queries mostly optimised.
 2. Authorisation (only owners and keepers are able to view location information)
 
-
 ## Future Development
 
 1. Further optimisation of SQL queries.
 2. RSpec tests to be written.
-
-
