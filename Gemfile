@@ -17,7 +17,7 @@ gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dab
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'bcrypt', '3.1.12'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.1.3'
 
 # Use postgres as the database for Active Record
 gem 'pg'
