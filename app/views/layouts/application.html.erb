@@ -1,66 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
     <title>RentBills</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
-
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Rent Bills</a>
       <% if @current_user %>
-      <ul class="navbar-nav mr-auto">
-        <a class="nav-link"><%=link_to "Dashboard", locations_url, class: "btn btn-primary mr-3"%></a>
-        <div class="nav-item dropdown">
-          <button class="btn dropdown-toggle" href="#" id="navbarDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             My locations
-          </button>
-          <div class="dropdown-menu" aria-labelledby="navDropdown"> 
-            <% @v_locations.each do |location| %>
-              <%= link_to location.name, location_url(location.id), class: "dropdown-item btn-primary"%>
-            <%end %>
-            <div class="dropdown-divider"></div>
-            <% if @current_user.owner? %>
-              <%= link_to "Add new location...", new_location_url, class: "dropdown-item "%>
-            <% else %>
-              <%= link_to "Search new location...", locations_search_path, class: "dropdown-item "%>
-            <% end %>
+        <ul class="navbar-nav mr-auto">
+          <a class="nav-link"><%=link_to "Dashboard", locations_url, class: "btn btn-primary mr-3"%></a>
+          <div class="nav-item dropdown">
+            <button class="btn dropdown-toggle" href="#" id="navbarDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              My locations
+            </button>
+            <div class="dropdown-menu" aria-labelledby="navDropdown">
+              <% @v_locations.each do |location| %>
+                <%= link_to location.name, location_url(location.id), class: "dropdown-item btn-primary"%>
+              <%end %>
+              <div class="dropdown-divider"></div>
+              <% if @current_user.owner? %>
+                <%= link_to "Add new location...", new_location_url, class: "dropdown-item "%>
+              <% else %>
+                <%= link_to "Search new location...", locations_search_path, class: "dropdown-item "%>
+              <% end %>
+            </div>
           </div>
-        </div>
-        
-      </ul>
-
-      <ul class="navbar-nav">
-        <a class="nav-link" href="#"><%=link_to "Profile", user_url(@current_user.id)%></a>
-        <a class="nav-link" href="#"><%=link_to "Logout", "/logout", method: :delete  %></a>   
-      </ul>
-      </div>   
-      <% else %>
+        </ul>
+        <ul class="navbar-nav">
+          <a class="nav-link" href="#"><%=link_to "Profile", user_url(@current_user.id)%></a>
+          <a class="nav-link" href="#"><%=link_to "Logout", "/logout", method: :delete  %></a>
+        </ul>
+      </div>
+    <% else %>
       <ul class="navbar-nav mr-auto"></ul>
       <ul class="navbar-nav"><a class="nav-link"><%= link_to 'Log in',  login_path,class: "btn btn-primary"%>
-      </ul>
+        </ul>
       <% end %>
-
     </nav>
-
     <div class="container mt-5">
-     
       <% flash.each do |type, text| %>
         <div class="<%= flash_class(type.to_sym) %>">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <%= text %>
         </div>
       <% end %>
-
       <%= yield %>
     </div>
-
     <% debug(params) if Rails.env.development? %>
   </body>
 </html>

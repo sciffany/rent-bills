@@ -17,6 +17,15 @@ Homeowners can create a location to represent houses/apartment/condominiums they
 
 Homeowners can employ keepers to collect payments made by tenants. Keepers will then input how much money they collected when onto the database. Keepers gain access information to a location by sending requests to owners.
 
+## How to run
+
+Install Postgres into machine, then run:
+`bundle install`
+`bundle pristine pg`
+`rails db:create`
+`rails db:migrate`
+`rails s`
+
 ## Ruby version
 
 2.7.3
