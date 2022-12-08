@@ -1,13 +1,21 @@
 <div class="m-3">
-    These are the keepers of <%=location.name %>.
-    <% location.duties.each do |d| %>
-        <%if d.user.keeper? && d.verified%>
-            <div class="card mt-3 p-3">
-                <%= link_to d.user.name, user_url(d.user.id), class: "btn btn-primary", style: "width: 10em" %>
-                
-                <div class="mt-1"><b>Start date: </b><%= d.start_date.strftime("%B %d, %Y") %></div>
-                <div class="mt-1"><b>End date: </b><%= d.end_date.strftime("%B %d, %Y") %></div>
-            </div>
-        <%end%>
-    <% end %>
+  These are the keepers of <%= location.name %>.
+  <% location.duties.each do |d| %>
+    <%= render partial: "shared/modal", locals:
+                                            { typeString: "duty",
+                                              objectName: "handled by " + d.user.name,
+                                              url: location_duty_url(location_id: d.location_id, id: d.id),
+                                              isOwner: d.location.user == @current_user } %>
+    <%if d.user.keeper? && d.verified%>
+      <div class="card mt-3 p-3">
+        <%= link_to d.user.name, user_url(d.user.id), class: "btn btn-primary", style: "width: 10em" %>
+        <div class="mt-1"><b>Start date: </b><%= d.start_date.strftime("%B %d, %Y") %></div>
+        <%= render partial: "shared/delete", locals:
+                                            { typeString: "duty",
+                                              objectName: d.user.name,
+                                              url: location_duty_url(location_id: d.location_id, id: d.id),
+                                              isOwner: d.location.user == @current_user } %>
+      </div>
+    <%end%>
+  <% end %>
 </div>

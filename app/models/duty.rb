@@ -20,16 +20,9 @@ class Duty < ApplicationRecord
   validates :location_id, uniqueness: { scope: :user }
 
   validate :has_dates_or_unverified_or_owner
-  validate :end_after_start
 
   def has_dates_or_unverified_or_owner
-    errors.add(:start_date, 'or end date is missing') unless
-      end_date && start_date || !verified || user.owner
-  end
-
-  def end_after_start
-    if end_date && start_date && end_date <= start_date
-      errors.add(:end_date, 'must be after start date')
-    end
+    errors.add(:start_date, 'is missing') unless
+      start_date || !verified || user.owner?
   end
 end

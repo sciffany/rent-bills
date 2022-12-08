@@ -39,6 +39,7 @@ class DutiesController < ApplicationController
   def verify
     duty = Duty.find(params[:id])
     duty.verified = true
+    duty.start_date = Date.today
     if duty.update(duty_params_verify)
       redirect_to locations_url,
                   notice: 'Keeper successfully verified'
@@ -57,9 +58,7 @@ class DutiesController < ApplicationController
   private
 
   def duty_params_verify
-    params.require(:duty)
-          .permit(:location_id,
-                  :end_date,
+    params.permit(:location_id,
                   :start_date,
                   :verified)
   end

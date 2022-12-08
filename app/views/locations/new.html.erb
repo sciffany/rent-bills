@@ -1,25 +1,19 @@
 <h1 >New Location</h1>
-
 <div class="row mt-3">
   <div class="col-md-4">
-
-		<%= form_for(@location) do |f| %>
-			<div class="form-group font-weight-bold">
-				<%= label_tag(:name, "Location name") %>
-				<%= f.text_field :name, class: "form-control" %>
-			</div>
-
-			<div class="form-group font-weight-bold">
-				<%= label_tag(:password, "Password") %>
-				<%= f.password_field :password, class: "form-control" %>
-			</div>
-			
-			<div class="form-group font-weight-bold text-center">
-				<%= f.submit "Create location", class: "btn btn-primary form-control" %>
-			</div>
-
-		<%end%>
-
-		<div><%= link_to "Back", locations_path %></div>
-	</div>
+    <%= form_for(@location) do |f| %>
+      <div class="form-group font-weight-bold">
+        <%= label_tag(:name, "Location name") %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group font-weight-bold">
+        <%= label_tag(:password, "Password") %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+      <div class="form-group font-weight-bold text-center">
+        <%= f.submit "Create location", class: "btn btn-primary form-control" %>
+      </div>
+    <%end%>
+    <div><%= link_to "Back", locations_path %></div>
+  </div>
 </div>

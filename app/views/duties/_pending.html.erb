@@ -1,30 +1,18 @@
 <div class="card m-3 p-3" style="width: 20rem">
-	<div><b>Location: </b><%=location.name%></div>
-	<div><b>User: </b><%=user.name%></div>
-	<div><b>Email: </b><%=user.email%></div>
-	<%= form_for(duty, url: verify_location_duty_url(id: duty.id,
-										location_id: duty.location.id), method: :patch) do |f| %>
-		
-		<div class="form-group font-weight-bold">
-			<%= f.label :start_date %>
-			<%= f.date_field :start_date, class: "form-control" %>
-		</div>
-
-		<%=f.label :end_date, class: "font-weight-bold" %>
-		<%=f.date_field :end_date, class: "form-control"%>
-		
-		<div class="row m-1">
-			<%= f.submit "Accept", class: "btn btn-primary" %>
-			<div><%= link_to "Decline", location_duty_url(id: duty.id,
-														location_id: duty.location.id),
-														method: :delete,
-										class: "btn btn-danger"%></div>
-			
-			</div>
-		</div>
-		
-	<%end%>
-	
-	
-
+  <div><b>Location: </b><%=location.name%></div>
+  <div><b>User: </b><%=user.name%></div>
+  <div><b>Email: </b><%=user.email%></div>
+  <%= form_for(duty,
+  			url: verify_location_duty_url(id: duty.id, location_id: duty.location.id),
+			  method: :patch) do |f| %>
+    <%= f.submit "Accept", class: "btn btn-primary" %>
+    <div>
+      <%= link_to "Decline",
+			location_duty_url(id: duty.id,
+			location_id: duty.location.id),
+			method: :delete,
+		class: "btn btn-danger"%>
+    </div>
+  </div>
+<%end%>
 <div>
